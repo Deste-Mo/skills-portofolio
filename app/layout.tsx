@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/layout/Header";
 import { siteConfig } from "@/config/site";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { AppHeader } from "@/components/layout/AppHeader";
+import { AppFooter } from "@/components/layout/AppFooter";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,8 +35,9 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Header />
+          <AppHeader />
           {children}
+          <AppFooter />
           <ThemeToggle />
         </ThemeProvider>
       </body>

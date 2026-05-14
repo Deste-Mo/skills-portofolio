@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Portfolio",
+  name: "Modeste",
   description: "Mon portfolio professionnel pour présenter mes compétences et projets.",
   mainNav: [
     {
