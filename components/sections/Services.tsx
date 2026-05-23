@@ -59,7 +59,7 @@ export function ServicesSection() {
           {services.map((service, index) => (
             <ScrollReveal key={service.title} animation="reveal-bottom" delay={index * 100}>
               <div className="group relative rounded-2xl border border-border/50 bg-background/50 backdrop-blur-sm p-8 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 h-full">
-                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                   <service.icon className="h-7 w-7" />
                 </div>
 
