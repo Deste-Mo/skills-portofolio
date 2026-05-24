@@ -1,94 +1,146 @@
 "use client"
 
 import Image from "next/image"
-import { MapPin, Phone, Mail, Globe } from "lucide-react"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
+import { MailIcon, GithubIcon, LinkedinIcon } from "@/components/ui/icons"
+
+function BoltIcon({ size = 24 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+    </svg>
+  )
+}
+
+function ContactIcon({ size = 24 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      <line x1="8" y1="10" x2="16" y2="10" />
+      <line x1="8" y1="14" x2="12" y2="14" />
+    </svg>
+  )
+}
+
+function MapPinIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  )
+}
 
 export function AboutSection() {
-    return (
-        <section id="about" className="py-20 sm:py-32">
-            <div className="container px-4 md:px-6 max-w-6xl mx-auto">
-                <ScrollReveal animation="slide-blur">
-                    <div className="text-center mb-12">
-                        <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">À propos</h2>
-                        <p className="text-lg text-muted-foreground">
-                            Designer & Développeur passionné par l'innovation digitale
-                        </p>
-                    </div>
-                </ScrollReveal>
+  const contactItems = [
+    { icon: MailIcon, label: "Email", value: "modestep20.aps1a@gmail.com", href: "mailto:modestep20.aps1a@gmail.com" },
+    { icon: GithubIcon, label: "GitHub", value: "Deste-Mo", href: "https://github.com/Deste-Mo" },
+    { icon: LinkedinIcon, label: "LinkedIn", value: "Modeste TOLOJANAHARY", href: "https://www.linkedin.com/in/modeste-nirina-tolojanahary-b844b61b7" },
+    { icon: MapPinIcon, label: "Localisation", value: "Fianarantsoa, Madagascar" },
+  ]
 
-                <ScrollReveal animation="scale" delay={100}>
-                    <div className="flex justify-center mb-12">
-                        <div className="relative h-48 w-48 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
-                            <Image
-                                src="/profil/mon-profil.webp"
-                                alt="Modeste TOLOJANAHARY"
-                                fill
-                                className="object-cover"
-                                priority
-                            />
-                        </div>
-                    </div>
-                </ScrollReveal>
+  const languages = ["Français", "Anglais", "Malagasy"]
 
-                <div className="grid gap-12 lg:grid-cols-2">
-                    <ScrollReveal animation="slide-left" delay={200}>
-                        <div>
-                            <h3 className="mb-6 text-2xl font-semibold">Profil</h3>
-                            <p className="text-muted-foreground leading-relaxed text-lg mb-4">
-                                Designer UI/UX et développeur Full-Stack passionné, je crée des expériences numériques
-                                qui allient esthétique et performance. Ma double casquette me permet de concevoir des
-                                interfaces intuitives et de les transformer en applications robustes.
-                            </p>
-                            <p className="text-muted-foreground leading-relaxed text-lg">
-                                Du wireframe au déploiement, je maîtrise chaque étape du processus créatif et technique.
-                                Mon approche : comprendre vos besoins, designer l'expérience idéale, puis la développer
-                                avec les technologies les plus adaptées.
-                            </p>
-                            <blockquote className="mt-6 border-l-4 border-primary pl-4 italic text-muted-foreground">
-                                "Designer l'expérience, développer la solution."
-                            </blockquote>
-                        </div>
-                    </ScrollReveal>
+  return (
+    <section id="about" className="max-w-[1200px] mx-auto px-8 py-24 md:py-32">
+      {/* Header */}
+      <ScrollReveal animation="slide-up">
+        <div className="mb-12 md:mb-16">
+          <h2 className="font-manrope text-4xl md:text-[48px] font-semibold text-foreground mb-4" style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}>
+            Apropos
+          </h2>
+          <p className="font-inter text-base md:text-lg text-muted-foreground max-w-2xl" style={{ lineHeight: "1.75" }}>
+            Designer UI/UX et développeur Full-Stack passionné, je crée des expériences numériques
+            qui allient esthétique et performance.
+          </p>
+        </div>
+      </ScrollReveal>
 
-                    <ScrollReveal animation="slide-right" delay={400}>
-                        <div>
-                            <h3 className="mb-6 text-2xl font-semibold">Contact</h3>
-                            <div className="space-y-4">
-                                <div className="flex items-center gap-4 transition-transform hover:translate-x-2">
-                                    <Phone className="h-5 w-5 text-primary" />
-                                    <span>+261 34 74 918 85</span>
-                                </div>
-                                <div className="flex items-center gap-4 transition-transform hover:translate-x-2">
-                                    <Mail className="h-5 w-5 text-primary" />
-                                    <a href="mailto:modestep20.aps1a@gmail.com" className="hover:text-primary transition-colors break-all">
-                                        modestep20.aps1a@gmail.com
-                                    </a>
-                                </div>
-                                <div className="flex items-center gap-4 transition-transform hover:translate-x-2">
-                                    <Globe className="h-5 w-5 text-primary" />
-                                    <a href="https://modeste-tolojanahary.netlify.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors break-all">
-                                        modeste-tolojanahary.netlify.app
-                                    </a>
-                                </div>
-                                <div className="flex items-center gap-4 transition-transform hover:translate-x-2">
-                                    <MapPin className="h-5 w-5 text-primary" />
-                                    <span>Fianarantsoa, Madagascar</span>
-                                </div>
-                            </div>
-
-                            <div className="mt-8">
-                                <h4 className="mb-4 font-semibold">Langues</h4>
-                                <div className="flex flex-wrap gap-2">
-                                    <span className="rounded-full bg-primary/10 px-4 py-2 text-sm transition-all hover:bg-primary/20 hover:scale-105">Français</span>
-                                    <span className="rounded-full bg-primary/10 px-4 py-2 text-sm transition-all hover:bg-primary/20 hover:scale-105">Anglais</span>
-                                    <span className="rounded-full bg-primary/10 px-4 py-2 text-sm transition-all hover:bg-primary/20 hover:scale-105">Malagasy</span>
-                                </div>
-                            </div>
-                        </div>
-                    </ScrollReveal>
-                </div>
+      {/* Bento Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
+        {/* Bento Card 1: Wide — Profil */}
+        <ScrollReveal animation="slide-up" delay={200} className="md:col-span-7 lg:col-span-8 order-1">
+          <div className="bg-muted/20 border border-border/50 rounded-xl p-6 md:p-8 flex flex-col justify-between hover:bg-muted/30 transition-colors group h-full">
+            <div className="mb-8 md:mb-12">
+              <span className="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 text-primary mb-4">
+                <BoltIcon size={24} />
+              </span>
+              <h3 className="font-manrope text-xl md:text-[24px] font-semibold text-foreground mb-2" style={{ letterSpacing: "-0.01em" }}>
+                Design & Développement
+              </h3>
+              <p className="font-inter text-sm md:text-base text-muted-foreground max-w-md" style={{ lineHeight: "1.6" }}>
+                Du wireframe au déploiement, je maîtrise chaque étape du processus créatif et technique.
+                Mon approche : comprendre vos besoins, designer l&apos;expérience idéale, puis la développer
+                avec les technologies les plus adaptées.
+              </p>
             </div>
-        </section>
-    )
+
+            <div className="w-full aspect-[16/9] md:aspect-[21/9] bg-muted/30 rounded-lg border border-border/30 relative overflow-hidden flex items-center justify-center">
+              <Image
+                src="/profil/mon-profil.webp"
+                alt="Modeste TOLOJANAHARY"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10 pointer-events-none" />              <div className="absolute bottom-4 left-4 right-4 z-20 px-3 py-1 rounded text-black dark:text-white italic text-xs md:text-sm" style={{ lineHeight: "1.5", borderLeft: "4px solid", borderLeftColor: "currentColor" }}>
+                &ldquo;Designer l&apos;expérience, développer la solution.&rdquo;
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* Bento Card 2: Tall — Contact */}
+        <ScrollReveal animation="slide-up" delay={300} className="md:col-span-5 lg:col-span-4 order-2">
+          <div className="bg-muted/20 border border-border/50 rounded-xl p-6 md:p-8 flex flex-col hover:bg-muted/30 transition-colors group h-full">
+            <span className="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 text-primary mb-4">
+              <ContactIcon size={24} />
+            </span>
+            <h3 className="font-manrope text-xl md:text-[24px] font-semibold text-foreground mb-2" style={{ letterSpacing: "-0.01em" }}>
+              Contact
+            </h3>
+            <p className="font-inter text-sm md:text-base text-muted-foreground mb-6 md:mb-8" style={{ lineHeight: "1.6" }}>
+              Disponible pour discuter de votre projet.
+            </p>
+
+            <ul className="space-y-3 md:space-y-4 flex-grow">
+              {contactItems.map((item) => (
+                <li key={item.label} className="flex items-center gap-3">
+                  <span className="text-primary shrink-0">
+                    <item.icon size={18} />
+                  </span>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target={item.href.startsWith("http") ? "_blank" : undefined}
+                      rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="font-inter text-sm text-muted-foreground hover:text-foreground transition-colors truncate"
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <span className="font-inter text-sm text-muted-foreground">{item.value}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-6 md:mt-8 pt-6 border-t border-border/50">
+              <h4 className="font-manrope text-sm font-semibold text-foreground mb-3">Langues</h4>
+              <div className="flex flex-wrap gap-2">
+                {languages.map((lang) => (
+                  <span
+                    key={lang}
+                    className="font-inter text-xs font-medium text-muted-foreground bg-muted/30 border border-border/50 px-3 py-1.5 rounded-[0.125rem]"
+                  >
+                    {lang}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  )
 }

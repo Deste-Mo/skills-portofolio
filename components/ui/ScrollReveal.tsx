@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { motion, useInView, useAnimation } from "framer-motion"
 
 interface ScrollRevealProps {
@@ -56,6 +56,7 @@ export function ScrollReveal({
       initial="hidden"
       animate={mainControls}
       className={className}
+      suppressHydrationWarning
     >
       {children}
     </motion.div>

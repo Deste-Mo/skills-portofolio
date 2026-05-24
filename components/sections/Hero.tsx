@@ -3,7 +3,7 @@ import { ArrowRightIcon, SendIcon, MailIcon, GithubIcon, LinkedinIcon } from "@/
 
 export function Hero() {
   return (
-    <section className="max-w-[1200px] mx-auto px-8 py-32 flex flex-col items-center text-center">
+    <section id="hero" className="max-w-[1200px] mx-auto px-8 py-20 md:py-32 flex flex-col items-center text-center">
       {/* Badge */}
       <span className="bg-muted/50 border border-border text-muted-foreground text-sm font-inter px-3 py-1 rounded-full mb-8 tracking-[0.05em] uppercase flex items-center gap-2">
         <span className="w-2 h-2 rounded-full bg-primary"></span>
@@ -12,8 +12,8 @@ export function Hero() {
 
       {/* Heading */}
       <h1
-        className="max-w-4xl mb-6 text-foreground font-manrope"
-        style={{ fontSize: "64px", lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: 700 }}
+        className="max-w-6xl mb-6 text-foreground font-manrope text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold"
+        style={{ lineHeight: "1.1", letterSpacing: "-0.02em" }}
       >
         Modeste TOLOJANAHARY
         <br />
@@ -22,8 +22,8 @@ export function Hero() {
 
       {/* Description */}
       <p
-        className="max-w-2xl mb-10 text-muted-foreground font-inter"
-        style={{ fontSize: "18px", lineHeight: "1.75", fontWeight: 400 }}
+        className="max-w-2xl mb-10 text-muted-foreground font-inter text-base sm:text-lg"
+        style={{ lineHeight: "1.75", fontWeight: 400 }}
       >
         Je conçois et développe des interfaces modernes, interactives et accessibles.
         Mon objectif : transformer des problèmes complexes en solutions élégantes.
@@ -50,7 +50,7 @@ export function Hero() {
       </div>
 
       {/* Social Links */}
-      <div className="flex items-center justify-center gap-4 mt-16">
+      <div className="flex items-center justify-center gap-4 mt-10 md:mt-16">
         <a
           href="mailto:modestep20.aps1a@gmail.com"
           className="flex h-10 w-10 items-center justify-center rounded-[0.125rem] border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
