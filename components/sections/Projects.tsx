@@ -10,7 +10,7 @@ const projects = [
   {
     title: "Portfolio Personnel",
     description: "Site portfolio moderne avec animations fluides, mode sombre et design responsive. Construit avec Next.js et Tailwind CSS.",
-    image: "/projects/portfolio.svg",
+    image: "/images/projects/portfolio.svg",
     tags: ["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
     liveUrl: "https://modeste-tolojanahary.netlify.app",
     githubUrl: "#",
@@ -19,7 +19,7 @@ const projects = [
   {
     title: "Application E-commerce",
     description: "Plateforme de vente en ligne complète avec panier, paiement et gestion des commandes. Interface utilisateur intuitive.",
-    image: "/projects/ecommerce.svg",
+    image: "/images/projects/ecommerce.svg",
     tags: ["React", "Node.js", "MongoDB", "Stripe"],
     liveUrl: "#",
     githubUrl: "#",
@@ -28,7 +28,7 @@ const projects = [
   {
     title: "Dashboard Analytics",
     description: "Tableau de bord interactif pour la visualisation de données en temps réel. Graphiques dynamiques et rapports personnalisés.",
-    image: "/projects/dashboard.svg",
+    image: "/images/projects/dashboard.svg",
     tags: ["Next.js", "Chart.js", "API REST", "Tailwind CSS"],
     liveUrl: "#",
     githubUrl: "#",
@@ -37,7 +37,7 @@ const projects = [
   {
     title: "Application Météo",
     description: "Application météo avec géolocalisation et prévisions sur 7 jours. Design minimaliste et données en temps réel.",
-    image: "/projects/weather.svg",
+    image: "/images/projects/weather.svg",
     tags: ["React", "OpenWeather API", "CSS Modules"],
     liveUrl: "#",
     githubUrl: "#",

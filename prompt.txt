@@ -1,0 +1,5 @@
+1. enlever tous couleur de fond comme le background ainsi que le shadow et on va psser par les couleur neutre pour qu'il s'adapte avec les modes somrbe et claire ainsi avec les polices des textes comme celle qu'on utilise dans le restes des components, 
+
+2. maintenant j'aimerais qu'on enleve le fait de l'apparition de deux card au dessous de la card (pas celle de cote à cote) au top pour une meilleur vue et aussi le fait avec l'animation comme tous les autres, ainsi avec le façons de scroller deux fois pour qu'il change alors qu'il faut juste que l'utilisateur fait une scroll et cella declenche cet changement
+n'oublie pas les animations comme tous animatiton dans l'ensmeble de section
+

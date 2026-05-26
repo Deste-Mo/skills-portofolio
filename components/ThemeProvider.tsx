@@ -11,36 +11,35 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
 export function ThemeProvider({ children, ...props }: { children: React.ReactNode; attribute?: string; defaultTheme: 'light' | 'dark'; }) {
-  const [theme, setTheme] = useState(() => {
-    // Try to get from localStorage
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme as 'light' | 'dark';
-    }
-    // If not, check system preference
-    if (typeof window !== 'undefined') {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    return props.defaultTheme || 'light';
-  });
+  const [theme, setTheme] = useState<'light' | 'dark'>(props.defaultTheme || 'light');
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Set the class on the html element
-    const root = window.document.documentElement;
+    setMounted(true);
+    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initial = savedTheme || (prefersDark ? 'dark' : 'light');
+    setTheme(initial);
+    const root = document.documentElement;
+    root.classList.remove('light', 'dark');
+    root.classList.add(initial);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    const root = document.documentElement;
     root.classList.remove('light', 'dark');
     root.classList.add(theme);
-    // Save to localStorage
     localStorage.setItem('theme', theme);
-  }, [theme]);
+  }, [theme, mounted]);
 
   const toggleTheme = () => {
     setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
   };
 
-  const value = {
+  const value: ThemeContextType = {
     theme,
     setTheme: toggleTheme,
-    // We don't have resolvedTheme from next-themes, but we can provide the current theme
     resolvedTheme: theme,
   };
 

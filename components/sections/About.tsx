@@ -77,7 +77,7 @@ export function AboutSection() {
 
             <div className="w-full aspect-[16/9] md:aspect-[21/9] bg-muted/30 rounded-lg border border-border/30 relative overflow-hidden flex items-center justify-center">
               <Image
-                src="/profil/mon-profil.webp"
+                src="/images/profil/mon-profil.webp"
                 alt="Modeste TOLOJANAHARY"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

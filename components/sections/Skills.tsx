@@ -31,7 +31,6 @@ export function SkillsSection() {
                     </p>
                 </div>
             </ScrollReveal>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 {skillCategories.map((category, index) => {
                     const isLast = index === skillCategories.length - 1
@@ -42,7 +41,7 @@ export function SkillsSection() {
                             delay={index * 100}
                             className={isLast ? "md:col-span-2" : ""}
                         >
-                            <div className="bg-muted/20 border border-border/50 rounded-xl p-2.5 hover:bg-muted/30 transition-colors group h-full">
+                            <div className="bg-muted/20 border border-border/50 rounded-xl p-2.5 hover:bg-muted/30 transition-colors group h-full text-right">
                                 <div className="relative w-full h-48 bg-white rounded-lg overflow-hidden">
                                     <div className="absolute inset-0">
                                         <Image
@@ -53,10 +52,11 @@ export function SkillsSection() {
                                             className="object-cover rounded-lg"
                                         />
                                     </div>
-                                    <div className="absolute bottom-0 right-0 w-full md:w-72 h-12 bg-white flex items-center md:rounded-tl-lg"
+                                    <div
+                                        className="absolute bottom-0 right-0 w-full md:w-72 h-12 bg-white flex items-center text-right rounded-tl-lg"
                                         style={{ marginBottom: "-0.375rem", marginRight: "-0.375rem" }}
                                     >
-                                        <h3 className="font-inter text-xs uppercase tracking-wider text-muted-foreground/60 ml-2 md:ml-4 truncate">
+                                        <h3 className="font-inter text-xs uppercase tracking-wider text-foreground mr-2 md:mr-4 truncate">
                                             {category.title}
                                         </h3>
                                     </div>
