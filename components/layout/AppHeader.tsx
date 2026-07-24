@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { MenuIcon, XIcon, MoonIcon, SunIcon, MailIcon } from "@/components/ui/icons";
 import { useTheme } from "next-themes";
@@ -20,6 +20,7 @@ export function AppHeader() {
   const [activeSection, setActiveSection] = useState("hero");
   const { resolvedTheme, setTheme } = useTheme();
   const pathname = usePathname();
+  const router = useRouter();
 
   const isServicePage = pathname.startsWith("/services/");
 
@@ -32,7 +33,8 @@ export function AppHeader() {
       setActiveSection("services");
       return;
     }
-    setActiveSection("hero");
+    const hash = window.location.hash.slice(1);
+    setActiveSection(hash || "hero");
   }, [isServicePage, pathname]);
 
   useEffect(() => {
@@ -94,8 +96,10 @@ export function AppHeader() {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      router.push(`/${href}`);
     }
-  }, []);
+  }, [router]);
 
   const logoSrc = mounted && resolvedTheme === "dark"
     ? "/images/logo/logo-white.png"
