@@ -4,9 +4,21 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
 import { MailIcon, GithubIcon, LinkedinIcon } from "@/components/ui/icons";
+import { useTranslation } from "@/lib/i18n/context";
 
 export function AppFooter() {
   const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
+
+  const navLabelMap: Record<string, keyof typeof t.nav> = {
+    "/": "home",
+    "#about": "about",
+    "#skills": "skills",
+    "#experiences": "experiences",
+    "#services": "services",
+    "#projects": "projects",
+    "#contact": "contact",
+  };
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("#")) {
@@ -30,7 +42,7 @@ export function AppFooter() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Copyright */}
           <p className="text-sm text-muted-foreground text-center md:text-left order-2 md:order-1">
-            © {currentYear} {siteConfig.name}. Tous droits réservés.
+            © {currentYear} {siteConfig.name}. {t.footer.rights}
           </p>
 
           {/* Navigation links */}
@@ -42,7 +54,7 @@ export function AppFooter() {
                 onClick={(e) => handleNavClick(e, item.href)}
                 className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
               >
-                {item.title}
+                {t.nav[navLabelMap[item.href]]}
               </Link>
             ))}
           </nav>

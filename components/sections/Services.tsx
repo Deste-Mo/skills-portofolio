@@ -3,9 +3,12 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
-import { services } from "@/config/services"
+import { getLocalizedServices } from "@/config/services"
+import { useTranslation } from "@/lib/i18n/context"
 
 export function ServicesSection() {
+  const { t, lang } = useTranslation()
+  const services = getLocalizedServices(lang)
   return (
     <section id="services" className="max-w-[1200px] mx-auto px-8 py-24 md:py-32">
       <ScrollReveal animation="slide-up">
@@ -14,13 +17,13 @@ export function ServicesSection() {
             className="font-manrope text-4xl md:text-[48px] font-semibold text-foreground mb-4"
             style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
           >
-            Services
+            {t.services.title}
           </h2>
           <p
             className="font-inter text-base md:text-lg text-muted-foreground max-w-2xl"
             style={{ lineHeight: "1.75" }}
           >
-            Ce que je peux faire pour vous
+            {t.services.description}
           </p>
         </div>
       </ScrollReveal>
@@ -44,7 +47,7 @@ export function ServicesSection() {
                 </p>
 
                 <div className="flex items-center gap-1.5 text-sm font-medium text-primary group-hover:gap-2.5 transition-all">
-                  En savoir plus
+                  {t.services.learnMore}
                   <ArrowRight className="h-4 w-4" />
                 </div>
               </div>

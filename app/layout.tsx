@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { AppHeader } from "@/components/layout/AppHeader";
 import { AppFooter } from "@/components/layout/AppFooter";
+import { LanguageProvider } from "@/lib/i18n/context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,10 +54,14 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300">
         <ThemeProvider attribute="class" defaultTheme="light">
-          <AppHeader />
-          {children}
-          <AppFooter />
-          <ThemeToggle />
+          <LanguageProvider>
+            <AppHeader />
+            <div className="pt-14 md:pt-16 flex-1">
+              {children}
+            </div>
+            <AppFooter />
+            <ThemeToggle />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

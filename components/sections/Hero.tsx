@@ -4,8 +4,10 @@ import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowRightIcon, SendIcon, MailIcon, GithubIcon, LinkedinIcon } from "@/components/ui/icons"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
+import { useTranslation } from "@/lib/i18n/context"
 
 export function Hero() {
+  const { t } = useTranslation()
   const { scrollY } = useScroll()
   const scale = useTransform(scrollY, [0, 600], [1, 0.85])
   const opacity = useTransform(scrollY, [0, 600], [1, 0])
@@ -16,7 +18,7 @@ export function Hero() {
         <ScrollReveal animation="slide-up" delay={100}>
           <span className="bg-muted/50 border border-border text-muted-foreground text-[11px] sm:text-sm font-inter px-2.5 sm:px-3 py-1 rounded-full mb-6 sm:mb-8 tracking-[0.05em] uppercase flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary shrink-0"></span>
-            <span className="truncate">À l&apos;écoute d&apos;opportunités</span>
+            <span className="truncate">{t.hero.badge}</span>
           </span>
         </ScrollReveal>
 
@@ -25,9 +27,9 @@ export function Hero() {
             className="w-full max-w-6xl mb-4 sm:mb-6 text-foreground font-manrope text-[28px] sm:text-4xl md:text-5xl lg:text-7xl font-bold px-2 sm:px-0"
             style={{ lineHeight: "1.1", letterSpacing: "-0.02em" }}
           >
-            Modeste TOLOJANAHARY
+            {t.hero.name}
             <br />
-            <span className="text-muted-foreground">Développeur & Designer UI</span>
+            <span className="text-muted-foreground">{t.hero.role}</span>
           </h1>
         </ScrollReveal>
 
@@ -36,8 +38,7 @@ export function Hero() {
             className="w-full max-w-2xl mb-6 sm:mb-10 text-muted-foreground font-inter text-sm sm:text-base md:text-lg px-2 sm:px-0"
             style={{ lineHeight: "1.75", fontWeight: 400 }}
           >
-            Je conçois et développe des interfaces modernes, interactives et accessibles.
-            Mon objectif : transformer des problèmes complexes en solutions élégantes.
+            {t.hero.description}
           </p>
         </ScrollReveal>
 
@@ -48,7 +49,7 @@ export function Hero() {
               className="w-full sm:w-auto bg-primary text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-[0.125rem] font-manrope text-sm sm:text-[16px] font-semibold active:scale-[0.98] transition-transform hover:bg-primary/90 flex items-center justify-center gap-2"
               style={{ letterSpacing: "-0.01em" }}
             >
-              Voir mon travail
+              {t.hero.viewWork}
               <ArrowRightIcon size={20} />
             </Link>
             <Link
@@ -57,7 +58,7 @@ export function Hero() {
               style={{ letterSpacing: "-0.01em" }}
             >
               <SendIcon size={20} />
-              Discutons
+              {t.hero.letsTalk}
             </Link>
           </div>
         </ScrollReveal>

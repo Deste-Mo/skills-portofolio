@@ -1,9 +1,12 @@
 "use client"
 
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
-import { skillCategories, categoryIcons } from "@/config/skills"
+import { getLocalizedCategories, categoryIcons } from "@/config/skills"
+import { useTranslation } from "@/lib/i18n/context"
 
 export function SkillsSection() {
+  const { t, lang } = useTranslation()
+  const categories = getLocalizedCategories(lang)
   return (
     <section id="skills" className="max-w-[1200px] mx-auto px-8 py-24 md:py-32">
       <ScrollReveal animation="slide-up">
@@ -12,21 +15,20 @@ export function SkillsSection() {
             className="font-manrope text-4xl md:text-[48px] font-semibold text-foreground mb-4"
             style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
           >
-            Compétences
+            {t.skills.title}
           </h2>
           <p
             className="font-inter text-base md:text-lg text-muted-foreground max-w-2xl"
             style={{ lineHeight: "1.75" }}
           >
-            Technologies, outils et méthodologies que j&apos;utilise au quotidien
-            pour concevoir des applications robustes et évolutives.
+            {t.skills.description}
           </p>
         </div>
       </ScrollReveal>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-        {skillCategories.map((category, index) => {
-          const isFullWidth = index === skillCategories.length - 1
+        {categories.map((category, index) => {
+          const isFullWidth = index === categories.length - 1
           return (
             <ScrollReveal
               key={category.title}
@@ -59,7 +61,7 @@ export function SkillsSection() {
                 <div className="absolute bottom-0 right-0 z-0 pointer-events-none overflow-hidden w-16 h-16 mb-6 mr-6 group-hover:mb-0 group-hover:mr-0 group-hover:w-[45%] group-hover:h-full transition-all duration-500 ease-out">
                   <div className="w-full h-full flex items-center justify-center">
                     <span className="inline-flex items-center justify-center rounded-full text-primary/20 group-hover:text-primary/40 h-16 w-16 scale-100 group-hover:scale-[3] transition-all duration-500 ease-out">
-                      {categoryIcons[category.title]}
+                      {categoryIcons[(category as { originalTitle: string }).originalTitle]}
                     </span>
                   </div>
                 </div>

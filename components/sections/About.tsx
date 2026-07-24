@@ -2,7 +2,8 @@
 
 import Image from "next/image"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
-import { contactItems, interests } from "@/config/about"
+import { getLocalizedContactItems, interests } from "@/config/about"
+import { useTranslation } from "@/lib/i18n/context"
 
 function BoltIcon({ size = 24 }: { size?: number }) {
   return (
@@ -23,16 +24,17 @@ function ContactIcon({ size = 24 }: { size?: number }) {
 }
 
 export function AboutSection() {
+  const { t, lang } = useTranslation()
+  const localizedItems = getLocalizedContactItems(lang)
   return (
     <section id="about" className="max-w-[1200px] mx-auto px-8 py-24 md:py-32">
       <ScrollReveal animation="slide-up">
         <div className="mb-12 md:mb-16">
           <h2 className="font-manrope text-4xl md:text-[48px] font-semibold text-foreground mb-4" style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}>
-            Apropos
+            {t.about.title}
           </h2>
           <p className="font-inter text-base md:text-lg text-muted-foreground max-w-2xl" style={{ lineHeight: "1.75" }}>
-            Développeur fullstack JavaScript, Python avec expérience en API REST/GraphQL
-            et applications performantes. Intéressé par les technologies innovantes comme l&apos;IA.
+            {t.about.subtitle}
           </p>
         </div>
       </ScrollReveal>
@@ -45,11 +47,10 @@ export function AboutSection() {
                 <BoltIcon size={24} />
               </span>
               <h3 className="font-manrope text-xl md:text-[24px] font-semibold text-foreground mb-2" style={{ letterSpacing: "-0.01em" }}>
-                Développeur web & mobile
+                {t.about.role}
               </h3>
               <p className="font-inter text-sm md:text-base text-muted-foreground max-w-md" style={{ lineHeight: "1.6" }}>
-                Développeur fullstack JavaScript, Python avec expérience en API REST/GraphQL
-                et applications performantes. Intéressé par les technologies innovantes comme l&apos;IA.
+                {t.about.description}
               </p>
             </div>
 
@@ -62,7 +63,7 @@ export function AboutSection() {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10 pointer-events-none" />              <div className="absolute bottom-4 left-4 right-4 z-20 px-3 py-1 rounded text-black dark:text-white italic text-xs md:text-sm" style={{ lineHeight: "1.5", borderLeft: "4px solid", borderLeftColor: "currentColor" }}>
-                &ldquo;Designer l&apos;expérience, développer la solution.&rdquo;
+                &ldquo;{t.about.quote}&rdquo;
               </div>
             </div>
           </div>
@@ -74,14 +75,14 @@ export function AboutSection() {
               <ContactIcon size={24} />
             </span>
             <h3 className="font-manrope text-xl md:text-[24px] font-semibold text-foreground mb-2" style={{ letterSpacing: "-0.01em" }}>
-              Contact
+              {t.about.contact}
             </h3>
             <p className="font-inter text-sm md:text-base text-muted-foreground mb-6 md:mb-8" style={{ lineHeight: "1.6" }}>
-              Disponible pour discuter de votre projet.
+              {t.about.contactDesc}
             </p>
 
             <ul className="space-y-3 md:space-y-4 flex-grow">
-              {contactItems.map((item) => (
+              {localizedItems.map((item) => (
                 <li key={item.label} className="flex items-center gap-3">
                   <span className="text-primary shrink-0">
                     <item.icon size={18} />
@@ -103,7 +104,7 @@ export function AboutSection() {
             </ul>
 
             <div className="mt-6 md:mt-8 pt-6 border-t border-border/50">
-              <h4 className="font-manrope text-sm font-semibold text-foreground mb-3">Centres d&apos;intérêt</h4>
+              <h4 className="font-manrope text-sm font-semibold text-foreground mb-3">{t.about.interests}</h4>
               <div className="flex flex-wrap gap-2">
                 {interests.map((interest) => (
                   <span

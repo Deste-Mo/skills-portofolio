@@ -4,11 +4,25 @@ import Image from "next/image"
 import Link from "next/link"
 import { ExternalLink, Code } from "lucide-react"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
+import { useTranslation } from "@/lib/i18n/context"
 
-const projects = [
+interface ProjectData {
+  title: string
+  titleEn: string
+  description: string
+  descriptionEn: string
+  image: string
+  tags: string[]
+  liveUrl: string
+  githubUrl: string
+}
+
+const projectsData: ProjectData[] = [
   {
     title: "Portfolio Personnel",
+    titleEn: "Personal Portfolio",
     description: "Site portfolio moderne avec animations fluides, mode sombre et design responsive.",
+    descriptionEn: "Modern portfolio website with smooth animations, dark mode, and responsive design.",
     image: "/images/projects/portfolio.svg",
     tags: ["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
     liveUrl: "https://modeste-tolojanahary.netlify.app",
@@ -16,7 +30,9 @@ const projects = [
   },
   {
     title: "Application E-commerce",
+    titleEn: "E-commerce Application",
     description: "Plateforme de vente en ligne complète avec panier, paiement et gestion des commandes.",
+    descriptionEn: "Complete online sales platform with cart, payment, and order management.",
     image: "/images/projects/ecommerce.svg",
     tags: ["React", "Node.js", "MongoDB", "Stripe"],
     liveUrl: "#",
@@ -24,7 +40,9 @@ const projects = [
   },
   {
     title: "Dashboard Analytics",
+    titleEn: "Analytics Dashboard",
     description: "Tableau de bord interactif pour la visualisation de données en temps réel.",
+    descriptionEn: "Interactive dashboard for real-time data visualization.",
     image: "/images/projects/dashboard.svg",
     tags: ["Next.js", "Chart.js", "API REST", "Tailwind CSS"],
     liveUrl: "#",
@@ -32,7 +50,9 @@ const projects = [
   },
   {
     title: "Application Météo",
+    titleEn: "Weather App",
     description: "Application météo avec géolocalisation et prévisions sur 7 jours.",
+    descriptionEn: "Weather application with geolocation and 7-day forecasts.",
     image: "/images/projects/weather.svg",
     tags: ["React", "OpenWeather API", "CSS"],
     liveUrl: "#",
@@ -41,6 +61,12 @@ const projects = [
 ]
 
 export function ProjectsSection() {
+  const { t, lang } = useTranslation()
+  const projects = projectsData.map((p) => ({
+    ...p,
+    title: lang === "en" ? p.titleEn : p.title,
+    description: lang === "en" ? p.descriptionEn : p.description,
+  }))
   return (
     <section id="projects" className="max-w-[1200px] mx-auto px-8 py-24 md:py-32">
       <ScrollReveal animation="slide-up">
@@ -49,13 +75,13 @@ export function ProjectsSection() {
             className="font-manrope text-4xl md:text-[48px] font-semibold text-foreground mb-4"
             style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
           >
-            Projets
+            {t.projects.title}
           </h2>
           <p
             className="font-inter text-base md:text-lg text-muted-foreground max-w-2xl"
             style={{ lineHeight: "1.75" }}
           >
-            Une sélection de mes réalisations récentes
+            {t.projects.description}
           </p>
         </div>
       </ScrollReveal>

@@ -5,9 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { MenuIcon, XIcon, MoonIcon, SunIcon, MailIcon } from "@/components/ui/icons";
+import { MenuIcon, XIcon, MoonIcon, SunIcon, MailIcon, FlagFr, FlagGb } from "@/components/ui/icons";
 import { useTheme } from "next-themes";
 import { siteConfig } from "@/config/site";
+import { useTranslation } from "@/lib/i18n/context";
+import type { Translations } from "@/lib/i18n/types";
 
 function getSectionId(href: string): string {
   return href === "/" ? "hero" : href.slice(1);
@@ -18,7 +20,9 @@ export function AppHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const [langOpen, setLangOpen] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
+  const { lang, setLang, t } = useTranslation();
   const pathname = usePathname();
   const router = useRouter();
 
@@ -83,6 +87,13 @@ export function AppHeader() {
     return () => observer.disconnect();
   }, [isServicePage]);
 
+  useEffect(() => {
+    if (!langOpen) return
+    const close = () => setLangOpen(false)
+    window.addEventListener("click", close, { once: true })
+    return () => window.removeEventListener("click", close)
+  }, [langOpen])
+
   const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
@@ -105,12 +116,22 @@ export function AppHeader() {
     ? "/images/logo/logo-white.png"
     : "/images/logo/logo-black.png";
 
+  const navLabelMap: Record<string, keyof Translations["nav"]> = {
+    "/": "home",
+    "#about": "about",
+    "#skills": "skills",
+    "#experiences": "experiences",
+    "#services": "services",
+    "#projects": "projects",
+    "#contact": "contact",
+  };
+
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`bg-background/80 backdrop-blur-xl top-0 sticky z-50 transition-all duration-300 overflow-x-hidden ${
+      className={`bg-background/80 backdrop-blur-xl top-0 fixed z-50 transition-all duration-300 w-full ${
         isScrolled ? "border-b border-border shadow-sm" : ""
       }`}
     >
@@ -159,7 +180,7 @@ export function AppHeader() {
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
-                {item.title}
+                {t.nav[navLabelMap[item.href]]}
               </a>
             );
           })}
@@ -179,14 +200,43 @@ export function AppHeader() {
             )}
           </button>
 
+          <div className="relative">
+            <button
+              onClick={(e) => { e.stopPropagation(); setLangOpen(!langOpen) }}
+              className="md:w-10 md:h-10 flex items-center justify-center p-2 rounded-[0.125rem] text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200 active:scale-[0.98]"
+              aria-label="Select language"
+            >
+              {lang === "fr" ? <FlagFr size={20} /> : <FlagGb size={20} />}
+            </button>
+            {langOpen && (
+              <div className="absolute right-0 top-full mt-1 w-40 bg-background border border-border rounded-lg shadow-lg overflow-hidden z-50">
+                <button
+                  onClick={() => { setLang("fr"); setLangOpen(false) }}
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm transition-colors hover:bg-muted/50 ${lang === "fr" ? "text-foreground font-semibold" : "text-muted-foreground"}`}
+                >
+                  <FlagFr size={18} />
+                  Français
+                  {lang === "fr" && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-primary" />}
+                </button>
+                <button
+                  onClick={() => { setLang("en"); setLangOpen(false) }}
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm transition-colors hover:bg-muted/50 ${lang === "en" ? "text-foreground font-semibold" : "text-muted-foreground"}`}
+                >
+                  <FlagGb size={18} />
+                  English
+                  {lang === "en" && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-primary" />}
+                </button>
+              </div>
+            )}
+          </div>
+
           <a
             href="#contact"
             onClick={(e) => handleNavClick(e, "#contact")}
-            className="inline-flex items-center justify-center rounded-[0.125rem] bg-primary text-primary-foreground p-2 text-sm font-bold tracking-tight transition-all duration-200 hover:bg-primary/90 active:scale-[0.98] md:w-10 md:h-10 lg:w-auto lg:h-auto lg:px-4 lg:py-2 lg:text-sm lg:font-bold lg:tracking-tight"
+            className="md:w-10 md:h-10 inline-flex items-center justify-center rounded-[0.125rem] bg-primary text-primary-foreground p-2 transition-all duration-200 hover:bg-primary/90 active:scale-[0.98]"
             aria-label="Me contacter"
           >
             <MailIcon size={18} />
-            <span className="hidden lg:inline-flex ml-2">Me contacter</span>
           </a>
         </div>
 
@@ -227,29 +277,46 @@ export function AppHeader() {
                         : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     }`}
                   >
-                    {item.title}
+                    {t.nav[navLabelMap[item.href]]}
                   </a>
                 );
               })}
               <div className="flex items-center justify-between pt-3 mt-2 border-t border-border">
-                <button
-                  onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-                  className="flex items-center gap-2 font-manrope text-sm font-medium tracking-tight text-muted-foreground hover:text-foreground px-3 py-2 rounded-[0.125rem] hover:bg-muted/50 transition-all"
-                >
-            {mounted ? (
-              resolvedTheme === "dark" ? <SunIcon size={18} /> : <MoonIcon size={18} />
-            ) : (
-              <div className="w-[18px] h-[18px]" />
-            )}
-                  {resolvedTheme === "dark" ? "Mode clair" : "Mode sombre"}
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+                    className="p-2 rounded-[0.125rem] text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all"
+                    aria-label={resolvedTheme === "dark" ? t.theme.light : t.theme.dark}
+                  >
+                    {mounted ? (
+                      resolvedTheme === "dark" ? <SunIcon size={18} /> : <MoonIcon size={18} />
+                    ) : (
+                      <div className="w-[18px] h-[18px]" />
+                    )}
+                  </button>
+                  <button
+                    onClick={() => setLang("fr")}
+                    className={`p-1.5 rounded-[0.125rem] transition-all ${lang === "fr" ? "ring-1 ring-primary bg-muted/50" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"}`}
+                    aria-label="Français"
+                  >
+                    <FlagFr size={18} />
+                  </button>
+                  <button
+                    onClick={() => setLang("en")}
+                    className={`p-1.5 rounded-[0.125rem] transition-all ${lang === "en" ? "ring-1 ring-primary bg-muted/50" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"}`}
+                    aria-label="English"
+                  >
+                    <FlagGb size={18} />
+                  </button>
+                </div>
               </div>
               <a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, "#contact")}
-                className="mt-2 bg-primary text-primary-foreground px-4 py-2.5 rounded-[0.125rem] font-manrope text-sm font-bold tracking-tight text-center hover:bg-primary/90 transition-colors active:scale-[0.98]"
+                className="mt-2 inline-flex items-center justify-center bg-primary text-primary-foreground w-10 h-10 mx-auto rounded-[0.125rem] hover:bg-primary/90 transition-colors active:scale-[0.98]"
+                aria-label={t.contact.title}
               >
-                Me contacter
+                <MailIcon size={18} />
               </a>
             </div>
           </motion.div>

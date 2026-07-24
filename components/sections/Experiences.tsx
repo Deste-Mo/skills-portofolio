@@ -2,9 +2,13 @@
 
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
 import { Briefcase, GraduationCap, Calendar } from "lucide-react"
-import { experiences, formations } from "@/config/experiences"
+import { getLocalizedExperiences, getLocalizedFormations } from "@/config/experiences"
+import { useTranslation } from "@/lib/i18n/context"
 
 export function ExperiencesSection() {
+  const { t, lang } = useTranslation()
+  const experiences = getLocalizedExperiences(lang)
+  const formations = getLocalizedFormations(lang)
   return (
     <section id="experiences" className="max-w-[1200px] mx-auto px-8 py-24 md:py-32">
       <ScrollReveal animation="slide-up">
@@ -13,13 +17,13 @@ export function ExperiencesSection() {
             className="font-manrope text-4xl md:text-[48px] font-semibold text-foreground mb-4"
             style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
           >
-            Expériences
+            {t.experiences.title}
           </h2>
           <p
             className="font-inter text-base md:text-lg text-muted-foreground max-w-2xl"
             style={{ lineHeight: "1.75" }}
           >
-            Mon parcours professionnel et mes formations
+            {t.experiences.description}
           </p>
         </div>
       </ScrollReveal>
@@ -75,13 +79,13 @@ export function ExperiencesSection() {
             className="font-manrope text-4xl md:text-[48px] font-semibold text-foreground mb-4"
             style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
           >
-            Formations
+            {t.experiences.formations}
           </h2>
           <p
             className="font-inter text-base md:text-lg text-muted-foreground max-w-2xl"
             style={{ lineHeight: "1.75" }}
           >
-            Mon parcours académique et mes diplômes
+            {t.experiences.formationsDesc}
           </p>
         </div>
       </ScrollReveal>

@@ -4,8 +4,10 @@ import { useState } from "react"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
 import { Button } from "@/components/ui/Button"
 import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react"
+import { useTranslation } from "@/lib/i18n/context"
 
 export function ContactSection() {
+  const { t } = useTranslation()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -32,9 +34,9 @@ export function ContactSection() {
       <div className="container px-4 md:px-6 max-w-6xl mx-auto">
         <ScrollReveal animation="slide-blur">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">Contact</h2>
+            <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">{t.contact.title}</h2>
             <p className="text-lg text-muted-foreground">
-              Discutons de votre prochain projet ensemble
+              {t.contact.description}
             </p>
           </div>
         </ScrollReveal>
@@ -43,10 +45,9 @@ export function ContactSection() {
           {/* Informations de contact */}
           <ScrollReveal animation="slide-left" delay={200}>
             <div>
-              <h3 className="mb-6 text-2xl font-semibold">Parlons de votre projet</h3>
+              <h3 className="mb-6 text-2xl font-semibold">{t.contact.cta}</h3>
               <p className="text-muted-foreground leading-relaxed text-lg mb-8">
-                Je suis toujours ouvert aux nouvelles opportunités et collaborations. 
-                N'hésitez pas à me contacter pour discuter de votre projet ou simplement dire bonjour.
+                {t.contact.ctaDesc}
               </p>
 
               <div className="space-y-6">
@@ -55,7 +56,7 @@ export function ContactSection() {
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="font-semibold">Email</h4>
+                    <h4 className="font-semibold">{t.contact.email}</h4>
                     <a href="mailto:modestep20.aps1a@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
                       modestep20.aps1a@gmail.com
                     </a>
@@ -67,7 +68,7 @@ export function ContactSection() {
                     <Phone className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="font-semibold">Téléphone</h4>
+                    <h4 className="font-semibold">{t.contact.phone}</h4>
                     <a href="tel:+261347491885" className="text-muted-foreground hover:text-primary transition-colors">
                       +261 34 74 918 85
                     </a>
@@ -79,8 +80,8 @@ export function ContactSection() {
                     <MapPin className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="font-semibold">Localisation</h4>
-                    <p className="text-muted-foreground">Fianarantsoa, Madagascar</p>
+                    <h4 className="font-semibold">{t.contact.location}</h4>
+                    <p className="text-muted-foreground">{t.contact.locationValue}</p>
                   </div>
                 </div>
               </div>
@@ -93,15 +94,15 @@ export function ContactSection() {
               {isSubmitted ? (
                 <div className="flex flex-col items-center justify-center h-full py-12 text-center">
                   <CheckCircle className="h-16 w-16 text-primary mb-4" />
-                  <h3 className="text-2xl font-bold mb-2">Message envoyé !</h3>
-                  <p className="text-muted-foreground">Merci pour votre message. Je vous répondrai dans les plus brefs délais.</p>
+                  <h3 className="text-2xl font-bold mb-2">{t.contact.success.title}</h3>
+                  <p className="text-muted-foreground">{t.contact.success.description}</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid gap-6 sm:grid-cols-2">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-2">
-                        Nom complet
+                        {t.contact.form.name}
                       </label>
                       <input
                         type="text"
@@ -111,12 +112,12 @@ export function ContactSection() {
                         onChange={handleChange}
                         required
                         className="w-full rounded-xl border border-border/50 bg-background/50 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
-                        placeholder="Votre nom"
+                        placeholder={t.contact.form.placeholderName}
                       />
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium mb-2">
-                        Email
+                        {t.contact.form.email}
                       </label>
                       <input
                         type="email"
@@ -126,14 +127,14 @@ export function ContactSection() {
                         onChange={handleChange}
                         required
                         className="w-full rounded-xl border border-border/50 bg-background/50 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
-                        placeholder="votre@email.com"
+                        placeholder={t.contact.form.placeholderEmail}
                       />
                     </div>
                   </div>
 
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                      Sujet
+                      {t.contact.form.subject}
                     </label>
                     <input
                       type="text"
@@ -143,13 +144,13 @@ export function ContactSection() {
                       onChange={handleChange}
                       required
                       className="w-full rounded-xl border border-border/50 bg-background/50 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
-                      placeholder="Sujet de votre message"
+                      placeholder={t.contact.form.placeholderSubject}
                     />
                   </div>
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium mb-2">
-                      Message
+                      {t.contact.form.message}
                     </label>
                     <textarea
                       id="message"
@@ -159,13 +160,13 @@ export function ContactSection() {
                       required
                       rows={5}
                       className="w-full rounded-xl border border-border/50 bg-background/50 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all resize-none"
-                      placeholder="Votre message..."
+                      placeholder={t.contact.form.placeholderMessage}
                     />
                   </div>
 
                   <Button type="submit" size="lg" className="w-full gap-2 rounded-full">
                     <Send className="h-5 w-5" />
-                    Envoyer le message
+                    {t.contact.form.submit}
                   </Button>
                 </form>
               )}
