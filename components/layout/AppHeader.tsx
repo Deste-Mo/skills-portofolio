@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { MenuIcon, XIcon, MoonIcon, SunIcon, MailIcon } from "@/components/ui/icons";
 import { useTheme } from "next-themes";
@@ -18,12 +19,25 @@ export function AppHeader() {
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const { resolvedTheme, setTheme } = useTheme();
+  const pathname = usePathname();
+
+  const isServicePage = pathname.startsWith("/services/");
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
+    if (isServicePage) {
+      setActiveSection("services");
+      return;
+    }
+    setActiveSection("hero");
+  }, [isServicePage, pathname]);
+
+  useEffect(() => {
+    if (isServicePage) return;
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
       if (window.scrollY < 80) {
@@ -32,9 +46,11 @@ export function AppHeader() {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isServicePage]);
 
   useEffect(() => {
+    if (isServicePage) return;
+
     const sectionIds = siteConfig.mainNav.map((item) => getSectionId(item.href));
     const elements = sectionIds
       .map((id) => document.getElementById(id))
@@ -63,7 +79,7 @@ export function AppHeader() {
 
     elements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [isServicePage]);
 
   const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -125,12 +141,20 @@ export function AppHeader() {
                   handleNavClick(e, item.href);
                   setActiveSection(sectionId);
                 }}
-                className={`font-manrope text-sm font-medium tracking-tight whitespace-nowrap px-3 py-1.5 rounded-[0.125rem] active:scale-[0.98] transition-all duration-200 ${
+                className={`font-manrope text-sm font-medium tracking-tight whitespace-nowrap px-3 py-1.5 rounded-[0.125rem] active:scale-[0.98] transition-all duration-200 relative ${
                   isActive
                     ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                 }`}
+                style={isActive ? { fontWeight: 600 } : undefined}
               >
+                {isActive && (
+                  <motion.div
+                    layoutId="activeNav"
+                    className="absolute bottom-0 left-2 right-2 h-0.5 bg-primary rounded-full"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
                 {item.title}
               </a>
             );
