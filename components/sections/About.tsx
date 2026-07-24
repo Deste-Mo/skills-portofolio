@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
-import { MailIcon, GithubIcon, LinkedinIcon } from "@/components/ui/icons"
+import { MailIcon, GithubIcon, LinkedinIcon, PhoneIcon } from "@/components/ui/icons"
 
 function BoltIcon({ size = 24 }: { size?: number }) {
   return (
@@ -34,12 +34,13 @@ function MapPinIcon({ size = 18 }: { size?: number }) {
 export function AboutSection() {
   const contactItems = [
     { icon: MailIcon, label: "Email", value: "modestep20.aps1a@gmail.com", href: "mailto:modestep20.aps1a@gmail.com" },
+    { icon: PhoneIcon, label: "Téléphone", value: "+261 34 74 918 85", href: "tel:+261347491885" },
     { icon: GithubIcon, label: "GitHub", value: "Deste-Mo", href: "https://github.com/Deste-Mo" },
     { icon: LinkedinIcon, label: "LinkedIn", value: "Modeste TOLOJANAHARY", href: "https://www.linkedin.com/in/modeste-nirina-tolojanahary-b844b61b7" },
-    { icon: MapPinIcon, label: "Localisation", value: "Fianarantsoa, Madagascar" },
+    { icon: MapPinIcon, label: "Localisation", value: "Andrainjato Fianarantsoa, Madagascar" },
   ]
 
-  const languages = ["Français", "Anglais", "Malagasy"]
+  const interests = ["Games", "Films", "Anime"]
 
   return (
     <section id="about" className="max-w-[1200px] mx-auto px-8 py-24 md:py-32">
@@ -50,8 +51,8 @@ export function AboutSection() {
             Apropos
           </h2>
           <p className="font-inter text-base md:text-lg text-muted-foreground max-w-2xl" style={{ lineHeight: "1.75" }}>
-            Designer UI/UX et développeur Full-Stack passionné, je crée des expériences numériques
-            qui allient esthétique et performance.
+            Développeur fullstack JavaScript, Python avec expérience en API REST/GraphQL
+            et applications performantes. Intéressé par les technologies innovantes comme l&apos;IA.
           </p>
         </div>
       </ScrollReveal>
@@ -66,12 +67,11 @@ export function AboutSection() {
                 <BoltIcon size={24} />
               </span>
               <h3 className="font-manrope text-xl md:text-[24px] font-semibold text-foreground mb-2" style={{ letterSpacing: "-0.01em" }}>
-                Design & Développement
+                Développeur web & mobile
               </h3>
               <p className="font-inter text-sm md:text-base text-muted-foreground max-w-md" style={{ lineHeight: "1.6" }}>
-                Du wireframe au déploiement, je maîtrise chaque étape du processus créatif et technique.
-                Mon approche : comprendre vos besoins, designer l&apos;expérience idéale, puis la développer
-                avec les technologies les plus adaptées.
+                Développeur fullstack JavaScript, Python avec expérience en API REST/GraphQL
+                et applications performantes. Intéressé par les technologies innovantes comme l&apos;IA.
               </p>
             </div>
 
@@ -126,14 +126,14 @@ export function AboutSection() {
             </ul>
 
             <div className="mt-6 md:mt-8 pt-6 border-t border-border/50">
-              <h4 className="font-manrope text-sm font-semibold text-foreground mb-3">Langues</h4>
+              <h4 className="font-manrope text-sm font-semibold text-foreground mb-3">Centres d&apos;intérêt</h4>
               <div className="flex flex-wrap gap-2">
-                {languages.map((lang) => (
+                {interests.map((interest) => (
                   <span
-                    key={lang}
+                    key={interest}
                     className="font-inter text-xs font-medium text-muted-foreground bg-muted/30 border border-border/50 px-3 py-1.5 rounded-[0.125rem]"
                   >
-                    {lang}
+                    {interest}
                   </span>
                 ))}
               </div>
