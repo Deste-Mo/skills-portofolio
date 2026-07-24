@@ -2,7 +2,7 @@ import { Hero } from "@/components/sections/Hero";
 import { TravailSection } from "@/components/sections/Travail";
 import { AboutSection } from "@/components/sections/About";
 import { SkillsSection } from "@/components/sections/Skills";
-import { SkillCarousel } from "@/components/sections/SkillCarousel";
+
 import { ExperiencesSection } from "@/components/sections/Experiences";
 import { ServicesSection } from "@/components/sections/Services";
 import { ProjectsSection } from "@/components/sections/Projects";
@@ -16,7 +16,6 @@ export default function Home() {
         <TravailSection />
         <AboutSection />
         <SkillsSection />
-        <SkillCarousel />
         <ExperiencesSection />
         <ServicesSection />
         <ProjectsSection />

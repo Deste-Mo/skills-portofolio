@@ -11,18 +11,18 @@ export function Hero() {
   const opacity = useTransform(scrollY, [0, 600], [1, 0])
 
   return (
-    <section id="hero" className="fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center text-center px-8 overflow-hidden bg-background z-0">
-      <motion.div style={{ scale, opacity }} className="max-w-[1200px] mx-auto flex flex-col items-center">
+    <section id="hero" className="fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center text-center px-4 sm:px-8 overflow-hidden bg-background z-0 pt-12 md:pt-16 lg:pt-20">
+      <motion.div style={{ scale, opacity }} className="w-full max-w-[1200px] mx-auto flex flex-col items-center">
         <ScrollReveal animation="slide-up" delay={100}>
-          <span className="bg-muted/50 border border-border text-muted-foreground text-sm font-inter px-3 py-1 rounded-full mb-8 tracking-[0.05em] uppercase flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-primary"></span>
-            À l&apos;écoute d&apos;opportunités
+          <span className="bg-muted/50 border border-border text-muted-foreground text-[11px] sm:text-sm font-inter px-2.5 sm:px-3 py-1 rounded-full mb-6 sm:mb-8 tracking-[0.05em] uppercase flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
+            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary shrink-0"></span>
+            <span className="truncate">À l&apos;écoute d&apos;opportunités</span>
           </span>
         </ScrollReveal>
 
         <ScrollReveal animation="slide-up" delay={200}>
           <h1
-            className="max-w-6xl mb-6 text-foreground font-manrope text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold"
+            className="w-full max-w-6xl mb-4 sm:mb-6 text-foreground font-manrope text-[28px] sm:text-4xl md:text-5xl lg:text-7xl font-bold px-2 sm:px-0"
             style={{ lineHeight: "1.1", letterSpacing: "-0.02em" }}
           >
             Modeste TOLOJANAHARY
@@ -33,7 +33,7 @@ export function Hero() {
 
         <ScrollReveal animation="slide-up" delay={300}>
           <p
-            className="max-w-2xl mb-10 text-muted-foreground font-inter text-base sm:text-lg"
+            className="w-full max-w-2xl mb-6 sm:mb-10 text-muted-foreground font-inter text-sm sm:text-base md:text-lg px-2 sm:px-0"
             style={{ lineHeight: "1.75", fontWeight: 400 }}
           >
             Je conçois et développe des interfaces modernes, interactives et accessibles.
@@ -42,10 +42,10 @@ export function Hero() {
         </ScrollReveal>
 
         <ScrollReveal animation="slide-up" delay={400}>
-          <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0">
             <Link
               href="#projects"
-              className="w-full sm:w-auto bg-primary text-primary-foreground px-8 py-4 rounded-[0.125rem] font-manrope text-[16px] font-semibold active:scale-[0.98] transition-transform hover:bg-primary/90 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto bg-primary text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-[0.125rem] font-manrope text-sm sm:text-[16px] font-semibold active:scale-[0.98] transition-transform hover:bg-primary/90 flex items-center justify-center gap-2"
               style={{ letterSpacing: "-0.01em" }}
             >
               Voir mon travail
@@ -53,7 +53,7 @@ export function Hero() {
             </Link>
             <Link
               href="#contact"
-              className="w-full sm:w-auto bg-transparent border border-border text-foreground px-8 py-4 rounded-[0.125rem] font-manrope text-[16px] font-semibold active:scale-[0.98] transition-colors hover:bg-muted/50 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto bg-transparent border border-border text-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-[0.125rem] font-manrope text-sm sm:text-[16px] font-semibold active:scale-[0.98] transition-colors hover:bg-muted/50 flex items-center justify-center gap-2"
               style={{ letterSpacing: "-0.01em" }}
             >
               <SendIcon size={20} />
@@ -63,10 +63,10 @@ export function Hero() {
         </ScrollReveal>
 
         <ScrollReveal animation="slide-up" delay={500}>
-          <div className="flex items-center justify-center gap-4 mt-10 md:mt-16">
+          <div className="flex items-center justify-center gap-4 mt-6 sm:mt-10 md:mt-16">
             <a
               href="mailto:modestep20.aps1a@gmail.com"
-              className="flex h-10 w-10 items-center justify-center rounded-[0.125rem] border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
+              className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-[0.125rem] border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
               aria-label="Email"
             >
               <MailIcon size={18} />
@@ -75,7 +75,7 @@ export function Hero() {
               href="https://github.com/Deste-Mo"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-[0.125rem] border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
+              className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-[0.125rem] border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
               aria-label="GitHub"
             >
               <GithubIcon size={18} />
@@ -84,7 +84,7 @@ export function Hero() {
               href="https://www.linkedin.com/in/modeste-nirina-tolojanahary-b844b61b7"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-[0.125rem] border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
+              className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-[0.125rem] border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
               aria-label="LinkedIn"
             >
               <LinkedinIcon size={18} />
