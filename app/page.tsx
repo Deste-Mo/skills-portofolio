@@ -10,16 +10,18 @@ import { ContactSection } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col mx-auto w-full">
+    <main className="mx-auto w-full">
       <Hero />
-      <TravailSection />
-      <AboutSection />
-      <SkillsSection />
-      <SkillCarousel />
-      <ExperiencesSection />
-      <ServicesSection />
-      <ProjectsSection />
-      <ContactSection />
+      <div className="relative z-10 bg-background" style={{ marginTop: '100vh' }}>
+        <TravailSection />
+        <AboutSection />
+        <SkillsSection />
+        <SkillCarousel />
+        <ExperiencesSection />
+        <ServicesSection />
+        <ProjectsSection />
+        <ContactSection />
+      </div>
     </main>
   );
 }
