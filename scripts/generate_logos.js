@@ -4,7 +4,7 @@ const path = require('path');
 
 async function generateLogos() {
   try {
-    const outputDir = path.join('public', 'assets', 'logo');
+    const outputDir = path.join('public', 'images', 'logo');
     fs.mkdirSync(outputDir, { recursive: true });
 
     const image = sharp('public/image.png');
@@ -35,7 +35,7 @@ async function generateLogos() {
     );
     console.log('✅ favicon.ico updated (white version)');
 
-    console.log('\nAll logos generated in public/logo/');
+    console.log('\nAll logos generated in public/images/logo/');
   } catch (err) {
     console.error('Error:', err);
   }

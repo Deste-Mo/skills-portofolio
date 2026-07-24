@@ -88,6 +88,7 @@
   --font-mono: var(--font-geist-mono);
   --font-manrope: var(--font-manrope);
   --font-inter: var(--font-inter);
+  --font-handwriting: var(--font-handwriting);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -179,4 +180,302 @@ body {
 
 * {
   border-color: var(--border);
+}
+
+/* ─── CarouselSkill — component reusable (Projects, Services) ──────────────── */
+@layer carousel-skill {
+  @property --cs-rotate {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  @keyframes cs-spin {
+    to { --cs-rotate: 1; }
+  }
+
+  .carousel-section {
+    view-timeline-name: --cs-timeline;
+    view-timeline-axis: block;
+    height: 1000vh;
+    position: relative;
+  }
+
+  .carousel-section__sticky {
+    position: sticky;
+    top: 80px;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .carousel-section__center {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
+
+  .carousel-wrapper {
+    --card-border-radius: 14px;
+    --card-width: max(180px, 20vw);
+    --card-height: calc(var(--card-width) * 6 / 4);
+    --radius: calc(var(--card-width) * var(--cards) / 3.1416);
+
+    position: relative;
+    width: calc(var(--radius) * 2);
+    height: calc(var(--radius) * 2);
+
+    animation: cs-spin 1s linear;
+    animation-timeline: --cs-timeline;
+    animation-timing-function: steps(var(--cards));
+  }
+
+  .carousel-card {
+    --card-i: sibling-index();
+    --card-phase: calc((var(--card-i) - 1) / var(--cards) - 0.75);
+    --card-pos: mod(calc(var(--card-phase) + var(--cs-rotate) + 1), 1);
+    --card-dist: min(var(--card-pos), calc(1 - var(--card-pos)));
+
+    --card-grayscale: clamp(0, calc(var(--card-dist) * var(--cards)), 1);
+    --card-opacity: calc(1 - (var(--card-dist) / 0.15));
+    --card-focus-range: 0.12;
+    --card-max-blur: 6px;
+    --card-norm-dist: min(var(--card-dist), var(--card-focus-range));
+    --card-blur-progress: calc(var(--card-norm-dist) / var(--card-focus-range));
+    --card-blur: calc(var(--card-blur-progress) * var(--card-max-blur));
+
+    --caption-active: clamp(0, 1 - (var(--card-dist) / 0.001), 1);
+    filter: blur(min(var(--card-blur), var(--card-max-blur))) grayscale(min(var(--card-grayscale), 1));
+    opacity: var(--card-opacity);
+  }
+
+  .carousel-card::after {
+    content: attr(data-title);
+    position: absolute;
+    top: 100%;
+    left: 1rem;
+    opacity: var(--caption-opacity);
+    translate: 0 var(--caption-y);
+    font-size: clamp(1rem, 2vw + 0.045rem, 1.6rem);
+    font-family: var(--font-handwriting), handwriting;
+    z-index: -1;
+    transition: opacity 300ms ease-in-out, translate 300ms ease-in-out;
+    pointer-events: none;
+    white-space: nowrap;
+    color: var(--foreground);
+  }
+
+  .carousel-card > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+
+  .carousel-section__header,
+  .carousel-section__footer {
+    flex-shrink: 0;
+    z-index: 10;
+    pointer-events: auto;
+  }
+
+  .carousel-section__header { padding: 2rem 2rem 0; }
+  .carousel-section__footer { padding: 0 2rem 2rem; }
+
+  .carousel-mouse {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    translate: -50% 0;
+    display: none;
+    color: var(--foreground);
+    opacity: 0.6;
+    animation: cs-mouse-fade 1s linear forwards;
+    animation-timeline: --cs-timeline;
+  }
+  @supports (animation-timeline: scroll()) {
+    .carousel-mouse { display: block; }
+  }
+  @keyframes cs-mouse-fade {
+    75% { opacity: 0.6; }
+    100% { opacity: 0; }
+  }
+
+  @supports not (animation-timeline: scroll()) {
+    .carousel-section { height: auto; min-height: 100vh; }
+    .carousel-section__sticky { position: relative; height: auto; overflow: visible; }
+    .carousel-wrapper { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; width: 100%; height: auto; animation: none; padding: 2rem; }
+    .carousel-card { position: relative; offset-path: none; filter: none; opacity: 1; }
+    .carousel-card::after { display: none; }
+  }
+}
+
+/* ─── Demo Carousel — exact reproduction du design fourni ─────────────────── */
+@layer demo-carousel {
+  @property --rotate {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  @keyframes --page-rotate {
+    to { --rotate: 1; }
+  }
+
+  .demo-carousel {
+    view-timeline-name: --demo-timeline;
+    view-timeline-axis: block;
+    height: 500vh;
+    position: relative;
+    z-index: 1;
+    background: var(--background);
+  }
+
+  .demo-carousel__sticky {
+    position: sticky;
+    top: 80px;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+    z-index: 1;
+    background: var(--background);
+  }
+
+  .demo-carousel__center {
+    --card-width: clamp(180px, 28vw, 340px);
+    --card-height: calc(var(--card-width) * 6 / 4);
+
+    position: relative;
+    height: 100%;
+  }
+
+  .demo-carousel .wrapper {
+    --card-border-radius: 14px;
+    --cards: 5; /* fallback; overridden by inline style */
+    --radius: calc(var(--card-width) * var(--cards) / (2 * 3.1416));
+
+    font-family: var(--font-handwriting), handwriting;
+    position: absolute;
+    top: calc(var(--card-height));
+    left: 50%;
+    width: calc(var(--radius) * 2);
+    height: calc(var(--radius) * 2);
+    transform-origin: center center;
+    transform: translateX(-50%) rotate(calc(var(--rotate) * 360deg));
+
+    animation: --page-rotate 1s linear;
+    animation-timeline: --demo-timeline;
+  }
+
+  .demo-carousel .wrapper > div {
+    --card-i: calc(sibling-index() - 1);
+    --card-offset-radius: circle(var(--radius) at 50% 50%);
+    --card-offset-distance: calc(mod(75 * var(--cards) - var(--card-i) * 100, var(--cards) * 100) / var(--cards) * 1%);
+    --card-phase: calc((var(--cards) - var(--card-i)) / var(--cards));
+    --card-pos: mod(calc(var(--card-phase) + var(--rotate) + 1), 1);
+    --card-dist: min(var(--card-pos), calc(1 - var(--card-pos)));
+    --card-opacity: calc(1 - (var(--card-dist) / 0.35));
+    --card-max-blur: 4px;
+    --card-blur: calc(var(--card-dist) / 0.5 * var(--card-max-blur));
+    --card-grayscale: calc(var(--card-dist) / 0.5);
+    --card-anim: clamp(0, 1 - var(--card-dist) / 0.2, 1);
+    --card-anim-eased: calc(var(--card-anim) * var(--card-anim));
+
+    opacity: var(--card-opacity);
+    filter: blur(min(var(--card-blur), var(--card-max-blur))) grayscale(min(var(--card-grayscale), 1));
+
+    offset-path: var(--card-offset-radius);
+    offset-distance: var(--card-offset-distance);
+    offset-rotate: auto;
+    offset-anchor: 50% 100%;
+
+    position: absolute;
+    width: var(--card-width);
+    height: calc(var(--card-height));
+    border-radius: var(--card-border-radius);
+    transition: all 300ms ease-in-out;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .demo-carousel .card-skills {
+    flex: 1;
+    list-style: none;
+    margin: 0;
+    padding: 4px;
+    display: grid;
+    gap: 4px;
+    grid-template: repeat(3, 1fr) / repeat(4, 1fr);
+    transform-origin: center center;
+    transform: scale(calc(0.4 + 0.6 * var(--card-anim-eased))) rotate(calc(270deg * var(--card-anim-eased)));
+  }
+
+  .demo-carousel .card-skills li {
+    position: relative;
+    background: hsl(0 0% 75% / 0.2);
+    border-radius: calc(var(--card-border-radius) / 2);
+    overflow: hidden;
+    grid-column: var(--x1) / var(--x2);
+    grid-row: var(--y1) / var(--y2);
+  }
+
+  .demo-carousel .card-skills li img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 200%;
+    min-width: 200%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    transform: translate(-50%, -50%) rotate(calc(-270deg * var(--card-anim-eased)));
+  }
+
+  .demo-carousel .wrapper > div::after {
+    content: attr(data-title);
+    position: absolute;
+    top: 100%;
+    left: 1rem;
+    opacity: clamp(0, 1 - var(--card-dist) * 6, 1);
+    translate: 0 calc(-20px * (1 - clamp(0, 1 - var(--card-dist) * 6, 1)));
+    font-size: clamp(1rem, 2vw + 0.045rem, 1.6rem);
+    z-index: -1;
+    transition: opacity 300ms ease-in-out, translate 300ms ease-in-out;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  /* ── Mouse indicator ── */
+  .demo-carousel .icon {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    translate: -50% 0;
+    display: none;
+    animation-name: demo-mouse;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-timeline: --demo-timeline;
+    opacity: 0.7;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .demo-carousel .icon { display: block; }
+  }
+
+  @keyframes demo-mouse {
+    75% { opacity: 0.7; }
+    100% { opacity: 0; }
+  }
+
+  /* ── Fallback ── */
+  @supports not (animation-timeline: scroll()) {
+    .demo-carousel { height: auto; min-height: 100vh; }
+    .demo-carousel__sticky { position: relative; height: auto; overflow: visible; }
+    .demo-carousel .wrapper { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; width: 100%; height: auto; animation: none; padding: 2rem; position: relative; top: auto; left: auto; transform: none; }
+    .demo-carousel .wrapper > div { position: relative; offset-path: none; filter: none; opacity: 1; aspect-ratio: auto; width: 120px; }
+    .demo-carousel .wrapper > div::after { display: none; }
+  }
 }

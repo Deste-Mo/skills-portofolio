@@ -53,10 +53,10 @@ export function SkillsSection() {
                                         />
                                     </div>
                                     <div
-                                        className="absolute bottom-0 right-0 w-full md:w-72 h-12 bg-white flex items-center text-right rounded-tl-lg"
+                                        className="absolute bottom-0 right-0 w-full md:w-72 h-12 bg-white dark:bg-gray-800 flex items-center text-right rounded-tl-lg"
                                         style={{ marginBottom: "-0.375rem", marginRight: "-0.375rem" }}
                                     >
-                                        <h3 className="font-inter text-xs uppercase tracking-wider text-foreground mr-2 md:mr-4 truncate">
+                                        <h3 className="font-inter text-xs uppercase tracking-wider text-foreground mr-2 md:mr-4 truncate text-right px-3 py-1" style={{ lineHeight: "1.5" }}>
                                             {category.title}
                                         </h3>
                                     </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Manrope, Inter } from "next/font/google";
+import { Geist, Geist_Mono, Manrope, Inter, Just_Me_Again_Down_Here } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -29,6 +29,12 @@ const inter = Inter({
   weight: ["400", "500"],
 });
 
+const justMeAgainDownHere = Just_Me_Again_Down_Here({
+  variable: "--font-handwriting",
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export const metadata: Metadata = {
   title: `${siteConfig.name} - Portfolio`,
   description: siteConfig.description,
@@ -42,7 +48,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${inter.variable} h-full antialiased scroll-smooth`}
+      className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${inter.variable} ${justMeAgainDownHere.variable} h-full antialiased scroll-smooth`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300">

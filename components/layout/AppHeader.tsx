@@ -83,8 +83,8 @@ export function AppHeader() {
   }, []);
 
   const logoSrc = mounted && resolvedTheme === "dark"
-    ? "/logo/logo-white.png"
-    : "/logo/logo-black.png";
+    ? "/images/logo/logo-white.png"
+    : "/images/logo/logo-black.png";
 
   return (
     <motion.header
