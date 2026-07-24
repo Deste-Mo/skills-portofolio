@@ -26,13 +26,11 @@ export function ServiceContent({ slug }: { slug: string }) {
 
       <ScrollReveal animation="slide-up">
         <div className="mb-16 md:mb-20">
-          <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-6">
-            <ServiceIcon className="h-6 w-6" />
-          </div>
           <h1
-            className="font-manrope text-4xl md:text-[48px] font-semibold text-foreground mb-4 max-w-3xl"
+            className="font-manrope text-4xl md:text-[48px] font-semibold text-foreground mb-4 max-w-3xl flex items-center gap-4"
             style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
           >
+            <ServiceIcon className="h-8 w-8 md:h-10 md:w-10 text-primary shrink-0" />
             {service.title}
           </h1>
           <p
@@ -132,10 +130,10 @@ export function ServiceContent({ slug }: { slug: string }) {
               {otherServices.map((other, i) => {
                 const OtherIcon = other.icon
                 return (
-                  <ScrollReveal key={other.slug} animation="slide-up" delay={i * 100}>
+                  <ScrollReveal key={other.slug} animation="slide-up" delay={i * 100} className="h-full">
                     <Link
                       href={`/services/${other.slug}`}
-                      className="group bg-muted/20 border border-border/50 rounded-xl p-6 hover:bg-muted/30 hover:scale-[1.02] transition-all duration-300 flex flex-col"
+                      className="group bg-muted/20 border border-border/50 rounded-xl p-6 hover:bg-muted/30 hover:scale-[1.02] transition-all duration-300 flex flex-col h-full"
                     >
                       <OtherIcon className="h-8 w-8 text-primary mb-3 group-hover:scale-110 transition-transform" />
                       <h3 className="font-manrope text-sm font-semibold text-foreground mb-2">{other.title}</h3>
