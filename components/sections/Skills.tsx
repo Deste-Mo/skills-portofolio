@@ -1,18 +1,7 @@
 "use client"
 
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
-import { skillCategories } from "@/config/skills"
-import { Code2, Server, Database, Share2, Wrench, Layers, Palette } from "lucide-react"
-
-const categoryIcons: Record<string, React.ReactNode> = {
-  Frontend: <Code2 size={40} />,
-  Backend: <Server size={40} />,
-  "Bases de données": <Database size={40} />,
-  "API & Data": <Share2 size={40} />,
-  "Outils & Technologies": <Wrench size={40} />,
-  "Architecture & Qualité": <Layers size={40} />,
-  "UI/UX": <Palette size={40} />,
-}
+import { skillCategories, categoryIcons } from "@/config/skills"
 
 export function SkillsSection() {
   return (

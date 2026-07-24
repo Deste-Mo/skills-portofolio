@@ -34,7 +34,6 @@ export function AppHeader() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Active section tracking via IntersectionObserver
   useEffect(() => {
     const sectionIds = siteConfig.mainNav.map((item) => getSectionId(item.href));
     const elements = sectionIds
@@ -96,9 +95,9 @@ export function AppHeader() {
       }`}
     >
       <div className="max-w-[1200px] mx-auto flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 lg:px-8 h-auto md:h-16 min-w-0">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group shrink-0 min-w-0">
-          <div className="relative h-8 w-8 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+        {/* Logo + Name stacked */}
+        <Link href="/" className="flex flex-col items-center gap-0 group shrink-0 min-w-0 py-1">
+          <div className="relative h-7 w-7 md:h-8 md:w-8 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
             <Image
               src={logoSrc}
               alt="Logo"
@@ -108,7 +107,7 @@ export function AppHeader() {
               priority
             />
           </div>
-          <span className="hidden lg:inline-flex text-xl font-bold text-foreground tracking-tighter active:scale-[0.98] transition-transform">
+          <span className="text-[10px] md:text-xs font-semibold text-foreground tracking-tight leading-tight">
             {siteConfig.name}
           </span>
         </Link>

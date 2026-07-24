@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
-import { MailIcon, GithubIcon, LinkedinIcon, PhoneIcon } from "@/components/ui/icons"
+import { contactItems, interests } from "@/config/about"
 
 function BoltIcon({ size = 24 }: { size?: number }) {
   return (
@@ -22,29 +22,9 @@ function ContactIcon({ size = 24 }: { size?: number }) {
   )
 }
 
-function MapPinIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-      <circle cx="12" cy="10" r="3" />
-    </svg>
-  )
-}
-
 export function AboutSection() {
-  const contactItems = [
-    { icon: MailIcon, label: "Email", value: "modestep20.aps1a@gmail.com", href: "mailto:modestep20.aps1a@gmail.com" },
-    { icon: PhoneIcon, label: "Téléphone", value: "+261 34 74 918 85", href: "tel:+261347491885" },
-    { icon: GithubIcon, label: "GitHub", value: "Deste-Mo", href: "https://github.com/Deste-Mo" },
-    { icon: LinkedinIcon, label: "LinkedIn", value: "Modeste TOLOJANAHARY", href: "https://www.linkedin.com/in/modeste-nirina-tolojanahary-b844b61b7" },
-    { icon: MapPinIcon, label: "Localisation", value: "Andrainjato Fianarantsoa, Madagascar" },
-  ]
-
-  const interests = ["Games", "Films", "Anime"]
-
   return (
     <section id="about" className="max-w-[1200px] mx-auto px-8 py-24 md:py-32">
-      {/* Header */}
       <ScrollReveal animation="slide-up">
         <div className="mb-12 md:mb-16">
           <h2 className="font-manrope text-4xl md:text-[48px] font-semibold text-foreground mb-4" style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}>
@@ -57,9 +37,7 @@ export function AboutSection() {
         </div>
       </ScrollReveal>
 
-      {/* Bento Grid */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
-        {/* Bento Card 1: Wide — Profil */}
         <ScrollReveal animation="slide-up" delay={200} className="md:col-span-7 lg:col-span-8 order-1">
           <div className="bg-muted/20 border border-border/50 rounded-xl p-6 md:p-8 flex flex-col justify-between hover:bg-muted/30 transition-colors group h-full">
             <div className="mb-8 md:mb-12">
@@ -90,7 +68,6 @@ export function AboutSection() {
           </div>
         </ScrollReveal>
 
-        {/* Bento Card 2: Tall — Contact */}
         <ScrollReveal animation="slide-up" delay={300} className="md:col-span-5 lg:col-span-4 order-2">
           <div className="bg-muted/20 border border-border/50 rounded-xl p-6 md:p-8 flex flex-col hover:bg-muted/30 transition-colors group h-full">
             <span className="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 text-primary mb-4">

@@ -1,3 +1,5 @@
+import { Code2, Server, Database, Share2, Wrench, Layers, Palette } from "lucide-react"
+
 export interface SkillCategory {
   title: string
   description: string
@@ -41,3 +43,13 @@ export const skillCategories: SkillCategory[] = [
     skills: ["Intégration de maquettes Figma", "Responsive Design", "Interfaces modernes", "Accessibilité"],
   },
 ]
+
+export const categoryIcons: Record<string, React.ReactNode> = {
+  Frontend: <Code2 size={40} />,
+  Backend: <Server size={40} />,
+  "Bases de données": <Database size={40} />,
+  "API & Data": <Share2 size={40} />,
+  "Outils & Technologies": <Wrench size={40} />,
+  "Architecture & Qualité": <Layers size={40} />,
+  "UI/UX": <Palette size={40} />,
+}
