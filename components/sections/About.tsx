@@ -1,6 +1,8 @@
 "use client"
 
 import Image from "next/image"
+import { useRef } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
 import { MailIcon, GithubIcon, LinkedinIcon, PhoneIcon } from "@/components/ui/icons"
 
@@ -32,6 +34,16 @@ function MapPinIcon({ size = 18 }: { size?: number }) {
 }
 
 export function AboutSection() {
+  const sectionRef = useRef<HTMLDivElement>(null)
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  })
+
+  const scale = useTransform(scrollYProgress, [0.4, 1], [1, 0.85])
+  const opacity = useTransform(scrollYProgress, [0.4, 0.9], [1, 0])
+
   const contactItems = [
     { icon: MailIcon, label: "Email", value: "modestep20.aps1a@gmail.com", href: "mailto:modestep20.aps1a@gmail.com" },
     { icon: PhoneIcon, label: "Téléphone", value: "+261 34 74 918 85", href: "tel:+261347491885" },
@@ -43,7 +55,11 @@ export function AboutSection() {
   const interests = ["Games", "Films", "Anime"]
 
   return (
-    <section id="about" className="max-w-[1200px] mx-auto px-8 py-24 md:py-32">
+    <motion.section
+      ref={sectionRef}
+      id="about"
+      style={{ scale, opacity }}
+      className="max-w-[1200px] mx-auto px-8 py-24 md:py-32">
       {/* Header */}
       <ScrollReveal animation="slide-up">
         <div className="mb-12 md:mb-16">
@@ -141,6 +157,6 @@ export function AboutSection() {
           </div>
         </ScrollReveal>
       </div>
-    </section>
+    </motion.section>
   )
 }

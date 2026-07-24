@@ -7,12 +7,12 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal"
 
 export function Hero() {
   const { scrollY } = useScroll()
+  const scale = useTransform(scrollY, [0, 600], [1, 0.85])
   const opacity = useTransform(scrollY, [0, 600], [1, 0])
-  const filter = useTransform(scrollY, [0, 600], ["blur(0px)", "blur(8px)"])
 
   return (
     <section id="hero" className="fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center text-center px-8 overflow-hidden bg-background z-0">
-      <motion.div style={{ opacity, filter }} className="max-w-[1200px] mx-auto flex flex-col items-center">
+      <motion.div style={{ scale, opacity }} className="max-w-[1200px] mx-auto flex flex-col items-center">
         <ScrollReveal animation="slide-up" delay={100}>
           <span className="bg-muted/50 border border-border text-muted-foreground text-sm font-inter px-3 py-1 rounded-full mb-8 tracking-[0.05em] uppercase flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-primary"></span>
