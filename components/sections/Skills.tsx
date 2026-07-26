@@ -36,7 +36,7 @@ export function SkillsSection() {
               delay={index * 100}
               className={isFullWidth ? "md:col-span-2" : ""}
             >
-              <div className="relative overflow-hidden bg-muted/20 border border-border/50 rounded-xl p-6 md:p-8 hover:bg-muted/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group h-full">
+              <div className="relative overflow-hidden bg-background border border-border/60 shadow-sm rounded-xl p-6 md:p-8 hover:shadow-md hover:scale-[1.02] active:scale-[0.98] dark:bg-muted/20 dark:border-border/50 dark:shadow-none dark:hover:bg-muted/30 transition-all duration-300 group h-full">
                 <div className="relative z-10">
                   <h3
                     className="font-manrope text-lg font-semibold text-foreground mb-1.5"

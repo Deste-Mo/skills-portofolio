@@ -41,7 +41,7 @@ export function AboutSection() {
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
         <ScrollReveal animation="slide-up" delay={200} className="md:col-span-7 lg:col-span-8 order-1">
-          <div className="bg-muted/20 border border-border/50 rounded-xl p-6 md:p-8 flex flex-col justify-between hover:bg-muted/30 transition-colors group h-full">
+          <div className="bg-background border border-border/60 shadow-sm rounded-xl p-6 md:p-8 flex flex-col justify-between hover:shadow-md dark:bg-muted/20 dark:border-border/50 dark:shadow-none dark:hover:bg-muted/30 transition-all group h-full">
             <div className="mb-8 md:mb-12">
               <span className="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 text-primary mb-4">
                 <BoltIcon size={24} />
@@ -70,7 +70,7 @@ export function AboutSection() {
         </ScrollReveal>
 
         <ScrollReveal animation="slide-up" delay={300} className="md:col-span-5 lg:col-span-4 order-2">
-          <div className="bg-muted/20 border border-border/50 rounded-xl p-6 md:p-8 flex flex-col hover:bg-muted/30 transition-colors group h-full">
+          <div className="bg-background border border-border/60 shadow-sm rounded-xl p-6 md:p-8 flex flex-col hover:shadow-md dark:bg-muted/20 dark:border-border/50 dark:shadow-none dark:hover:bg-muted/30 transition-all group h-full">
             <span className="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 text-primary mb-4">
               <ContactIcon size={24} />
             </span>

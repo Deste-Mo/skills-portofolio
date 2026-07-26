@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { MenuIcon, XIcon } from "@/components/ui/icons"
 import { HeaderLogo } from "./HeaderLogo"
@@ -12,6 +12,15 @@ import { useScrollSpy } from "@/hooks/useScrollSpy"
 export function AppHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const { isScrolled, activeSection, setActiveSection } = useScrollSpy()
+
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+    return () => { document.body.style.overflow = "" }
+  }, [mobileOpen])
 
   const closeMobile = () => setMobileOpen(false)
 
@@ -44,42 +53,61 @@ export function AppHeader() {
           <button
             className="md:hidden p-2 text-muted-foreground hover:text-foreground rounded-[0.125rem] transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Menu"
           >
-            {mobileOpen ? <XIcon size={22} /> : <MenuIcon size={22} />}
+            <MenuIcon size={22} />
           </button>
         </div>
       </motion.header>
 
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed top-16 left-0 right-0 z-40 md:hidden bg-background border-b border-border overflow-hidden"
-          >
-            <div className="flex flex-col px-8 py-4 gap-1">
-              <HeaderNav
-                activeSection={activeSection}
-                setActiveSection={setActiveSection}
-                onNavClick={closeMobile}
-                linkClassName={(isActive) =>
-                  `font-manrope text-sm font-medium tracking-tight px-3 py-2.5 rounded-[0.125rem] transition-all duration-200 ${
-                    isActive
-                      ? "text-foreground bg-muted/50"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                  }`
-                }
-              />
-              <div className="flex items-center justify-between pt-3 mt-2 border-t border-border">
-                <div className="flex items-center gap-2">
-                  <ThemeToggle />
-                  <LanguageSwitcher variant="inline" />
-                </div>
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0 bg-black/40 z-40 md:hidden"
+              onClick={closeMobile}
+            />
+            <motion.div
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "spring", damping: 30, stiffness: 300 }}
+              className="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] z-50 md:hidden bg-background border-r border-border flex flex-col"
+            >
+              <div className="flex items-center justify-between px-6 h-16 border-b border-border shrink-0">
+                <HeaderLogo />
+                <button
+                  onClick={closeMobile}
+                  className="p-2 text-muted-foreground hover:text-foreground rounded-[0.125rem] transition-colors"
+                  aria-label="Close menu"
+                >
+                  <XIcon size={22} />
+                </button>
               </div>
-            </div>
-          </motion.div>
+              <nav className="flex-1 flex flex-col gap-1 px-4 py-6 overflow-y-auto">
+                <HeaderNav
+                  activeSection={activeSection}
+                  setActiveSection={setActiveSection}
+                  onNavClick={closeMobile}
+                  linkClassName={(isActive) =>
+                    `font-manrope text-base font-medium tracking-tight px-4 py-3.5 rounded-lg transition-all duration-200 ${
+                      isActive
+                        ? "text-foreground bg-primary/10"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                    }`
+                  }
+                />
+              </nav>
+              <div className="flex items-center justify-center gap-3 px-6 py-5 border-t border-border shrink-0">
+                <ThemeToggle variant="inline" />
+                <LanguageSwitcher variant="inline" />
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

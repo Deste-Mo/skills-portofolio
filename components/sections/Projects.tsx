@@ -194,7 +194,7 @@ export function ProjectsSection() {
       <div className="space-y-8 md:space-y-12">
         {projects.map((project, index) => (
           <ScrollReveal key={index} animation="slide-up" delay={index * 80}>
-            <div className="group md:flex md:flex-row-reverse md:items-stretch bg-muted/20 border border-border/50 rounded-2xl overflow-hidden hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5 transition-all duration-300">
+            <div className="group md:flex md:flex-row-reverse md:items-stretch bg-background border border-border/60 shadow-sm rounded-2xl overflow-hidden hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5 dark:bg-muted/20 dark:border-border/50 dark:shadow-none dark:hover:bg-muted/30 transition-all duration-300">
               <div className="relative w-full md:w-[45%] lg:w-[40%] aspect-[16/10] md:aspect-auto md:min-h-[280px] bg-gradient-to-br from-primary/[0.04] to-muted/30 overflow-hidden">
                 <Image
                   src={project.image}

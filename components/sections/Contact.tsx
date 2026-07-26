@@ -31,7 +31,7 @@ export function ContactSection() {
 
       <div className="grid gap-8 lg:grid-cols-2">
         <ScrollReveal animation="slide-up" delay={200} className="h-full">
-          <div className="bg-muted/20 border border-border/50 rounded-xl p-6 md:p-8 h-full flex flex-col">
+          <div className="bg-background border border-border/60 shadow-sm rounded-xl p-6 md:p-8 h-full flex flex-col dark:bg-muted/20 dark:border-border/50 dark:shadow-none">
             <h3 className="font-manrope text-xl md:text-2xl font-semibold text-foreground mb-3">{t.contact.cta}</h3>
             <p className="font-inter text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
               {t.contact.ctaDesc}
@@ -76,7 +76,7 @@ export function ContactSection() {
         </ScrollReveal>
 
         <ScrollReveal animation="slide-up" delay={300} className="h-full">
-          <div className="bg-muted/20 border border-border/50 rounded-xl p-6 md:p-8 h-full flex flex-col">
+          <div className="bg-background border border-border/60 shadow-sm rounded-xl p-6 md:p-8 h-full flex flex-col dark:bg-muted/20 dark:border-border/50 dark:shadow-none">
             {status === "success" ? (
               <div className="flex flex-col items-center justify-center flex-1 text-center">
                 <CheckCircle className="h-16 w-16 text-primary mb-4" />
