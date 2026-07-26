@@ -36,7 +36,7 @@ export function ExperiencesSection() {
               <div className="relative flex flex-col md:flex-row gap-6 md:gap-8">
                 <div className="absolute left-[-5px] md:left-1/2 w-3 h-3 rounded-full bg-primary border-2 border-background md:-translate-x-1.5 mt-2 z-10"></div>
                 <div className={`pl-8 md:pl-0 md:w-1/2 ${index % 2 === 0 ? "md:pr-10" : "md:pl-10 md:ml-auto"}`}>
-                  <div className="bg-muted/20 border border-border/50 rounded-xl p-5 md:p-6 hover:bg-muted/30 transition-colors">
+                  <div className="bg-background border border-border/60 shadow-sm rounded-xl p-5 md:p-6 hover:shadow-md dark:bg-muted/20 dark:border-border/50 dark:shadow-none dark:hover:bg-muted/30 transition-all">
                     <div className="flex items-start justify-between gap-3 mb-3">
                       <div className="w-full">
                         <h3 className="font-manrope text-base md:text-lg font-semibold text-foreground">{exp.title}</h3>
@@ -93,7 +93,7 @@ export function ExperiencesSection() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {formations.map((f, index) => (
           <ScrollReveal key={index} animation="slide-up" delay={index * 100}>
-            <div className="bg-muted/20 border border-border/50 rounded-xl p-5 md:p-6 hover:bg-muted/30 transition-colors h-full flex flex-col">
+            <div className="bg-background border border-border/60 shadow-sm rounded-xl p-5 md:p-6 hover:shadow-md dark:bg-muted/20 dark:border-border/50 dark:shadow-none dark:hover:bg-muted/30 transition-all h-full flex flex-col">
               <div className="flex items-center gap-2 mb-3">
                 <GraduationCap className="h-5 w-5 text-primary" />
                 <span className="text-xs text-muted-foreground">{f.period}</span>
