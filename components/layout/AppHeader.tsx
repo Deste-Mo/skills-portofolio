@@ -229,15 +229,6 @@ export function AppHeader() {
               </div>
             )}
           </div>
-
-          <a
-            href="#contact"
-            onClick={(e) => handleNavClick(e, "#contact")}
-            className="md:w-10 md:h-10 inline-flex items-center justify-center rounded-[0.125rem] bg-primary text-primary-foreground p-2 transition-all duration-200 hover:bg-primary/90 active:scale-[0.98]"
-            aria-label="Me contacter"
-          >
-            <MailIcon size={18} />
-          </a>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -310,14 +301,6 @@ export function AppHeader() {
                   </button>
                 </div>
               </div>
-              <a
-                href="#contact"
-                onClick={(e) => handleNavClick(e, "#contact")}
-                className="mt-2 inline-flex items-center justify-center bg-primary text-primary-foreground w-10 h-10 mx-auto rounded-[0.125rem] hover:bg-primary/90 transition-colors active:scale-[0.98]"
-                aria-label={t.contact.title}
-              >
-                <MailIcon size={18} />
-              </a>
             </div>
           </motion.div>
         )}
