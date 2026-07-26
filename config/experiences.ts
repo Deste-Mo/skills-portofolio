@@ -54,7 +54,7 @@ export const experiences: Experience[] = [
       "Development of a multi-service booking application (train, bus, and hotel).",
       "Design of a platform dedicated to training, exams, and career paths.",
     ],
-    technologies: ["Next.js", "Flutter", "Django"],
+    technologies: ["Next.js", "Flutter", "Api REST"],
   },
   {
     title: "Stagiaire puis Développeur Full stack",
@@ -71,10 +71,10 @@ export const experiences: Experience[] = [
       "Fullstack development of a social-network-style web and mobile application for goods collaboration.",
       "Technical participation as assistant lead dev (supporting technical coordination and development decisions).",
     ],
-    technologies: ["Flutter", "React Native", "Node.js", "Express"],
+    technologies: ["Flutter", "React Native", "Node.js", "Express", "Api REST"],
   },
   {
-    title: "Développeur Frontend",
+    title: "Développeur Full stack",
     titleEn: "Frontend Developer",
     company: "IMIARY",
     period: "Mars - Juin 2022",
@@ -85,7 +85,7 @@ export const experiences: Experience[] = [
     detailsEn: [
       "Development of a boat rental, sales, and booking platform with online payment.",
     ],
-    technologies: ["React Native", "Node.js", "Express"],
+    technologies: ["React Native", "Node.js", "Express", "Api REST", "PostgreSQL", "Laravel"],
   },
 ]
 

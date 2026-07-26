@@ -7,7 +7,7 @@ import { useTranslation } from "@/lib/i18n/context"
 import { useContactForm } from "@/hooks/useContactForm"
 
 export function ContactSection() {
-  const { t } = useTranslation()
+  const { t, lang } = useTranslation()
   const { formData, status, errorMessage, handleChange, handleSubmit, resetForm } = useContactForm()
 
   return (
@@ -81,7 +81,8 @@ export function ContactSection() {
               <div className="flex flex-col items-center justify-center flex-1 text-center">
                 <CheckCircle className="h-16 w-16 text-primary mb-4" />
                 <h3 className="font-manrope text-xl md:text-2xl font-semibold text-foreground mb-2">{t.contact.success.title}</h3>
-                <p className="font-inter text-sm md:text-base text-muted-foreground mb-6">{t.contact.success.description}</p>
+                <p className="font-inter text-sm md:text-base text-muted-foreground mb-2">{t.contact.success.description}</p>
+                <p className="font-inter text-xs text-muted-foreground/70 mb-6">{lang === "en" ? "If you don't see my reply, please check your spam folder." : "Si vous ne voyez pas ma réponse, pensez à vérifier vos spams."}</p>
                 <Button variant="outline" size="sm" onClick={resetForm}>
                   {t.contact.form.submit}
                 </Button>
