@@ -9,6 +9,12 @@ import { useTranslation } from "@/lib/i18n/context"
 
 type Category = "all" | "web" | "mobile" | "ai"
 
+interface ProjectLink {
+  label: string
+  labelEn: string
+  url: string
+}
+
 interface ProjectData {
   title: string
   titleEn: string
@@ -19,7 +25,7 @@ interface ProjectData {
   image: string
   tags: string[]
   categories: Category[]
-  liveUrl: string
+  links: ProjectLink[]
   githubUrl?: string
 }
 
@@ -34,7 +40,7 @@ const projectsData: ProjectData[] = [
     image: "/images/projects/elmadagascar-tour.png",
     tags: ["Next.js", "API REST", "PostgreSQL", "Git"],
     categories: ["web"],
-    liveUrl: "https://elmadagascar-tours.com/",
+    links: [{ label: "Site", labelEn: "Website", url: "https://elmadagascar-tours.com/" }],
   },
   {
     title: "Altigéo",
@@ -46,43 +52,37 @@ const projectsData: ProjectData[] = [
     image: "/images/projects/altigeo.png",
     tags: ["Next.js", "API REST", "PostgreSQL", "Git"],
     categories: ["web"],
-    liveUrl: "https://altigeo.mg/",
+    links: [{ label: "Plateforme", labelEn: "Platform", url: "https://altigeo.mg/" }],
   },
   {
-    title: "Glib - Application",
-    titleEn: "Glib - Application",
-    description: "Application web et mobile de voyage avec recherche de destinations, activités, hôtels et réservation multi-services.",
-    descriptionEn: "Web and mobile travel application with destination search, activities, hotels, and multi-service booking.",
+    title: "Glib",
+    titleEn: "Glib",
+    description: "Landing page et application web/mobile de voyage avec recherche de destinations, itinéraires IA, hôtels et réservation multi-services.",
+    descriptionEn: "Landing page and web/mobile travel app with destination search, AI itineraries, hotels, and multi-service booking.",
     type: "Application",
     typeEn: "Application",
     image: "/images/projects/glib-app.png",
     tags: ["Next.js", "React Native", "GraphQL", "PostgreSQL", "Git"],
     categories: ["web", "mobile", "ai"],
-    liveUrl: "https://web.dev.glib.fr/",
+    links: [
+      { label: "Landing page", labelEn: "Landing page", url: "https://www.glib.fr/" },
+      { label: "Application", labelEn: "App", url: "https://web.dev.glib.fr/" },
+    ],
   },
   {
-    title: "GHR - Personnel",
-    titleEn: "GHR - Personnel",
-    description: "Plateforme de gestion hôtelière et restauration pour le personnel : comptes, planning et suivi des activités.",
-    descriptionEn: "Hotel and restaurant management platform for staff: accounts, scheduling, and activity tracking.",
+    title: "GHR",
+    titleEn: "GHR",
+    description: "Plateforme complète de gestion hôtelière et restauration : comptes personnel, planning, suivi des activités et administration des établissements.",
+    descriptionEn: "Complete hotel and restaurant management platform: staff accounts, scheduling, activity tracking, and establishment administration.",
     type: "Application",
     typeEn: "Application",
     image: "/images/projects/ghr.png",
     tags: ["Next.js", "FastAPI", "Flutter", "API REST", "PostgreSQL", "Git"],
     categories: ["web", "mobile"],
-    liveUrl: "https://ghr-personnel.itdcmada.com/",
-  },
-  {
-    title: "Gestion Hôtelière et Restauration",
-    titleEn: "GHR - Administration",
-    description: "Interface d'administration pour la gestion des établissements hôteliers : utilisateurs, établissements et configurations.",
-    descriptionEn: "Admin interface for hotel management: users, establishments, and configurations.",
-    type: "Application",
-    typeEn: "Application",
-    image: "/images/projects/ghr-admin.png",
-    tags: ["Next.js", "FastAPI", "Flutter", "API REST", "PostgreSQL", "Git"],
-    categories: ["web", "mobile"],
-    liveUrl: "https://admin-etablissement.itdcmada.com",
+    links: [
+      { label: "Personnel", labelEn: "Staff", url: "https://ghr-personnel.itdcmada.com/" },
+      { label: "Administration", labelEn: "Admin", url: "https://admin-etablissement.itdcmada.com" },
+    ],
   },
   {
     title: "Qui fait quoi",
@@ -94,7 +94,7 @@ const projectsData: ProjectData[] = [
     image: "/images/projects/qui-fait-qoui.png",
     tags: ["Next.js", "OpenAI API", "GPT", "Docker", "PostgreSQL", "Git"],
     categories: ["web", "ai"],
-    liveUrl: "https://qui-fait-qoui-test.vercel.app/",
+    links: [{ label: "Site", labelEn: "Website", url: "https://qui-fait-qoui-test.vercel.app/" }],
   },
   {
     title: "Gotake",
@@ -106,7 +106,7 @@ const projectsData: ProjectData[] = [
     image: "/images/projects/go-take.png",
     tags: ["React Native", "Mobile", "iOS", "Git"],
     categories: ["mobile"],
-    liveUrl: "https://gotake.company/",
+    links: [{ label: "Site", labelEn: "Website", url: "https://gotake.company/" }],
   },
   {
     title: "Portfolio V1",
@@ -118,7 +118,7 @@ const projectsData: ProjectData[] = [
     image: "/images/projects/portofolio-v1.png",
     tags: ["Next.js", "PostgreSQL", "Git"],
     categories: ["web"],
-    liveUrl: "https://modeste-tolojanahary.netlify.app",
+    links: [{ label: "Site", labelEn: "Website", url: "https://modeste-tolojanahary.netlify.app" }],
     githubUrl: "#",
   },
 ]
@@ -143,6 +143,10 @@ export function ProjectsSection() {
     title: lang === "en" ? p.titleEn : p.title,
     description: lang === "en" ? p.descriptionEn : p.description,
     type: lang === "en" ? p.typeEn : p.type,
+    links: p.links.map((l) => ({
+      ...l,
+      label: lang === "en" ? l.labelEn : l.label,
+    })),
   }))
 
   const filterLabels = filterOptions.map((f) => ({
@@ -201,11 +205,11 @@ export function ProjectsSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-l from-background/20 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute top-3 right-3 flex gap-2">
-                  {project.liveUrl !== "#" && (
-                    <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-primary/90 backdrop-blur-sm text-primary-foreground hover:bg-primary transition-colors shadow-lg" aria-label={lang === "en" ? "View live" : "Voir le site"}>
+                  {project.links.map((link, i) => (
+                    <Link key={i} href={link.url} target="_blank" rel="noopener noreferrer" className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-primary/90 backdrop-blur-sm text-primary-foreground hover:bg-primary transition-colors shadow-lg" aria-label={link.label}>
                       <ArrowUpRight className="h-3.5 w-3.5" />
                     </Link>
-                  )}
+                  ))}
                   {project.githubUrl && project.githubUrl !== "#" && (
                     <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-background/80 backdrop-blur-sm text-foreground hover:bg-background transition-colors shadow-lg" aria-label="GitHub">
                       <Code className="h-3.5 w-3.5" />
@@ -218,13 +222,7 @@ export function ProjectsSection() {
                   {project.type}
                 </span>
                 <h3 className="font-manrope text-xl md:text-2xl font-bold text-foreground mb-3">
-                  {project.liveUrl !== "#" ? (
-                    <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                      {project.title}
-                    </Link>
-                  ) : (
-                    project.title
-                  )}
+                  {project.title}
                 </h3>
                 <p className="font-inter text-sm md:text-base text-muted-foreground leading-relaxed mb-5">
                   {project.description}
@@ -236,11 +234,13 @@ export function ProjectsSection() {
                     </span>
                   ))}
                 </div>
-                <div className="mt-4 pt-4 border-t border-border/30">
-                  <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="font-inter text-sm font-medium text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-1.5">
-                    {lang === "en" ? "Visit Project" : "Visiter le projet"}
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </Link>
+                <div className="mt-4 pt-4 border-t border-border/30 flex flex-wrap gap-3">
+                  {project.links.map((link, i) => (
+                    <Link key={i} href={link.url} target="_blank" rel="noopener noreferrer" className="font-inter text-sm font-medium text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-1.5">
+                      {link.label}
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>
