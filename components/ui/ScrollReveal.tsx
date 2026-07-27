@@ -55,7 +55,7 @@ export function ScrollReveal({
       variants={variants}
       initial="hidden"
       animate={mainControls}
-      className={className}
+      className={`relative ${className}`}
       suppressHydrationWarning
     >
       {children}
