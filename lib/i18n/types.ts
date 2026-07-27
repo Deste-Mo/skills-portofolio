@@ -21,6 +21,7 @@ export interface Translations {
     description: string
     viewWork: string
     letsTalk: string
+    cv: string
   }
   about: {
     title: string

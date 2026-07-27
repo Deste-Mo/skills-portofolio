@@ -22,6 +22,7 @@ const en: Translations = {
       "I design and build modern, interactive, and accessible interfaces. My goal: turn complex problems into elegant solutions.",
     viewWork: "View my work",
     letsTalk: "Let's talk",
+    cv: "My CV",
   },
   about: {
     title: "About",

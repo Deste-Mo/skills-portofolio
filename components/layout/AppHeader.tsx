@@ -51,7 +51,7 @@ export function AppHeader() {
           </div>
 
           <button
-            className="md:hidden p-2 text-muted-foreground hover:text-foreground rounded-[0.125rem] transition-colors"
+            className="md:hidden p-2 text-muted-foreground hover:text-foreground rounded-[0.125rem] transition-colors cursor-pointer"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Menu"
           >
@@ -82,7 +82,7 @@ export function AppHeader() {
                 <HeaderLogo />
                 <button
                   onClick={closeMobile}
-                  className="p-2 text-muted-foreground hover:text-foreground rounded-[0.125rem] transition-colors"
+                  className="p-2 text-muted-foreground hover:text-foreground rounded-[0.125rem] transition-colors cursor-pointer"
                   aria-label="Close menu"
                 >
                   <XIcon size={22} />

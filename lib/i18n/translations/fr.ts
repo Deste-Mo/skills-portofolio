@@ -22,6 +22,7 @@ const fr: Translations = {
       "Je conçois et développe des interfaces modernes, interactives et accessibles. Mon objectif : transformer des problèmes complexes en solutions élégantes.",
     viewWork: "Voir mon travail",
     letsTalk: "Discutons",
+    cv: "Mon CV",
   },
   about: {
     title: "À propos",
