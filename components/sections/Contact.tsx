@@ -44,8 +44,8 @@ export function ContactSection() {
                 </div>
                 <div className="min-w-0">
                   <p className="font-inter text-sm font-semibold text-foreground">{t.contact.email}</p>
-                  <a href="mailto:modestep20.aps1a@gmail.com" className="font-inter text-sm text-muted-foreground hover:text-primary transition-colors break-all">
-                    modestep20.aps1a@gmail.com
+                  <a href="mailto:tolojanaharyjeanmodeste@gmail.com" className="font-inter text-sm text-muted-foreground hover:text-primary transition-colors break-all">
+                    tolojanaharyjeanmodeste@gmail.com
                   </a>
                 </div>
               </div>

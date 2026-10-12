@@ -16,10 +16,10 @@ const fr: Translations = {
   },
   hero: {
     badge: "À l'écoute d'opportunités",
-    name: "Modeste TOLOJANAHARY",
-    role: "Développeur & Designer UI",
+    name: "MODESTE TOLOJANAHARY",
+    role: "Développeur Full stack & DevOps",
     description:
-      "Je conçois et développe des interfaces modernes, interactives et accessibles. Mon objectif : transformer des problèmes complexes en solutions élégantes.",
+      "Développeur full stack & DevOps (JavaScript, Python) : je conçois, développe et déploie des applications web et mobiles de bout en bout, du code jusqu’à la mise en production sur VPS.",
     viewWork: "Voir mon travail",
     letsTalk: "Discutons",
     cv: "Mon CV",

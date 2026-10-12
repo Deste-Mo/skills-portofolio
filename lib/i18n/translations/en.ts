@@ -16,10 +16,10 @@ const en: Translations = {
   },
   hero: {
     badge: "Open to opportunities",
-    name: "Modeste TOLOJANAHARY",
-    role: "Developer & UI Designer",
+    name: "MODESTE TOLOJANAHARY",
+    role: "Full Stack & DevOps Developer",
     description:
-      "I design and build modern, interactive, and accessible interfaces. My goal: turn complex problems into elegant solutions.",
+      "Full stack & DevOps developer (JavaScript, Python): I design, build, and deploy web and mobile applications end-to-end, from code to production on VPS.",
     viewWork: "View my work",
     letsTalk: "Let's talk",
     cv: "My CV",
