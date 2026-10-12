@@ -10,7 +10,9 @@ export function ServiceContent({ slug }: { slug: string }) {
   const { t, lang } = useTranslation()
   const service = getLocalizedService(slug, lang)
   const allServices = getLocalizedServices(lang)
-  const otherServices = allServices.filter((s) => s.slug !== slug)
+  const otherServices = allServices.filter(
+    (item, index, list) => item.slug !== slug && list.findIndex((entry) => entry.slug === item.slug) === index,
+  )
   if (!service) return null
   const ServiceIcon = service.icon
 

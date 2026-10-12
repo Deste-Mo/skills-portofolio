@@ -31,49 +31,22 @@ interface ProjectData {
 
 const projectsData: ProjectData[] = [
   {
-    title: "El Madagascar Tours",
-    titleEn: "El Madagascar Tours",
-    description: "Site web de voyage et circuits 4x4 à Madagascar. Guides locaux, circuits sur mesure, tourisme durable et réservation en ligne.",
-    descriptionEn: "Travel website for 4x4 tours in Madagascar. Local guides, custom itineraries, sustainable tourism, and online booking.",
-    type: "Site web",
-    typeEn: "Website",
-    image: "/images/projects/elmadagascar-tour.png",
-    tags: ["Next.js", "API REST", "PostgreSQL", "Git"],
-    categories: ["web"],
-    links: [{ label: "Site", labelEn: "Website", url: "https://elmadagascar-tours.com/" }],
-  },
-  {
-    title: "Altigéo",
-    titleEn: "Altigéo",
-    description: "Plateforme de traitement et analyse de données géographiques : maquettes 3D, plans topographiques et SIG.",
-    descriptionEn: "Geographic data processing platform: 3D models, topographic maps, and GIS.",
-    type: "Plateforme",
-    typeEn: "Platform",
-    image: "/images/projects/altigeo.png",
-    tags: ["Next.js", "API REST", "PostgreSQL", "Git"],
-    categories: ["web"],
-    links: [{ label: "Plateforme", labelEn: "Platform", url: "https://altigeo.mg/" }],
-  },
-  {
-    title: "Glib",
-    titleEn: "Glib",
-    description: "Landing page et application web/mobile de voyage avec recherche de destinations, itinéraires IA, hôtels et réservation multi-services.",
-    descriptionEn: "Landing page and web/mobile travel app with destination search, AI itineraries, hotels, and multi-service booking.",
-    type: "Application",
-    typeEn: "Application",
-    image: "/images/projects/glib-app.png",
-    tags: ["Next.js", "React Native", "GraphQL", "PostgreSQL", "Git"],
-    categories: ["web", "mobile", "ai"],
-    links: [
-      { label: "Landing page", labelEn: "Landing page", url: "https://www.glib.fr/" },
-      { label: "Application", labelEn: "App", url: "https://web.dev.glib.fr/" },
-    ],
+    title: "Qui fait quoi",
+    titleEn: "Qui fait quoi",
+    description: "Plateforme IA pour diagnostiquer les problèmes de logement locatif avec assistance en temps réel via GPT / OpenAI.",
+    descriptionEn: "AI platform for diagnosing rental housing issues with real-time assistance through GPT / OpenAI.",
+    type: "Plateforme IA",
+    typeEn: "AI Platform",
+    image: "/images/projects/qui-fait-qoui.png",
+    tags: ["Next.js", "OpenAI API", "GPT", "Docker", "PostgreSQL", "Git"],
+    categories: ["web", "ai"],
+    links: [{ label: "Site", labelEn: "Website", url: "https://qui-fait-qoui-test.vercel.app/" }],
   },
   {
     title: "GHR",
     titleEn: "GHR",
-    description: "Plateforme complète de gestion hôtelière et restauration : comptes personnel, planning, suivi des activités et administration des établissements.",
-    descriptionEn: "Complete hotel and restaurant management platform: staff accounts, scheduling, activity tracking, and establishment administration.",
+    description: "Plateforme web/mobile de gestion hôtelière et restauration : comptes du personnel, planning, suivi des activités et administration des établissements.",
+    descriptionEn: "Web/mobile platform for hotel and restaurant management: staff accounts, planning, activity tracking, and establishment administration.",
     type: "Application",
     typeEn: "Application",
     image: "/images/projects/ghr.png",
@@ -85,41 +58,28 @@ const projectsData: ProjectData[] = [
     ],
   },
   {
-    title: "Qui fait quoi",
-    titleEn: "Qui fait quoi",
-    description: "Plateforme IA pour diagnostiquer les problèmes de logement locatif. Assistance en temps réel avec GPT et OpenAI.",
-    descriptionEn: "AI platform for diagnosing rental housing issues. Real-time assistance with GPT and OpenAI.",
-    type: "Plateforme IA",
-    typeEn: "AI Platform",
-    image: "/images/projects/qui-fait-qoui.png",
-    tags: ["Next.js", "OpenAI API", "GPT", "Docker", "PostgreSQL", "Git"],
-    categories: ["web", "ai"],
-    links: [{ label: "Site", labelEn: "Website", url: "https://qui-fait-qoui-test.vercel.app/" }],
+    title: "Altigéo",
+    titleEn: "Altigéo",
+    description: "Plateforme de traitement et d’analyse de données géographiques : maquettes 3D, plans topographiques et SIG.",
+    descriptionEn: "Geographic data processing and analysis platform: 3D models, topographic plans, and GIS.",
+    type: "Plateforme",
+    typeEn: "Platform",
+    image: "/images/projects/altigeo.png",
+    tags: ["Next.js", "API REST", "PostgreSQL", "Git"],
+    categories: ["web"],
+    links: [{ label: "Plateforme", labelEn: "Platform", url: "https://altigeo.mg/" }],
   },
   {
-    title: "Gotake",
-    titleEn: "Gotake",
-    description: "Application mobile de e-commerce et expédition. Développement frontend React Native et iOS.",
-    descriptionEn: "Mobile e-commerce and shipping application. React Native and iOS frontend development.",
-    type: "Application mobile",
-    typeEn: "Mobile App",
-    image: "/images/projects/go-take.png",
-    tags: ["React Native", "Mobile", "iOS", "Git"],
-    categories: ["mobile"],
-    links: [{ label: "Site", labelEn: "Website", url: "https://gotake.company/" }],
-  },
-  {
-    title: "Portfolio V1",
-    titleEn: "Portfolio V1",
-    description: "Site portfolio moderne avec animations fluides, mode sombre et design responsive.",
-    descriptionEn: "Modern portfolio website with smooth animations, dark mode, and responsive design.",
+    title: "El Madagascar Tours",
+    titleEn: "El Madagascar Tours",
+    description: "Site de voyage proposant des circuits 4x4 à Madagascar, itinéraires sur mesure et réservation en ligne.",
+    descriptionEn: "Travel website offering 4x4 tours in Madagascar, personalized itineraries, and online booking.",
     type: "Site web",
     typeEn: "Website",
-    image: "/images/projects/portofolio-v1.png",
-    tags: ["Next.js", "PostgreSQL", "Git"],
+    image: "/images/projects/elmadagascar-tour.png",
+    tags: ["Next.js", "API REST", "PostgreSQL", "Git"],
     categories: ["web"],
-    links: [{ label: "Site", labelEn: "Website", url: "https://modeste-tolojanahary.netlify.app" }],
-    githubUrl: "#",
+    links: [{ label: "Site", labelEn: "Website", url: "https://elmadagascar-tours.com/" }],
   },
 ]
 
@@ -204,18 +164,13 @@ export function ProjectsSection() {
                   className="object-contain p-4 md:p-6 group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-l from-background/20 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute top-3 right-3 flex gap-2">
-                  {project.links.map((link, i) => (
-                    <Link key={i} href={link.url} target="_blank" rel="noopener noreferrer" className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-primary/90 backdrop-blur-sm text-primary-foreground hover:bg-primary transition-colors shadow-lg" aria-label={link.label}>
-                      <ArrowUpRight className="h-3.5 w-3.5" />
-                    </Link>
-                  ))}
-                  {project.githubUrl && project.githubUrl !== "#" && (
+                {project.githubUrl && project.githubUrl !== "#" && (
+                  <div className="absolute top-3 right-3">
                     <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-background/80 backdrop-blur-sm text-foreground hover:bg-background transition-colors shadow-lg" aria-label="GitHub">
                       <Code className="h-3.5 w-3.5" />
                     </Link>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
               <div className="flex-1 p-5 md:p-7 lg:p-8 flex flex-col justify-center">
                 <span className="font-inter text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full w-fit mb-3">
