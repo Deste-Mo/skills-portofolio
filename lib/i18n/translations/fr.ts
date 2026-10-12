@@ -16,10 +16,10 @@ const fr: Translations = {
   },
   hero: {
     badge: "À l'écoute d'opportunités",
-    name: "Modeste TOLOJANAHARY",
-    role: "Développeur & Designer UI",
+    name: "MODESTE TOLOJANAHARY",
+    role: "Développeur Full stack & DevOps",
     description:
-      "Je conçois et développe des interfaces modernes, interactives et accessibles. Mon objectif : transformer des problèmes complexes en solutions élégantes.",
+      "Développeur full stack & DevOps (JavaScript, Python) : je conçois, développe et déploie des applications web et mobiles de bout en bout, du code jusqu’à la mise en production sur VPS.",
     viewWork: "Voir mon travail",
     letsTalk: "Discutons",
     cv: "Mon CV",
@@ -27,12 +27,12 @@ const fr: Translations = {
   about: {
     title: "À propos",
     subtitle:
-      "Développeur fullstack JavaScript, Python avec expérience en API REST/GraphQL et applications performantes. Intéressé par les technologies innovantes comme l'IA.",
-    role: "Développeur web & mobile",
+      "Développeur full stack & DevOps (JavaScript, Python) : je conçois, développe et déploie des applications web et mobiles de bout en bout, du code jusqu’à la mise en production sur VPS.",
+    role: "Développeur Full stack & DevOps",
     description:
-      "Développeur fullstack JavaScript, Python avec expérience en API REST/GraphQL et applications performantes. Intéressé par les technologies innovantes comme l'IA.",
+      "Développeur full stack & DevOps (JavaScript, Python) : je conçois et mets en production des applications robustes, du frontend jusqu’aux environnements de déploiement. À l’aise avec Docker, Git, les API REST/GraphQL et la gestion des environnements dev/test/prod.",
     contact: "Contact",
-    contactDesc: "Disponible pour discuter de votre projet.",
+    contactDesc: "Disponible pour de nouveaux projets, collaborations et missions techniques.",
     interests: "Centres d'intérêt",
     quote: "Designer l'expérience, développer la solution.",
   },

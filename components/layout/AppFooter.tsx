@@ -62,7 +62,7 @@ export function AppFooter() {
           {/* Social links */}
           <div className="flex items-center gap-3 order-1 md:order-3">
             <a
-              href="mailto:modestep20.aps1a@gmail.com"
+              href="mailto:tolojanaharyjeanmodeste@gmail.com"
               className="flex h-8 w-8 items-center justify-center rounded-[0.125rem] border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
               aria-label="Email"
             >

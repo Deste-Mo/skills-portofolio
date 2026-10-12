@@ -81,7 +81,7 @@ export function Hero() {
         <ScrollReveal animation="slide-up" delay={500}>
           <div className="flex items-center justify-center gap-4 mt-6 sm:mt-10 md:mt-16">
             <a
-              href="mailto:modestep20.aps1a@gmail.com"
+              href="mailto:tolojanaharyjeanmodeste@gmail.com"
               className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-[0.125rem] border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
               aria-label="Email"
             >
