@@ -57,7 +57,7 @@ export function ContactSection() {
                 <div className="min-w-0">
                   <p className="font-inter text-sm font-semibold text-foreground">{t.contact.phone}</p>
                   <a href="tel:+261347491885" className="font-inter text-sm text-muted-foreground hover:text-primary transition-colors">
-                    +261 34 74 918 85
+                    +261 34 74 918 85 / +261 38 36 842 11
                   </a>
                 </div>
               </div>

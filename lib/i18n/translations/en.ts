@@ -27,12 +27,12 @@ const en: Translations = {
   about: {
     title: "About",
     subtitle:
-      "Fullstack JavaScript, Python developer with experience in REST/GraphQL APIs and performant applications. Interested in innovative technologies like AI.",
-    role: "Web & mobile developer",
+      "Full stack & DevOps developer (JavaScript, Python) designing, building, and deploying web and mobile applications end-to-end, from code to production on VPS.",
+    role: "Full stack & DevOps developer",
     description:
-      "Fullstack JavaScript, Python developer with experience in REST/GraphQL APIs and performant applications. Interested in innovative technologies like AI.",
+      "Full stack & DevOps developer (JavaScript, Python) focused on building robust applications from frontend to production deployment. I work with Docker, Git, REST/GraphQL APIs, and development, testing, and production environments.",
     contact: "Contact",
-    contactDesc: "Available to discuss your project.",
+    contactDesc: "Available for new projects, collaborations, and technical missions.",
     interests: "Interests",
     quote: "Design the experience, build the solution.",
   },
