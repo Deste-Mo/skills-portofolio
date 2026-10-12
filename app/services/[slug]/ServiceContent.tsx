@@ -1,10 +1,51 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react"
+import {
+  ArrowLeft,
+  ArrowRight,
+  Box,
+  CheckCircle2,
+  Cloud,
+  Code2,
+  Database,
+  GitBranch,
+  Globe,
+  LayoutTemplate,
+  MonitorSmartphone,
+  Palette,
+  Rocket,
+  Server,
+  ShieldCheck,
+  Smartphone,
+  Sparkles,
+  Workflow,
+} from "lucide-react"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
 import { getLocalizedService, getLocalizedServices } from "@/config/services"
 import { useTranslation } from "@/lib/i18n/context"
+
+function getTechnologyIcon(name: string) {
+  const normalized = name.toLowerCase()
+
+  if (normalized.includes("next") || normalized.includes("react") || normalized.includes("tailwind")) return LayoutTemplate
+  if (normalized.includes("typescript") || normalized.includes("javascript") || normalized.includes("code")) return Code2
+  if (normalized.includes("docker") || normalized.includes("container") || normalized.includes("nginx")) return Box
+  if (normalized.includes("postgres") || normalized.includes("mysql") || normalized.includes("sql") || normalized.includes("database")) return Database
+  if (normalized.includes("github") || normalized.includes("git")) return GitBranch
+  if (normalized.includes("api") || normalized.includes("graphql") || normalized.includes("rest") || normalized.includes("webhook")) return Workflow
+  if (normalized.includes("firebase") || normalized.includes("cloud") || normalized.includes("vps") || normalized.includes("linux")) return Cloud
+  if (normalized.includes("figma") || normalized.includes("figjam") || normalized.includes("design") || normalized.includes("prototype") || normalized.includes("wireframe") || normalized.includes("access")) return Palette
+  if (normalized.includes("node") || normalized.includes("express") || normalized.includes("laravel") || normalized.includes("fastapi") || normalized.includes("django")) return Server
+  if (normalized.includes("flutter") || normalized.includes("react native") || normalized.includes("expo") || normalized.includes("mobile") || normalized.includes("ios") || normalized.includes("android")) return Smartphone
+  if (normalized.includes("auth") || normalized.includes("jwt") || normalized.includes("security") || normalized.includes("https") || normalized.includes("ssl") || normalized.includes("dns")) return ShieldCheck
+  if (normalized.includes("seo") || normalized.includes("performance") || normalized.includes("ux") || normalized.includes("responsive") || normalized.includes("optimisation")) return MonitorSmartphone
+  if (normalized.includes("globe") || normalized.includes("web") || normalized.includes("frontend") || normalized.includes("interface")) return Globe
+  if (normalized.includes("spark") || normalized.includes("micro") || normalized.includes("animation")) return Sparkles
+  if (normalized.includes("branch") || normalized.includes("workflow")) return GitBranch
+
+  return Rocket
+}
 
 export function ServiceContent({ slug }: { slug: string }) {
   const { t, lang } = useTranslation()
@@ -73,21 +114,30 @@ export function ServiceContent({ slug }: { slug: string }) {
           >
             {t.service.technologies}
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+
+          <div className="space-y-6">
             {service.technologies.map((tech, i) => (
-              <ScrollReveal key={tech.category} animation="slide-up" delay={i * 80}>
-                <div className="bg-muted/20 border border-border/50 rounded-xl p-4 flex flex-col items-center text-center hover:bg-muted/30 transition-colors h-full">
-                  <span className="font-manrope text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+              <ScrollReveal key={tech.category} animation="slide-up" delay={i * 70}>
+                <div className="bg-muted/20 border border-border/50 rounded-xl p-4 md:p-5">
+                  <span className="font-manrope text-xs font-semibold text-muted-foreground uppercase tracking-[0.14em] mb-3 block">
                     {tech.category}
                   </span>
-                  {tech.items.map((item) => (
-                    <span key={item.name} className="font-inter text-sm text-foreground">
-                      {item.name}
-                      {item.sub && (
-                        <span className="block text-xs text-muted-foreground">{item.sub}</span>
-                      )}
-                    </span>
-                  ))}
+
+                  <div className="flex flex-wrap gap-3">
+                    {tech.items.map((item) => {
+                      const Icon = getTechnologyIcon(item.name)
+
+                      return (
+                        <div
+                          key={item.name}
+                          className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/80 px-3 py-2 text-sm text-foreground shadow-sm"
+                        >
+                          <Icon className="h-4 w-4 text-primary" />
+                          <span className="font-inter text-sm">{item.name}</span>
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
