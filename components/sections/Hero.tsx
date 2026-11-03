@@ -19,30 +19,30 @@ export function Hero() {
               <span className="block font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">
                 {t.hero.badge}
               </span>
-              <h1 className="font-['Plus_Jakarta_Sans'] text-[40px] leading-[0.92] tracking-[-0.06em] text-[#0f172a] sm:text-[52px] md:text-[60px] lg:text-[72px] dark:text-[#e1e2ec]">
+              <h1 className="font-sans text-[40px] leading-[0.92] tracking-[-0.06em] text-[#0f172a] sm:text-[52px] md:text-[60px] lg:text-[72px] dark:text-[#e1e2ec]">
                 MODESTE <br />
                 <span className="font-extrabold text-[#059669] dark:text-[#00e5a3]">TOLOJANAHARY</span>
               </h1>
-              <p className="font-['Plus_Jakarta_Sans'] text-[22px] font-medium tracking-tight text-[#2563eb] dark:text-[#93b4ff] md:text-[28px]">
+              <p className="font-sans text-[22px] font-medium tracking-tight text-[#2563eb] dark:text-[#93b4ff] md:text-[28px]">
                 {t.hero.role}
               </p>
             </div>
 
-            <p className="max-w-2xl font-inter text-[18px] leading-relaxed text-[#475569] dark:text-[#9aa5b5]">
+            <p className="max-w-2xl font-sans text-[18px] leading-relaxed text-[#475569] dark:text-[#9aa5b5]">
               {t.hero.description}
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <a
                 href="#projets"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#059669] px-6 py-3.5 font-manrope text-[15px] font-bold text-white transition-colors hover:bg-[#047857] dark:bg-[#00e5a3] dark:text-[#0d0f14] dark:hover:bg-white"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#059669] px-6 py-3.5 font-sans text-[15px] font-bold text-white transition-colors hover:bg-[#047857] dark:bg-[#00e5a3] dark:text-[#0d0f14] dark:hover:bg-white"
               >
                 <span>{t.hero.viewWork}</span>
                 <ArrowDown size={18} />
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#dfe4ea] bg-white px-6 py-3.5 font-manrope text-[15px] font-semibold text-[#0f172a] transition-colors hover:border-[#059669] hover:text-[#059669] dark:border-[#525c6c]/30 dark:bg-[#181b22] dark:text-[#e1e2ec] dark:hover:text-[#00e5a3]"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#dfe4ea] bg-white px-6 py-3.5 font-sans text-[15px] font-semibold text-[#0f172a] transition-colors hover:border-[#059669] hover:text-[#059669] dark:border-[#525c6c]/30 dark:bg-[#181b22] dark:text-[#e1e2ec] dark:hover:text-[#00e5a3]"
               >
                 <span>{t.hero.letsTalk}</span>
                 <MessageCircle size={18} />
@@ -128,13 +128,13 @@ export function Hero() {
               <div className="grid grid-cols-2 gap-3 pt-3">
                 <div className="rounded-lg border border-[#dfe4ea] bg-[#f8fafc] p-3 dark:border-[#3b494b]/20 dark:bg-[#181b22]">
                   <span className="block font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">Disponibilité</span>
-                  <span className="font-['JetBrains_Mono'] text-[24px] font-bold text-[#059669] dark:text-[#00e5a3]">99.98%</span>
-                  <span className="mt-0.5 block font-inter text-[13px] text-[#475569] dark:text-[#9aa5b5]">Uptime Monitored</span>
+                  <span className="font-mono text-[24px] font-bold text-[#059669] dark:text-[#00e5a3]">99.98%</span>
+                  <span className="mt-0.5 block font-sans text-[13px] text-[#475569] dark:text-[#9aa5b5]">Uptime Monitored</span>
                 </div>
                 <div className="rounded-lg border border-[#dfe4ea] bg-[#f8fafc] p-3 dark:border-[#3b494b]/20 dark:bg-[#181b22]">
                   <span className="block font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">Déploiements</span>
-                  <span className="font-['JetBrains_Mono'] text-[24px] font-bold text-[#2563eb] dark:text-[#93b4ff]">&lt; 3 min</span>
-                  <span className="mt-0.5 block font-inter text-[13px] text-[#475569] dark:text-[#9aa5b5]">Automated Git Push</span>
+                  <span className="font-mono text-[24px] font-bold text-[#2563eb] dark:text-[#93b4ff]">&lt; 3 min</span>
+                  <span className="mt-0.5 block font-sans text-[13px] text-[#475569] dark:text-[#9aa5b5]">Automated Git Push</span>
                 </div>
               </div>
             </div>

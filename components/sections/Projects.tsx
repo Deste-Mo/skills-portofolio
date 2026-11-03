@@ -65,8 +65,8 @@ export function ProjectsSection() {
               <span className="inline-block h-0.5 w-8 bg-[#059669] dark:bg-[#00e5a3]"></span>
               <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">Portfolio Réalisations</span>
             </div>
-            <h2 className="font-['Plus_Jakarta_Sans'] text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">Projets</h2>
-            <p className="mt-2 max-w-3xl font-inter text-[15px] leading-relaxed text-[#475569] md:text-[18px] dark:text-[#9aa5b5]">
+            <h2 className="font-sans text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">Projets</h2>
+            <p className="mt-2 max-w-3xl font-sans text-[15px] leading-relaxed text-[#475569] md:text-[18px] dark:text-[#9aa5b5]">
               Une sélection de mes réalisations récentes
             </p>
           </div>
@@ -109,8 +109,8 @@ export function ProjectsSection() {
                   <span className="font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">{project.type === "Plateforme IA" ? "OpenAI / Production" : project.type === "Application" ? "Gestion Hôtelière & Restauration" : project.type === "Plateforme" ? "SIG & Topographie 3D" : "E-commerce Tourisme"}</span>
                 </div>
 
-                <h3 className="font-['Plus_Jakarta_Sans'] text-[28px] text-[#0f172a] dark:text-[#e1e2ec]">{project.title}</h3>
-                <p className="font-inter text-[15px] leading-relaxed text-[#475569] dark:text-[#9aa5b5]">{project.description}</p>
+                <h3 className="font-sans text-[28px] text-[#0f172a] dark:text-[#e1e2ec]">{project.title}</h3>
+                <p className="font-sans text-[15px] leading-relaxed text-[#475569] dark:text-[#9aa5b5]">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 pt-2">
                   {project.tags.map((tag) => (
@@ -126,7 +126,7 @@ export function ProjectsSection() {
                       href={project.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-lg bg-[#059669] px-5 py-2.5 font-manrope text-[14px] font-bold text-white transition-colors hover:bg-[#047857] dark:bg-[#00e5a3] dark:text-[#0d0f14] dark:hover:bg-white"
+                      className="inline-flex items-center gap-2 rounded-lg bg-[#059669] px-5 py-2.5 font-sans text-[14px] font-bold text-white transition-colors hover:bg-[#047857] dark:bg-[#00e5a3] dark:text-[#0d0f14] dark:hover:bg-white"
                     >
                       <span>{project.cta}</span>
                       <ArrowUpRight size={18} />
@@ -140,7 +140,7 @@ export function ProjectsSection() {
                         href={link.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-2 rounded-lg border border-[#dfe4ea] bg-[#f8fafc] px-4 py-2.5 font-manrope text-[14px] text-[#0f172a] transition-colors hover:border-[#059669] hover:text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#181b22] dark:text-[#e1e2ec] dark:hover:text-[#00e5a3]"
+                        className="inline-flex items-center gap-2 rounded-lg border border-[#dfe4ea] bg-[#f8fafc] px-4 py-2.5 font-sans text-[14px] text-[#0f172a] transition-colors hover:border-[#059669] hover:text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#181b22] dark:text-[#e1e2ec] dark:hover:text-[#00e5a3]"
                       >
                         <span>{link.label}</span>
                         <ExternalLink size={16} />

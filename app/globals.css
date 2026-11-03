@@ -70,10 +70,10 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --font-sans: "Inter", "Segoe UI", sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", "SFMono-Regular", monospace;
   --font-manrope: "Plus Jakarta Sans", "Inter", sans-serif;
-  --font-inter: "Inter", "Segoe UI", sans-serif;
+  --font-inter: "Plus Jakarta Sans", "Inter", "Segoe UI", sans-serif;
   --font-handwriting: "Just Me Again Down Here", cursive;
 }
 
@@ -86,7 +86,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
+  font-family: "Plus Jakarta Sans", "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
 }
 
 section {

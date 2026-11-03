@@ -38,8 +38,8 @@ export function AboutSection() {
             <span className="inline-block h-0.5 w-8 bg-[#059669] dark:bg-[#00e5a3]"></span>
             <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">Présentation</span>
           </div>
-          <h2 className="font-['Plus_Jakarta_Sans'] text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">À propos</h2>
-          <p className="mt-2 max-w-3xl font-inter text-[15px] leading-relaxed text-[#475569] md:text-[18px] dark:text-[#9aa5b5]">
+          <h2 className="font-sans text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">À propos</h2>
+          <p className="mt-2 max-w-3xl font-sans text-[15px] leading-relaxed text-[#475569] md:text-[18px] dark:text-[#9aa5b5]">
             Développeur full stack &amp; DevOps (JavaScript, Python, PHP) : je conçois, développe et déploie des applications web et mobiles de bout en bout, du code jusqu’à la mise en production sur VPS.
           </p>
         </div>
@@ -52,12 +52,12 @@ export function AboutSection() {
                   <span className="inline-flex rounded-lg bg-[#ecfdf5] p-2 text-[#059669] dark:bg-[#181b22] dark:text-[#00e5a3]">
                     <TerminalSquare size={22} />
                   </span>
-                  <h3 className="font-['Plus_Jakarta_Sans'] text-[20px] text-[#0f172a] dark:text-[#e1e2ec]">Développeur Full stack &amp; DevOps</h3>
+                  <h3 className="font-sans text-[20px] text-[#0f172a] dark:text-[#e1e2ec]">Développeur Full stack &amp; DevOps</h3>
                 </div>
                 <span className="rounded-full border border-[#dfe4ea] bg-[#f8fafc] px-3 py-1 font-mono text-[12px] text-[#059669] dark:border-[#3b494b]/30 dark:bg-[#181b22] dark:text-[#00e5a3]">Senior Core</span>
               </div>
 
-              <p className="font-inter text-[15px] leading-relaxed text-[#475569] dark:text-[#9aa5b5]">
+              <p className="font-sans text-[15px] leading-relaxed text-[#475569] dark:text-[#9aa5b5]">
                 Développeur full stack &amp; DevOps (JavaScript, Python, PHP) : je conçois et mets en production des applications robustes, du frontend jusqu’aux environnements de déploiement. À l’aise avec Docker, Git, les API REST/GraphQL et la gestion des environnements dev/test/prod.
               </p>
             </div>
@@ -75,10 +75,10 @@ export function AboutSection() {
                 </div>
 
                 <div className="space-y-2 text-center sm:text-left">
-                  <blockquote className="font-['Plus_Jakarta_Sans'] text-[18px] font-medium italic text-[#059669] dark:text-[#00e5a3]">
+                  <blockquote className="font-sans text-[18px] font-medium italic text-[#059669] dark:text-[#00e5a3]">
                     « Designer l'expérience, développer la solution. »
                   </blockquote>
-                  <p className="font-inter text-[13px] text-[#475569] dark:text-[#9aa5b5]">
+                  <p className="font-sans text-[13px] text-[#475569] dark:text-[#9aa5b5]">
                     Une approche axée sur l'expérience humaine, consolidée par une rigueur d'ingénierie logicielle sans faille.
                   </p>
                 </div>
@@ -93,7 +93,7 @@ export function AboutSection() {
                   <span className="inline-flex rounded-lg bg-[#eff6ff] p-2 text-[#2563eb] dark:bg-[#181b22] dark:text-[#93b4ff]">
                     <BriefcaseBusiness size={22} />
                   </span>
-                  <h3 className="font-['Plus_Jakarta_Sans'] text-[20px] text-[#0f172a] dark:text-[#e1e2ec]">Coordonnées</h3>
+                  <h3 className="font-sans text-[20px] text-[#0f172a] dark:text-[#e1e2ec]">Coordonnées</h3>
                 </div>
                 <span className="flex items-center gap-1.5 font-mono text-[12px] font-semibold text-[#059669] dark:text-[#00e5a3]">
                   <span className="h-2 w-2 rounded-full bg-[#22c55e]"></span>
@@ -101,11 +101,11 @@ export function AboutSection() {
                 </span>
               </div>
 
-              <p className="font-inter text-[13px] text-[#475569] dark:text-[#9aa5b5]">
+              <p className="font-sans text-[13px] text-[#475569] dark:text-[#9aa5b5]">
                 Disponible pour de nouveaux projets, collaborations et missions techniques.
               </p>
 
-              <ul className="space-y-3 font-inter text-[13px]">
+              <ul className="space-y-3 font-sans text-[13px]">
                 {contacts.map(({ icon: Icon, label, href }) => (
                   <li key={label} className="flex items-center gap-3 rounded-lg border border-[#dfe4ea] bg-[#f8fafc] p-2.5 transition-colors hover:border-[#059669]/40 dark:border-[#3b494b]/20 dark:bg-[#181b22]">
                     <span className="inline-flex text-[#059669] dark:text-[#00e5a3]">
@@ -130,7 +130,7 @@ export function AboutSection() {
               <span className="mb-2.5 block font-mono text-[12px] uppercase tracking-[0.2em] text-[#64748b] dark:text-[#525c6c]">Centres d'intérêt</span>
               <div className="flex flex-wrap items-center gap-2">
                 {interests.map(({ icon: Icon, label }) => (
-                  <span key={label} className="flex items-center gap-1.5 rounded-full border border-[#dfe4ea] bg-[#f8fafc] px-3.5 py-1.5 font-inter text-[13px] text-[#0f172a] transition-colors hover:bg-[#eef2ff] dark:border-[#3b494b]/20 dark:bg-[#181b22] dark:text-[#e1e2ec]">
+                  <span key={label} className="flex items-center gap-1.5 rounded-full border border-[#dfe4ea] bg-[#f8fafc] px-3.5 py-1.5 font-sans text-[13px] text-[#0f172a] transition-colors hover:bg-[#eef2ff] dark:border-[#3b494b]/20 dark:bg-[#181b22] dark:text-[#e1e2ec]">
                     <Icon size={14} className="text-[#059669] dark:text-[#00e5a3]" />
                     {label}
                   </span>

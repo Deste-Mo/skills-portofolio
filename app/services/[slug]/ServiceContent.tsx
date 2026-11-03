@@ -70,14 +70,14 @@ export function ServiceContent({ slug }: { slug: string }) {
       <ScrollReveal animation="slide-up">
         <div className="mb-16 md:mb-20">
           <h1
-            className="font-manrope text-4xl md:text-[48px] font-semibold text-foreground mb-4 max-w-3xl flex items-center gap-4"
+            className="font-sans text-4xl md:text-[48px] font-semibold text-foreground mb-4 max-w-3xl flex items-center gap-4"
             style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
           >
             <ServiceIcon className="h-8 w-8 md:h-10 md:w-10 text-primary shrink-0" />
             {service.title}
           </h1>
           <p
-            className="font-inter text-base md:text-lg text-muted-foreground max-w-2xl"
+            className="font-sans text-base md:text-lg text-muted-foreground max-w-2xl"
             style={{ lineHeight: "1.75" }}
           >
             {service.heroDescription}
@@ -88,7 +88,7 @@ export function ServiceContent({ slug }: { slug: string }) {
       <ScrollReveal animation="slide-up">
         <section className="mb-16 md:mb-20">
           <h2
-            className="font-manrope text-2xl md:text-3xl font-semibold text-foreground mb-8"
+            className="font-sans text-2xl md:text-3xl font-semibold text-foreground mb-8"
             style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
           >
             {t.service.offerings}
@@ -98,7 +98,7 @@ export function ServiceContent({ slug }: { slug: string }) {
               <ScrollReveal key={offer} animation="slide-up" delay={i * 50}>
                 <div className="flex items-start gap-3 p-4 rounded-lg bg-muted/20 border border-border/50">
                   <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="font-inter text-sm text-foreground">{offer}</span>
+                  <span className="font-sans text-sm text-foreground">{offer}</span>
                 </div>
               </ScrollReveal>
             ))}
@@ -109,7 +109,7 @@ export function ServiceContent({ slug }: { slug: string }) {
       <ScrollReveal animation="slide-up">
         <section className="mb-16 md:mb-20">
           <h2
-            className="font-manrope text-2xl md:text-3xl font-semibold text-foreground mb-8"
+            className="font-sans text-2xl md:text-3xl font-semibold text-foreground mb-8"
             style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
           >
             {t.service.technologies}
@@ -119,7 +119,7 @@ export function ServiceContent({ slug }: { slug: string }) {
             {service.technologies.map((tech, i) => (
               <ScrollReveal key={tech.category} animation="slide-up" delay={i * 70}>
                 <div className="bg-muted/20 border border-border/50 rounded-xl p-4 md:p-5">
-                  <span className="font-manrope text-xs font-semibold text-muted-foreground uppercase tracking-[0.14em] mb-3 block">
+                  <span className="font-sans text-xs font-semibold text-muted-foreground uppercase tracking-[0.14em] mb-3 block">
                     {tech.category}
                   </span>
 
@@ -133,7 +133,7 @@ export function ServiceContent({ slug }: { slug: string }) {
                           className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/80 px-3 py-2 text-sm text-foreground shadow-sm"
                         >
                           <Icon className="h-4 w-4 text-primary" />
-                          <span className="font-inter text-sm">{item.name}</span>
+                          <span className="font-sans text-sm">{item.name}</span>
                         </div>
                       )
                     })}
@@ -148,7 +148,7 @@ export function ServiceContent({ slug }: { slug: string }) {
       <ScrollReveal animation="slide-up">
         <section className="mb-16 md:mb-20">
           <h2
-            className="font-manrope text-2xl md:text-3xl font-semibold text-foreground mb-8"
+            className="font-sans text-2xl md:text-3xl font-semibold text-foreground mb-8"
             style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
           >
             {t.service.process}
@@ -157,11 +157,11 @@ export function ServiceContent({ slug }: { slug: string }) {
             {service.process.map((step, i) => (
               <ScrollReveal key={step.step} animation="slide-up" delay={i * 100}>
                 <div className="bg-muted/20 border border-border/50 rounded-xl p-6 relative flex flex-col h-full">
-                  <span className="font-manrope text-4xl font-bold text-primary/20 block mb-4">
+                  <span className="font-sans text-4xl font-bold text-primary/20 block mb-4">
                     {String(step.step).padStart(2, "0")}
                   </span>
-                  <h3 className="font-manrope text-base font-semibold text-foreground mb-2">{step.title}</h3>
-                  <p className="font-inter text-sm text-muted-foreground leading-relaxed">{step.description}</p>
+                  <h3 className="font-sans text-base font-semibold text-foreground mb-2">{step.title}</h3>
+                  <p className="font-sans text-sm text-muted-foreground leading-relaxed">{step.description}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -173,7 +173,7 @@ export function ServiceContent({ slug }: { slug: string }) {
         <ScrollReveal animation="slide-up">
           <section className="mb-16 md:mb-20">
             <h2
-              className="font-manrope text-2xl md:text-3xl font-semibold text-foreground mb-8"
+              className="font-sans text-2xl md:text-3xl font-semibold text-foreground mb-8"
               style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
             >
               {t.service.otherServices}
@@ -188,8 +188,8 @@ export function ServiceContent({ slug }: { slug: string }) {
                       className="group bg-muted/20 border border-border/50 rounded-xl p-6 hover:bg-muted/30 hover:scale-[1.02] transition-all duration-300 flex flex-col h-full"
                     >
                       <OtherIcon className="h-8 w-8 text-primary mb-3 group-hover:scale-110 transition-transform" />
-                      <h3 className="font-manrope text-sm font-semibold text-foreground mb-2">{other.title}</h3>
-                      <p className="font-inter text-xs text-muted-foreground leading-relaxed flex-1 mb-3">
+                      <h3 className="font-sans text-sm font-semibold text-foreground mb-2">{other.title}</h3>
+                      <p className="font-sans text-xs text-muted-foreground leading-relaxed flex-1 mb-3">
                         {other.description}
                       </p>
                       <div className="flex items-center gap-1 text-xs font-medium text-primary group-hover:gap-2 transition-all">
@@ -208,13 +208,13 @@ export function ServiceContent({ slug }: { slug: string }) {
       <ScrollReveal animation="slide-up">
         <section className="bg-muted/20 border border-border/50 rounded-xl p-8 md:p-12 text-center">
           <h2
-            className="font-manrope text-2xl md:text-3xl font-semibold text-foreground mb-4"
+            className="font-sans text-2xl md:text-3xl font-semibold text-foreground mb-4"
             style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
           >
             {t.service.cta.title}
           </h2>
           <p
-            className="font-inter text-base text-muted-foreground mb-8 max-w-xl mx-auto"
+            className="font-sans text-base text-muted-foreground mb-8 max-w-xl mx-auto"
             style={{ lineHeight: "1.75" }}
           >
             {t.service.cta.description}
@@ -222,13 +222,13 @@ export function ServiceContent({ slug }: { slug: string }) {
           <div className="flex items-center justify-center gap-4">
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-inter text-sm font-medium hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-sans text-sm font-medium hover:bg-primary/90 transition-colors"
             >
               {t.service.cta.contact}
             </Link>
             <Link
               href="/#projects"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border/50 font-inter text-sm font-medium text-foreground hover:bg-muted/30 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border/50 font-sans text-sm font-medium text-foreground hover:bg-muted/30 transition-colors"
             >
               {t.service.cta.projects}
             </Link>

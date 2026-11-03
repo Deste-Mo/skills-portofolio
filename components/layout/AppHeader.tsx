@@ -22,8 +22,11 @@ export function AppHeader() {
 
   return (
     <>
-      <header className="fixed left-0 top-0 z-50 w-full bg-white/95 shadow-sm backdrop-blur-md dark:bg-[#111319]/95 dark:shadow-none">
-        <div className="mx-auto flex h-20 w-full max-w-[1280px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <header
+        className="fixed left-0 top-0 z-50 w-full shadow-sm backdrop-blur-md dark:shadow-none"
+        style={{ backgroundColor: "var(--card)" }}
+      >
+        <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
           <div className="flex shrink-0 items-center justify-start">
             <HeaderLogo />
           </div>
@@ -33,7 +36,7 @@ export function AppHeader() {
               <a
                 key={item.href}
                 href={item.href}
-                className="font-inter text-[14px] font-medium text-[#475569] transition-colors hover:text-[#0f172a] dark:text-[#9aa5b5] dark:hover:text-[#e1e2ec]"
+                className="font-sans text-[14px] font-medium text-[#475569] transition-colors hover:text-[#0f172a] dark:text-[#9aa5b5] dark:hover:text-[#e1e2ec]"
               >
                 {item.label}
               </a>

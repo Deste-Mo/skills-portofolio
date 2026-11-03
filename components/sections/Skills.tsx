@@ -78,8 +78,8 @@ export function SkillsSection() {
           <span className="inline-block h-0.5 w-8 bg-[#059669] dark:bg-[#00e5a3]"></span>
           <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">Expertise Technique</span>
         </div>
-        <h2 className="font-['Plus_Jakarta_Sans'] text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">{t.skills.title}</h2>
-        <p className="mt-2 max-w-3xl font-inter text-[15px] leading-relaxed text-[#475569] md:text-[18px] dark:text-[#9aa5b5]">
+        <h2 className="font-sans text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">{t.skills.title}</h2>
+        <p className="mt-2 max-w-3xl font-sans text-[15px] leading-relaxed text-[#475569] md:text-[18px] dark:text-[#9aa5b5]">
           {t.skills.description}
         </p>
       </div>
@@ -97,8 +97,8 @@ export function SkillsSection() {
                 <span className="font-mono text-[12px] font-medium text-[#64748b] dark:text-[#525c6c]">{skill.number}</span>
               </div>
 
-              <h3 className="mb-1 font-['Plus_Jakarta_Sans'] text-[20px] text-[#0f172a] dark:text-[#e1e2ec]">{skill.title}</h3>
-              <p className="mb-4 font-inter text-[13px] leading-relaxed text-[#475569] dark:text-[#9aa5b5]">{skill.description}</p>
+              <h3 className="mb-1 font-sans text-[20px] text-[#0f172a] dark:text-[#e1e2ec]">{skill.title}</h3>
+              <p className="mb-4 font-sans text-[13px] leading-relaxed text-[#475569] dark:text-[#9aa5b5]">{skill.description}</p>
 
               <div className="flex flex-wrap gap-2 pt-2">
                 {skill.tags.map((tag) => (
@@ -117,9 +117,9 @@ export function SkillsSection() {
               <span className="inline-flex rounded-lg bg-[#ecfdf5] p-2.5 text-[#059669] dark:bg-[#181b22] dark:text-[#00e5a3]">
                 <Palette size={22} />
               </span>
-              <h3 className="font-['Plus_Jakarta_Sans'] text-[20px] text-[#0f172a] dark:text-[#e1e2ec]">UI / UX Design &amp; Accessibilité</h3>
+              <h3 className="font-sans text-[20px] text-[#0f172a] dark:text-[#e1e2ec]">UI / UX Design &amp; Accessibilité</h3>
             </div>
-            <p className="font-inter text-[13px] text-[#475569] dark:text-[#9aa5b5]">
+            <p className="font-sans text-[13px] text-[#475569] dark:text-[#9aa5b5]">
               Design d'interfaces modernes, responsives et accessibles
             </p>
           </div>

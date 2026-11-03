@@ -16,11 +16,11 @@ export function AppFooter() {
                 height={48}
                 className="h-8 w-auto object-contain transition-transform group-hover:scale-105"
               />
-              <span className="font-manrope text-[14px] tracking-[0.2em] uppercase text-[#e1e2ec] font-bold group-hover:text-[#00e5a3] transition-colors">
+              <span className="font-sans text-[14px] tracking-[0.2em] uppercase text-[#e1e2ec] font-bold group-hover:text-[#00e5a3] transition-colors">
                 Modeste TOLOJANAHARY
               </span>
             </a>
-            <p className="font-inter text-[15px] text-[#9aa5b5] max-w-md">
+            <p className="font-sans text-[15px] text-[#9aa5b5] max-w-md">
               Ingénieur Full stack &amp; DevOps spécialisé dans l'architecture distribuée, les conteneurs et les interfaces réactives haute performance.
             </p>
             <div className="flex items-center gap-3 pt-2">
@@ -33,7 +33,7 @@ export function AppFooter() {
 
           <div className="space-y-3">
             <span className="font-mono text-[12px] text-[#00e5a3] uppercase tracking-[0.2em] block font-semibold">Navigation</span>
-            <ul className="space-y-2 font-inter text-[13px]">
+            <ul className="space-y-2 font-sans text-[13px]">
               <li><a className="text-[#9aa5b5] hover:text-[#e1e2ec] transition-colors block" href="#accueil">Accueil</a></li>
               <li><a className="text-[#9aa5b5] hover:text-[#e1e2ec] transition-colors block" href="#a-propos">À propos</a></li>
               <li><a className="text-[#9aa5b5] hover:text-[#e1e2ec] transition-colors block" href="#competences">Compétences</a></li>
@@ -44,7 +44,7 @@ export function AppFooter() {
 
           <div className="space-y-3">
             <span className="font-mono text-[12px] text-[#00e5a3] uppercase tracking-[0.2em] block font-semibold">Réseaux &amp; Contact</span>
-            <ul className="space-y-2 font-inter text-[13px]">
+            <ul className="space-y-2 font-sans text-[13px]">
               <li><a className="text-[#9aa5b5] hover:text-[#e1e2ec] transition-colors block" href="#contact">tolojanaharyjeanmodeste@gmail.com</a></li>
               <li><a className="text-[#9aa5b5] hover:text-[#e1e2ec] transition-colors block" href="https://github.com/Deste-Mo" rel="noreferrer" target="_blank">GitHub Profile</a></li>
               <li><a className="text-[#9aa5b5] hover:text-[#e1e2ec] transition-colors block" href="https://www.linkedin.com/in/modeste-nirina-tolojanahary-b844b61b7" rel="noreferrer" target="_blank">LinkedIn Network</a></li>

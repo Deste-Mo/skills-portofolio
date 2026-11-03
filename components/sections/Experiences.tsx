@@ -64,8 +64,8 @@ export function ExperiencesSection() {
           <span className="inline-block h-0.5 w-8 bg-[#059669] dark:bg-[#00e5a3]"></span>
           <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">Parcours &amp; Évolution</span>
         </div>
-        <h2 className="font-['Plus_Jakarta_Sans'] text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">{t.experiences.title}</h2>
-        <p className="mt-2 max-w-3xl font-inter text-[15px] leading-relaxed text-[#475569] md:text-[18px] dark:text-[#9aa5b5]">
+        <h2 className="font-sans text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">{t.experiences.title}</h2>
+        <p className="mt-2 max-w-3xl font-sans text-[15px] leading-relaxed text-[#475569] md:text-[18px] dark:text-[#9aa5b5]">
           {t.experiences.description}
         </p>
       </div>
@@ -80,7 +80,7 @@ export function ExperiencesSection() {
             <div className="rounded-xl border border-[#dfe4ea] bg-white p-6 shadow-sm transition-colors hover:border-[#059669]/40 dark:border-[#525c6c]/30 dark:bg-[#141824] sm:p-8">
               <div className="mb-3 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
                 <div>
-                  <h3 className="flex flex-wrap items-center gap-2 font-['Plus_Jakarta_Sans'] text-[20px] text-[#0f172a] dark:text-[#e1e2ec]">
+                  <h3 className="flex flex-wrap items-center gap-2 font-sans text-[20px] text-[#0f172a] dark:text-[#e1e2ec]">
                     <span>{exp.role}</span>
                     <span className="font-mono text-[12px] font-normal text-[#059669] dark:text-[#00e5a3]">{exp.company}</span>
                   </h3>
@@ -90,7 +90,7 @@ export function ExperiencesSection() {
                 </span>
               </div>
 
-              <ul className="mb-5 space-y-2.5 font-inter text-[15px] text-[#475569] dark:text-[#9aa5b5]">
+              <ul className="mb-5 space-y-2.5 font-sans text-[15px] text-[#475569] dark:text-[#9aa5b5]">
                 {exp.details.map((detail) => (
                   <li key={detail} className="flex items-start gap-3">
                     <ArrowRight size={16} className="mt-1 shrink-0 text-[#059669] dark:text-[#00e5a3]" />
@@ -117,8 +117,8 @@ export function ExperiencesSection() {
             <GraduationCap size={18} className="text-[#059669] dark:text-[#00e5a3]" />
             <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">{t.experiences.formations}</span>
           </div>
-          <h3 className="font-['Plus_Jakarta_Sans'] text-[28px] text-[#0f172a] dark:text-[#e1e2ec]">{t.experiences.formations}</h3>
-          <p className="mt-1 font-inter text-[13px] text-[#475569] dark:text-[#9aa5b5]">{t.experiences.formationsDesc}</p>
+          <h3 className="font-sans text-[28px] text-[#0f172a] dark:text-[#e1e2ec]">{t.experiences.formations}</h3>
+          <p className="mt-1 font-sans text-[13px] text-[#475569] dark:text-[#9aa5b5]">{t.experiences.formationsDesc}</p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -128,9 +128,9 @@ export function ExperiencesSection() {
                 <span className="inline-block rounded border border-[#dfe4ea] bg-[#f8fafc] px-2.5 py-1 font-mono text-[12px] font-semibold text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#181b22] dark:text-[#00e5a3]">
                   {formation.period}
                 </span>
-                <h4 className="font-['Plus_Jakarta_Sans'] text-[20px] leading-snug text-[#0f172a] dark:text-[#e1e2ec]">{formation.degree}</h4>
+                <h4 className="font-sans text-[20px] leading-snug text-[#0f172a] dark:text-[#e1e2ec]">{formation.degree}</h4>
               </div>
-              <p className="mt-4 flex items-center gap-2 border-t border-[#dfe4ea] pt-4 font-inter text-[13px] text-[#475569] dark:border-[#3b494b]/20 dark:text-[#9aa5b5]">
+              <p className="mt-4 flex items-center gap-2 border-t border-[#dfe4ea] pt-4 font-sans text-[13px] text-[#475569] dark:border-[#3b494b]/20 dark:text-[#9aa5b5]">
                 <MapPin size={16} className="text-[#64748b] dark:text-[#525c6c]" />
                 {formation.school}
               </p>
