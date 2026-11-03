@@ -10,10 +10,18 @@ const en: Translations = {
     projects: "Projects",
     contact: "Contact",
   },
+  language: {
+    chooseLanguage: "Choose language",
+    french: "French",
+    english: "English",
+  },
   theme: {
     light: "Light mode",
     dark: "Dark mode",
     system: "System",
+    chooseTheme: "Choose theme",
+    switchToLight: "Switch to light mode",
+    switchToDark: "Switch to dark mode",
   },
   hero: {
     badge: "Open to opportunities",
@@ -24,6 +32,12 @@ const en: Translations = {
     viewWork: "View my work",
     letsTalk: "Let's talk",
     cv: "My CV",
+    networks: "Links :",
+    preferredStack: "Preferred stack :",
+    availability: "Availability",
+    uptime: "Uptime monitored",
+    deployments: "Deployments",
+    automatedGitPush: "Automated Git push",
   },
   about: {
     title: "About",
@@ -36,28 +50,98 @@ const en: Translations = {
     contactDesc: "Available for new projects, collaborations, and technical missions.",
     interests: "Interests",
     quote: "Design the experience, build the solution.",
+    available: "Available",
+    humanCentered: "An approach centered on the human experience, backed by rigorous software engineering discipline.",
+    seniorCore: "Senior Core",
+    interestsList: {
+      games: "Games",
+      movies: "Movies",
+      anime: "Anime",
+    },
   },
   skills: {
     title: "Skills",
     description:
       "Technologies, tools and methodologies I use daily to build robust and scalable applications.",
+    technicalExpertise: "Technical Expertise",
+    uiuxTitle: "UI / UX Design & Accessibility",
+    uiuxDescription: "Modern, responsive, and accessible interface design",
+    uiuxTags: [
+      "Figma mockup integration",
+      "Responsive Design",
+      "Modern interfaces",
+      "Accessibility",
+    ],
+    groups: {
+      core: { title: "Languages", description: "Programming languages and business logic", tags: ["PHP", "Python", "JavaScript", "TypeScript"] },
+      client: { title: "Frontend & Mobile", description: "Modern, responsive web interfaces and mobile applications", tags: ["Next.js", "React.js", "React Native", "Flutter", "Expo"] },
+      server: { title: "Backend & API", description: "Robust APIs, server services, and third-party integrations", tags: ["Laravel", "FastAPI", "Node.js", "Express.js", "Django", "REST API", "GraphQL", "Apollo Client", "Webhooks", "Third-party integrations"] },
+      data: { title: "Databases", description: "Design, management, and optimization of relational data", tags: ["PostgreSQL", "MySQL", "SQL", "Relational modeling", "Query optimization"] },
+      ops: { title: "DevOps & Deployment", description: "Containerization, deployment, and production maintenance", tags: ["Docker", "VPS", "Vercel", "Netlify", "Firebase", "Git", "GitHub", "Dev/test/prod environments"] },
+      patterns: { title: "Architecture & Quality", description: "Best practices, reusable components, and continuous improvement", tags: ["Full Stack Architecture", "Reusable components", "Custom hooks", "Refactoring", "Performance"] },
+    },
   },
   experiences: {
     title: "Experience",
     description: "My professional journey and education",
     formations: "Education",
     formationsDesc: "My academic background and degrees",
+    journeyBadge: "Journey & Growth",
+    formationsList: [
+      { period: "2022 - Ongoing", degree: "Master's and Bachelor's in Computer Development", school: "EMIT Fianarantsoa (Madagascar)" },
+      { period: "2020 - 2023", degree: "Bachelor in Computer Development", school: "EMEDIA Antananarivo (Madagascar)" },
+      { period: "2020", degree: "Foundation year", school: "SESAME Antananarivo (Madagascar)" },
+    ],
   },
   services: {
     title: "Services",
     description: "What I can do for you",
     learnMore: "Learn more",
+    valueOffer: "Value offer",
+    cards: {
+      frontend: {
+        title: "Frontend Development",
+        description: "Modern, responsive web interfaces focused on the user experience.",
+      },
+      mobile: {
+        title: "Mobile Development",
+        description: "Android and iOS mobile apps that are smooth, intuitive, and store-ready.",
+      },
+      design: {
+        title: "UI/UX & Design",
+        description: "Design of digital experiences, mockups, user flows, and design systems.",
+      },
+      backend: {
+        title: "Backend Development",
+        description: "APIs, business logic, and databases for resilient and scalable services.",
+      },
+      devops: {
+        title: "DevOps & Hosting",
+        description: "Deployment, infrastructure, reliability, and production maintenance of applications on high-performance VPS servers.",
+      },
+    },
   },
   projects: {
     title: "Projects",
     description: "A selection of my recent work",
+    badge: "Portfolio Showcase",
+    filters: {
+      all: "All",
+      web: "Web",
+      mobile: "Mobile",
+      ai: "AI",
+    },
+    meta: {
+      ai: "OpenAI / Production",
+      hotel: "Hotel Management & Restaurant",
+      gis: "GIS & 3D Topography",
+      tourism: "Tourism E-commerce",
+    },
+    ready: "Ready for rapid onboarding",
+    remote: "Remote & Full-time",
   },
   contact: {
+    badge: "Get in Touch",
     title: "Contact",
     description: "Let's discuss your next project together",
     cta: "Let's talk about your project",
@@ -103,6 +187,9 @@ const en: Translations = {
     downloadCv: "Download CV (PDF)",
     rights: "All rights reserved.",
     designed: "Crafted with rigor • Dark Precision UI",
+    description: "Full Stack & DevOps engineer specialized in distributed architecture, containers, and high-performance reactive interfaces.",
+    githubProfile: "GitHub Profile",
+    linkedinProfile: "LinkedIn Network",
   },
 }
 

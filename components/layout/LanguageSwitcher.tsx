@@ -9,17 +9,17 @@ interface LanguageSwitcherProps {
 }
 
 export function LanguageSwitcher({ variant = "dropdown" }: LanguageSwitcherProps) {
-  const { lang, setLang } = useTranslation()
+  const { lang, setLang, t } = useTranslation()
   const selectedFlag = lang === "fr" ? <FlagFr size={16} className="rounded-sm" /> : <FlagGb size={16} className="rounded-sm" />
-  const localeLabel = lang === "fr" ? "Choisir la langue" : "Choose language"
+  const localeLabel = t.language.chooseLanguage
 
   if (variant === "inline") {
     return (
       <div className="flex items-center gap-2">
-        <button onClick={() => setLang("fr")} aria-label={lang === "fr" ? "Français" : "French"} className={`rounded-md p-1.5 transition-all ${lang === "fr" ? "bg-[#e6f7f1] text-[#059669]" : "text-[#475569] hover:bg-slate-100"}`}>
+        <button onClick={() => setLang("fr")} aria-label={t.language.french} className={`rounded-md p-1.5 transition-all ${lang === "fr" ? "bg-[#e6f7f1] text-[#059669]" : "text-[#475569] hover:bg-slate-100"}`}>
           <span className="text-[11px] font-bold">FR</span>
         </button>
-        <button onClick={() => setLang("en")} aria-label={lang === "fr" ? "Anglais" : "English"} className={`rounded-md p-1.5 transition-all ${lang === "en" ? "bg-[#e6f7f1] text-[#059669]" : "text-[#475569] hover:bg-slate-100"}`}>
+        <button onClick={() => setLang("en")} aria-label={t.language.english} className={`rounded-md p-1.5 transition-all ${lang === "en" ? "bg-[#e6f7f1] text-[#059669]" : "text-[#475569] hover:bg-slate-100"}`}>
           <span className="text-[11px] font-bold">EN</span>
         </button>
       </div>

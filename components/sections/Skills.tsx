@@ -12,72 +12,72 @@ import {
 import { useTranslation } from "@/lib/i18n/context"
 
 export function SkillsSection() {
-  const { t, lang } = useTranslation()
+  const { t } = useTranslation()
 
   const skillGroups = [
     {
       number: "01 / CORE",
       icon: Code2,
-      title: lang === "fr" ? "Langages" : "Languages",
-      description: lang === "fr" ? "Langages de programmation et logique métier" : "Programming languages and business logic",
-      tags: ["PHP", "Python", "JavaScript", "TypeScript"],
+      title: t.skills.groups.core.title,
+      description: t.skills.groups.core.description,
+      tags: t.skills.groups.core.tags,
       accent: "text-[#059669] dark:text-[#00e5a3]",
       chip: "bg-[#ecfdf5] text-[#059669] dark:bg-[#181b22] dark:text-[#00e5a3]",
     },
     {
       number: "02 / CLIENT",
       icon: Smartphone,
-      title: "Frontend & Mobile",
-      description: lang === "fr" ? "Interfaces web et applications mobiles modernes et performantes" : "Modern, responsive web interfaces and mobile applications",
-      tags: ["Next.js", "React.js", "React Native", "Flutter", "Expo"],
+      title: t.skills.groups.client.title,
+      description: t.skills.groups.client.description,
+      tags: t.skills.groups.client.tags,
       accent: "text-[#2563eb] dark:text-[#93b4ff]",
       chip: "bg-[#eff6ff] text-[#2563eb] dark:bg-[#181b22] dark:text-[#93b4ff]",
     },
     {
       number: "03 / SERVER",
       icon: ServerCog,
-      title: "Backend & API",
-      description: lang === "fr" ? "API robustes, services serveur et intégrations tierces" : "Robust APIs, server services, and third-party integrations",
-      tags: ["Laravel", "FastAPI", "Node.js", "Express.js", "Django", "REST API", "GraphQL", "Apollo Client", "Webhooks", "Third-party integrations"],
+      title: t.skills.groups.server.title,
+      description: t.skills.groups.server.description,
+      tags: t.skills.groups.server.tags,
       accent: "text-[#059669] dark:text-[#00e5a3]",
       chip: "bg-[#ecfdf5] text-[#059669] dark:bg-[#181b22] dark:text-[#00e5a3]",
     },
     {
       number: "04 / DATA",
       icon: Database,
-      title: lang === "fr" ? "Bases de données" : "Databases",
-      description: lang === "fr" ? "Conception, gestion et optimisation de données relationnelles" : "Design, management, and optimization of relational data",
-      tags: ["PostgreSQL", "MySQL", "SQL", "Relational modeling", "Query optimization"],
+      title: t.skills.groups.data.title,
+      description: t.skills.groups.data.description,
+      tags: t.skills.groups.data.tags,
       accent: "text-[#0f172a] dark:text-[#e1e2ec]",
       chip: "bg-[#f8fafc] text-[#0f172a] dark:bg-[#181b22] dark:text-[#e1e2ec]",
     },
     {
       number: "05 / OPS",
       icon: CloudCog,
-      title: lang === "fr" ? "DevOps & Déploiement" : "DevOps & Deployment",
-      description: lang === "fr" ? "Conteneurisation, déploiement et maintenance en production" : "Containerization, deployment, and production maintenance",
-      tags: ["Docker", "VPS", "Vercel", "Netlify", "Firebase", "Git", "GitHub", "Dev/test/prod environments"],
+      title: t.skills.groups.ops.title,
+      description: t.skills.groups.ops.description,
+      tags: t.skills.groups.ops.tags,
       accent: "text-[#059669] dark:text-[#00e5a3]",
       chip: "bg-[#ecfdf5] text-[#059669] dark:bg-[#181b22] dark:text-[#00e5a3]",
     },
     {
       number: "06 / PATTERNS",
       icon: Blocks,
-      title: lang === "fr" ? "Architecture & Qualité" : "Architecture & Quality",
-      description: lang === "fr" ? "Bonnes pratiques, composants réutilisables et amélioration continue" : "Best practices, reusable components, and continuous improvement",
-      tags: ["Full Stack Architecture", "Reusable components", "Custom hooks", "Refactoring", "Performance"],
+      title: t.skills.groups.patterns.title,
+      description: t.skills.groups.patterns.description,
+      tags: t.skills.groups.patterns.tags,
       accent: "text-[#2563eb] dark:text-[#93b4ff]",
       chip: "bg-[#eff6ff] text-[#2563eb] dark:bg-[#181b22] dark:text-[#93b4ff]",
     },
   ]
 
   return (
-    <section id="competences" className="w-full bg-[#f5f7f9] py-20 text-[#0f172a] transition-colors duration-300 dark:bg-[#0d0f14] dark:text-[#e1e2ec]">
+    <section id="competences" className="w-full  py-20 text-[#0f172a] transition-colors duration-300 dark:bg-[#0d0f14] dark:text-[#e1e2ec]">
       <div className="mb-12">
         <div className="mb-2 flex items-center gap-3">
           <span className="inline-block h-0.5 w-8 bg-[#059669] dark:bg-[#00e5a3]"></span>
           <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">
-            {lang === "fr" ? "Expertise Technique" : "Technical Expertise"}
+            {t.skills.technicalExpertise}
           </span>
         </div>
         <h2 className="font-sans text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">{t.skills.title}</h2>
@@ -120,16 +120,16 @@ export function SkillsSection() {
                 <Palette size={22} />
               </span>
               <h3 className="font-sans text-[20px] text-[#0f172a] dark:text-[#e1e2ec]">
-                {lang === "fr" ? "UI / UX Design & Accessibilité" : "UI / UX Design & Accessibility"}
+                {t.skills.uiuxTitle}
               </h3>
             </div>
             <p className="font-sans text-[13px] text-[#475569] dark:text-[#9aa5b5]">
-              {lang === "fr" ? "Design d'interfaces modernes, responsives et accessibles" : "Modern, responsive, and accessible interface design"}
+              {t.skills.uiuxDescription}
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            {(lang === "fr" ? ['Intégration de maquettes Figma', 'Responsive Design', 'Interfaces modernes', 'Accessibilité'] : ['Figma mockup integration', 'Responsive Design', 'Modern interfaces', 'Accessibility']).map((tag) => (
+            {t.skills.uiuxTags.map((tag) => (
               <span key={tag} className="rounded-lg border border-[#dfe4ea] bg-[#f8fafc] px-3 py-1.5 font-mono text-[12px] text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#181b22] dark:text-[#00e5a3]">
                 {tag}
               </span>

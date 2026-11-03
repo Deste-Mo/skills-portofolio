@@ -5,7 +5,7 @@ import { useTheme } from "next-themes"
 import { useTranslation } from "@/lib/i18n/context"
 
 export function AppFooter() {
-  const { t, lang } = useTranslation()
+  const { t } = useTranslation()
   const { resolvedTheme } = useTheme()
 
   const logoSrc = resolvedTheme === "dark" ? "/images/logo/logo-white.png" : "/images/logo/logo-black.png"
@@ -21,8 +21,8 @@ export function AppFooter() {
 
   const socialLinks = [
     { label: "tolojanaharyjeanmodeste@gmail.com", href: "#contact" },
-    { label: lang === "fr" ? "Profil GitHub" : "GitHub Profile", href: "https://github.com/Deste-Mo" },
-    { label: lang === "fr" ? "Réseau LinkedIn" : "LinkedIn Network", href: "https://www.linkedin.com/in/modeste-nirina-tolojanahary-b844b61b7" },
+    { label: t.footer.githubProfile, href: "https://github.com/Deste-Mo" },
+    { label: t.footer.linkedinProfile, href: "https://www.linkedin.com/in/modeste-nirina-tolojanahary-b844b61b7" },
     { label: t.footer.downloadCv, href: "/doc/CV_Modeste_TOLOJANAHARY.pdf" },
   ]
 
@@ -41,9 +41,7 @@ export function AppFooter() {
               />
             </a>
             <p className="max-w-md font-sans text-[15px] text-muted-foreground">
-              {lang === "fr"
-                ? "Ingénieur Full stack & DevOps spécialisé dans l'architecture distribuée, les conteneurs et les interfaces réactives haute performance."
-                : "Full Stack & DevOps engineer specialized in distributed architecture, containers, and high-performance reactive interfaces."}
+              {t.footer.description}
             </p>
             <div className="flex items-center gap-3 pt-2">
               <div className="flex items-center gap-2 rounded-full border border-border bg-muted px-3 py-1">

@@ -4,7 +4,7 @@ import { ArrowRight, CheckCircle2, Mail, MapPin, Phone } from "lucide-react"
 import { useTranslation } from "@/lib/i18n/context"
 
 export function ContactSection() {
-  const { lang, t } = useTranslation()
+  const { t } = useTranslation()
 
   return (
     <section id="contact" className="mb-8 py-20 text-[#0f172a] transition-colors duration-300 dark:text-[#e1e2ec]">
@@ -12,7 +12,7 @@ export function ContactSection() {
         <div className="mb-2 flex items-center gap-3">
           <span className="inline-block h-0.5 w-8 bg-[#059669] dark:bg-[#00e5a3]"></span>
           <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">
-            {lang === "fr" ? "Prendre Contact" : "Get in Touch"}
+            {t.contact.badge}
           </span>
         </div>
         <h2 className="font-sans text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">{t.contact.title}</h2>
@@ -68,10 +68,10 @@ export function ContactSection() {
             <div className="flex items-center gap-2">
               <span className="h-2.5 w-2.5 rounded-full bg-[#22c55e]"></span>
               <span className="font-mono text-[12px] text-[#059669] dark:text-[#b6efff]">
-                {lang === "fr" ? "Prêt pour onboarding rapide" : "Ready for rapid onboarding"}
+                {t.projects.ready}
               </span>
             </div>
-            <span className="font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">Remote &amp; CDI</span>
+            <span className="font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">{t.projects.remote}</span>
           </div>
         </div>
 
@@ -106,7 +106,7 @@ export function ContactSection() {
 
             <div className="hidden items-center gap-3 rounded-lg border border-[#a7f3d0] bg-[#ecfdf5] p-4 font-mono text-[12px] text-[#059669] dark:border-[#00e5a3]/40 dark:bg-[#181b22] dark:text-[#00e5a3]" id="form-feedback" style={{ display: 'none' }}>
               <CheckCircle2 size={16} />
-              <span>{lang === "fr" ? "Merci ! Votre message a été pris en compte. Je vous répondrai dans les plus brefs délais." : "Thank you! Your message has been received. I'll get back to you as soon as possible."}</span>
+              <span>{t.contact.success.description}</span>
             </div>
           </form>
         </div>

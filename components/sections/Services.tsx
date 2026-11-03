@@ -16,51 +16,36 @@ export function ServicesSection() {
 
   const services = [
     {
-      title: lang === "fr" ? "Développement Frontend" : "Frontend Development",
-      description:
-        lang === "fr"
-          ? "Interfaces web modernes, responsives et centrées sur l'expérience utilisateur."
-          : "Modern, responsive web interfaces focused on the user experience.",
+      title: t.services.cards.frontend.title,
+      description: t.services.cards.frontend.description,
       icon: Globe,
       href: "/services/developpement-frontend",
       color: "text-[#059669] dark:text-[#00e5a3]",
     },
     {
-      title: lang === "fr" ? "Développement Mobile" : "Mobile Development",
-      description:
-        lang === "fr"
-          ? "Applications mobiles Android et iOS, fluides, intuitives et prêtes pour les stores."
-          : "Android and iOS mobile apps that are smooth, intuitive, and store-ready.",
+      title: t.services.cards.mobile.title,
+      description: t.services.cards.mobile.description,
       icon: Smartphone,
       href: "/services/developpement-mobile",
       color: "text-[#2563eb] dark:text-[#93b4ff]",
     },
     {
-      title: lang === "fr" ? "UI/UX & Design" : "UI/UX & Design",
-      description:
-        lang === "fr"
-          ? "Conception d'expériences numériques, maquettes, user flows et design systems."
-          : "Design of digital experiences, mockups, user flows, and design systems.",
+      title: t.services.cards.design.title,
+      description: t.services.cards.design.description,
       icon: Palette,
       href: "/services/design-ui-ux",
       color: "text-[#059669] dark:text-[#00e5a3]",
     },
     {
-      title: lang === "fr" ? "Développement Backend" : "Backend Development",
-      description:
-        lang === "fr"
-          ? "API, logique métier et bases de données pour des services fiables et évolutifs."
-          : "APIs, business logic, and databases for resilient and scalable services.",
+      title: t.services.cards.backend.title,
+      description: t.services.cards.backend.description,
       icon: Code2,
       href: "/services/developpement-backend",
       color: "text-[#0f172a] dark:text-[#e1e2ec]",
     },
     {
-      title: lang === "fr" ? "DevOps & Hébergement" : "DevOps & Hosting",
-      description:
-        lang === "fr"
-          ? "Déploiement, infrastructure, fiabilité et maintenance des applications en production sur des serveurs VPS haute performance."
-          : "Deployment, infrastructure, reliability, and production maintenance of applications on high-performance VPS servers.",
+      title: t.services.cards.devops.title,
+      description: t.services.cards.devops.description,
       icon: CloudCog,
       href: "/services/devops-hebergement",
       color: "text-[#059669] dark:text-[#00e5a3]",
@@ -68,12 +53,12 @@ export function ServicesSection() {
   ]
 
   return (
-    <section id="services" className="w-full bg-[#f5f7f9] py-20 text-[#0f172a] transition-colors duration-300 dark:bg-[#0d0f14] dark:text-[#e1e2ec]">
+    <section id="services" className="w-full py-20 text-[#0f172a] transition-colors duration-300 dark:bg-[#0d0f14] dark:text-[#e1e2ec]">
       <div className="mb-12">
         <div className="mb-2 flex items-center gap-3">
           <span className="inline-block h-0.5 w-8 bg-[#059669] dark:bg-[#00e5a3]"></span>
           <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">
-            {lang === "fr" ? "Offre de valeur" : "Value offer"}
+            {t.services.valueOffer}
           </span>
         </div>
         <h2 className="font-sans text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">{t.services.title}</h2>

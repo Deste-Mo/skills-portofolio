@@ -51,7 +51,7 @@ const projectsData = [
 ]
 
 export function ProjectsSection() {
-  const { lang, t } = useTranslation()
+  const { t } = useTranslation()
   const [activeFilter, setActiveFilter] = useState("all")
 
   const filteredProjects =
@@ -60,10 +60,10 @@ export function ProjectsSection() {
       : projectsData.filter((project) => project.category.split(" ").includes(activeFilter))
 
   const filters = [
-    { label: lang === "fr" ? "Tous" : "All", value: "all" },
-    { label: "Web", value: "web" },
-    { label: lang === "fr" ? "Mobile" : "Mobile", value: "mobile" },
-    { label: "IA", value: "ia" },
+    { label: t.projects.filters.all, value: "all" },
+    { label: t.projects.filters.web, value: "web" },
+    { label: t.projects.filters.mobile, value: "mobile" },
+    { label: t.projects.filters.ai, value: "ai" },
   ]
 
   return (
@@ -73,7 +73,7 @@ export function ProjectsSection() {
           <div className="mb-2 flex items-center gap-3">
             <span className="inline-block h-0.5 w-8 bg-[#059669] dark:bg-[#00e5a3]"></span>
             <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">
-              {lang === "fr" ? "Portfolio Réalisations" : "Portfolio Showcase"}
+              {t.projects.badge}
             </span>
           </div>
           <h2 className="font-sans text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">{t.projects.title}</h2>
@@ -112,7 +112,7 @@ export function ProjectsSection() {
                   <span className={`rounded-full border border-[#dfe4ea] bg-[#f8fafc] px-3 py-1 font-mono text-[12px] uppercase tracking-[0.2em] font-semibold dark:border-[#3b494b]/20 dark:bg-[#181b22] ${project.type.includes("IA") ? "text-[#059669] dark:text-[#00e5a3]" : project.title === "GHR" ? "text-[#2563eb] dark:text-[#93b4ff]" : "text-[#0f172a] dark:text-[#e1e2ec]"}`}>
                     {project.type}
                   </span>
-                  <span className="font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">{project.type === "Plateforme IA" ? "OpenAI / Production" : project.type === "Application" ? "Gestion Hôtelière & Restauration" : project.type === "Plateforme" ? "SIG & Topographie 3D" : "E-commerce Tourisme"}</span>
+                  <span className="font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">{project.type === "Plateforme IA" ? t.projects.meta.ai : project.type === "Application" ? t.projects.meta.hotel : project.type === "Plateforme" ? t.projects.meta.gis : t.projects.meta.tourism}</span>
                 </div>
 
                 <h3 className="font-sans text-[28px] text-[#0f172a] dark:text-[#e1e2ec]">{project.title}</h3>

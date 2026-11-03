@@ -17,7 +17,7 @@ import {
 import { useTranslation } from "@/lib/i18n/context"
 
 export function AboutSection() {
-  const { lang, t } = useTranslation()
+  const { t } = useTranslation()
 
   const contacts = [
     { icon: Mail, label: "tolojanaharyjeanmodeste@gmail.com", href: "mailto:tolojanaharyjeanmodeste@gmail.com" },
@@ -27,18 +27,11 @@ export function AboutSection() {
     { icon: Globe, label: "tolojanahary-portofolio.vercel.app", href: "https://tolojanahary-portofolio.vercel.app/" },
   ]
 
-  const interests =
-    lang === "fr"
-      ? [
-          { icon: Gamepad2, label: "Jeux" },
-          { icon: Film, label: "Films" },
-          { icon: PlaySquare, label: "Anime" },
-        ]
-      : [
-          { icon: Gamepad2, label: "Games" },
-          { icon: Film, label: "Movies" },
-          { icon: PlaySquare, label: "Anime" },
-        ]
+  const interests = [
+    { icon: Gamepad2, label: t.about.interestsList.games },
+    { icon: Film, label: t.about.interestsList.movies },
+    { icon: PlaySquare, label: t.about.interestsList.anime },
+  ]
 
   return (
     <section id="a-propos" className="py-20 text-[#0f172a] transition-colors duration-300 dark:text-[#e1e2ec]">
@@ -66,7 +59,7 @@ export function AboutSection() {
                 <h3 className="font-sans text-[20px] text-[#0f172a] dark:text-[#e1e2ec]">{t.about.role}</h3>
               </div>
               <span className="rounded-full border border-[#dfe4ea] bg-[#f8fafc] px-3 py-1 font-mono text-[12px] text-[#059669] dark:border-[#3b494b]/30 dark:bg-[#181b22] dark:text-[#00e5a3]">
-                Senior Core
+                {t.about.seniorCore}
               </span>
             </div>
 
@@ -90,9 +83,7 @@ export function AboutSection() {
                   {t.about.quote}
                 </blockquote>
                 <p className="font-sans text-[13px] text-[#475569] dark:text-[#9aa5b5]">
-                  {lang === "fr"
-                    ? "Une approche axée sur l'expérience humaine, consolidée par une rigueur d'ingénierie logicielle sans faille."
-                    : "An approach centered on the human experience, backed by rigorous software engineering discipline."}
+                  {t.about.humanCentered}
                 </p>
               </div>
             </div>
@@ -110,7 +101,7 @@ export function AboutSection() {
               </div>
               <span className="flex items-center gap-1.5 font-mono text-[12px] font-semibold text-[#059669] dark:text-[#00e5a3]">
                 <span className="h-2 w-2 rounded-full bg-[#22c55e]"></span>
-                {lang === "fr" ? "Disponible" : "Available"}
+                {t.about.available}
               </span>
             </div>
 

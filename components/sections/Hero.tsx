@@ -6,7 +6,7 @@ import { GithubIcon, LinkedinIcon } from "@/components/ui/icons"
 import { useTranslation } from "@/lib/i18n/context"
 
 export function Hero() {
-  const { t, lang } = useTranslation()
+  const { t } = useTranslation()
 
   return (
     <section id="accueil" className="relative min-h-screen pt-28 text-[#0f172a] transition-colors duration-300 dark:text-[#e1e2ec] lg:pt-32">
@@ -60,7 +60,7 @@ export function Hero() {
 
             <div className="flex flex-wrap items-center gap-4 pt-4 text-[#475569] dark:text-[#9aa5b5]">
               <span className="font-mono text-[12px] uppercase text-[#64748b] dark:text-[#525c6c]">
-                {lang === "fr" ? "Réseaux :" : "Links :"}
+                {t.hero.networks}
               </span>
               <a href="https://github.com/Deste-Mo" target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-lg border border-[#dfe4ea] bg-white px-3 py-1.5 transition-colors hover:text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#14171f] dark:hover:text-[#00e5a3]">
                 <GithubIcon size={16} className="text-current" />
@@ -118,7 +118,7 @@ export function Hero() {
 
               <div className="pt-3">
                 <span className="mb-2 block font-mono text-[12px] uppercase text-[#64748b] dark:text-[#525c6c]">
-                  {lang === "fr" ? "Stack de prédilection :" : "Preferred stack :"}
+                  {t.hero.preferredStack}
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {['FastAPI', 'Laravel', 'Next.js', 'Docker & Compose', 'PostgreSQL', 'Debian VPS'].map((item) => (
@@ -132,20 +132,20 @@ export function Hero() {
               <div className="grid grid-cols-2 gap-3 pt-3">
                 <div className="rounded-lg border border-[#dfe4ea] bg-[#f8fafc] p-3 dark:border-[#3b494b]/20 dark:bg-[#181b22]">
                   <span className="block font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">
-                    {lang === "fr" ? "Disponibilité" : "Availability"}
+                    {t.hero.availability}
                   </span>
                   <span className="font-mono text-[24px] font-bold text-[#059669] dark:text-[#00e5a3]">99.98%</span>
                   <span className="mt-0.5 block font-sans text-[13px] text-[#475569] dark:text-[#9aa5b5]">
-                    {lang === "fr" ? "Suivi de disponibilité" : "Uptime monitored"}
+                    {t.hero.uptime}
                   </span>
                 </div>
                 <div className="rounded-lg border border-[#dfe4ea] bg-[#f8fafc] p-3 dark:border-[#3b494b]/20 dark:bg-[#181b22]">
                   <span className="block font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">
-                    {lang === "fr" ? "Déploiements" : "Deployments"}
+                    {t.hero.deployments}
                   </span>
                   <span className="font-mono text-[24px] font-bold text-[#2563eb] dark:text-[#93b4ff]">&lt; 3 min</span>
                   <span className="mt-0.5 block font-sans text-[13px] text-[#475569] dark:text-[#9aa5b5]">
-                    {lang === "fr" ? "Push Git automatisé" : "Automated Git push"}
+                    {t.hero.automatedGitPush}
                   </span>
                 </div>
               </div>

@@ -12,7 +12,7 @@ interface ThemeToggleProps {
 export function ThemeToggle({ variant = "dropdown" }: ThemeToggleProps) {
   const [mounted, setMounted] = useState(false)
   const { theme, resolvedTheme, setTheme } = useTheme()
-  const { t, lang } = useTranslation()
+  const { t } = useTranslation()
 
   useEffect(() => {
     setMounted(true)
@@ -24,7 +24,7 @@ export function ThemeToggle({ variant = "dropdown" }: ThemeToggleProps) {
 
   const currentValue = theme ?? "system"
   const iconColor = "#475569"
-  const themeLabel = lang === "fr" ? "Choisir le thème" : "Choose theme"
+  const themeLabel = t.theme.chooseTheme
 
   if (variant === "switch") {
     const isDark = resolvedTheme === "dark"
@@ -33,7 +33,7 @@ export function ThemeToggle({ variant = "dropdown" }: ThemeToggleProps) {
         type="button"
         onClick={() => setTheme(isDark ? "light" : "dark")}
         className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#dfe4ea] bg-white text-[#0f172a] transition-colors hover:border-[#059669] hover:text-[#059669] dark:border-[#3b494b]/30 dark:bg-[#1f2430] dark:text-[#e1e2ec] dark:hover:text-[#00e5a3]"
-        aria-label={isDark ? (lang === "fr" ? "Passer en mode clair" : "Switch to light mode") : (lang === "fr" ? "Passer en mode sombre" : "Switch to dark mode")}
+        aria-label={isDark ? t.theme.switchToLight : t.theme.switchToDark}
       >
         {isDark ? <Sun size={18} color={iconColor} /> : <Moon size={18} color={iconColor} />}
       </button>
