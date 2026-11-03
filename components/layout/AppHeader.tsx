@@ -6,10 +6,12 @@ import { HeaderLogo } from "@/components/layout/HeaderLogo"
 import { ThemeToggle } from "@/components/layout/ThemeToggle"
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher"
 import { useTranslation } from "@/lib/i18n/context"
+import { useScrollSpy } from "@/hooks/useScrollSpy"
 
 export function AppHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const { t } = useTranslation()
+  const { activeSection } = useScrollSpy()
 
   const navItems = [
     { label: t.nav.home, href: "#accueil" },
@@ -32,18 +34,32 @@ export function AppHeader() {
           </div>
 
           <nav className="hidden items-center justify-center gap-6 xl:gap-8 lg:flex">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="font-sans text-[14px] font-medium text-[#475569] transition-colors hover:text-[#0f172a] dark:text-[#9aa5b5] dark:hover:text-[#e1e2ec]"
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const targetId = item.href.replace("#", "")
+              const isActive = activeSection === targetId
+
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`font-sans text-[14px] font-medium transition-colors ${
+                    isActive
+                      ? "text-[#0f172a] dark:text-[#e1e2ec]"
+                      : "text-[#475569] hover:text-[#0f172a] dark:text-[#9aa5b5] dark:hover:text-[#e1e2ec]"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              )
+            })}
           </nav>
 
-          <div className="flex shrink-0 items-center justify-end gap-3.5">
+          <div
+            className={`flex shrink-0 items-center justify-end gap-3.5 transition-opacity duration-200 ${
+              mobileOpen ? "pointer-events-none opacity-0 lg:opacity-100" : "opacity-100"
+            }`}
+          >
             <LanguageSwitcher variant="dropdown" />
 
             <ThemeToggle />
@@ -69,16 +85,26 @@ export function AppHeader() {
               </button>
             </div>
             <nav className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-[#475569] hover:text-[#059669] transition-colors text-sm dark:text-[#9aa5b5] dark:hover:text-[#00e5a3]"
-                >
-                  {item.label}
-                </a>
-              ))}
+              {navItems.map((item) => {
+                const targetId = item.href.replace("#", "")
+                const isActive = activeSection === targetId
+
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`transition-colors text-sm ${
+                      isActive
+                        ? "text-[#059669] dark:text-[#00e5a3]"
+                        : "text-[#475569] hover:text-[#059669] dark:text-[#9aa5b5] dark:hover:text-[#00e5a3]"
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                )
+              })}
             </nav>
           </div>
         </div>

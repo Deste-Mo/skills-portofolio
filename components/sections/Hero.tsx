@@ -6,11 +6,11 @@ import { GithubIcon, LinkedinIcon } from "@/components/ui/icons"
 import { useTranslation } from "@/lib/i18n/context"
 
 export function Hero() {
-  const { t } = useTranslation()
+  const { t, lang } = useTranslation()
 
   return (
     <section id="accueil" className="relative min-h-screen pt-28 text-[#0f172a] transition-colors duration-300 dark:text-[#e1e2ec] lg:pt-32">
-      <div className="mx-auto w-full max-w-[1280px] px-4 pb-20 sm:px-6 lg:px-8 lg:pb-24">
+      <div className="mx-auto w-full max-w-7xl px-4 pb-20 sm:px-6 lg:px-8 lg:pb-24">
         <motion.div
           className="grid min-h-[calc(100vh-5rem)] grid-cols-1 items-center gap-12 lg:grid-cols-12"
         >
@@ -59,7 +59,9 @@ export function Hero() {
             </div>
 
             <div className="flex flex-wrap items-center gap-4 pt-4 text-[#475569] dark:text-[#9aa5b5]">
-              <span className="font-mono text-[12px] uppercase text-[#64748b] dark:text-[#525c6c]">Réseaux :</span>
+              <span className="font-mono text-[12px] uppercase text-[#64748b] dark:text-[#525c6c]">
+                {lang === "fr" ? "Réseaux :" : "Links :"}
+              </span>
               <a href="https://github.com/Deste-Mo" target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-lg border border-[#dfe4ea] bg-white px-3 py-1.5 transition-colors hover:text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#14171f] dark:hover:text-[#00e5a3]">
                 <GithubIcon size={16} className="text-current" />
                 <span className="font-mono text-[13px] font-medium">GitHub / Deste-Mo</span>
@@ -115,7 +117,9 @@ export function Hero() {
               </div>
 
               <div className="pt-3">
-                <span className="mb-2 block font-mono text-[12px] uppercase text-[#64748b] dark:text-[#525c6c]">Stack de prédilection :</span>
+                <span className="mb-2 block font-mono text-[12px] uppercase text-[#64748b] dark:text-[#525c6c]">
+                  {lang === "fr" ? "Stack de prédilection :" : "Preferred stack :"}
+                </span>
                 <div className="flex flex-wrap gap-2">
                   {['FastAPI', 'Laravel', 'Next.js', 'Docker & Compose', 'PostgreSQL', 'Debian VPS'].map((item) => (
                     <span key={item} className="rounded border border-[#dfe4ea] bg-[#f8fafc] px-2.5 py-1 font-mono text-[12px] text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#181b22] dark:text-[#00e5a3]">
@@ -127,14 +131,22 @@ export function Hero() {
 
               <div className="grid grid-cols-2 gap-3 pt-3">
                 <div className="rounded-lg border border-[#dfe4ea] bg-[#f8fafc] p-3 dark:border-[#3b494b]/20 dark:bg-[#181b22]">
-                  <span className="block font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">Disponibilité</span>
+                  <span className="block font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">
+                    {lang === "fr" ? "Disponibilité" : "Availability"}
+                  </span>
                   <span className="font-mono text-[24px] font-bold text-[#059669] dark:text-[#00e5a3]">99.98%</span>
-                  <span className="mt-0.5 block font-sans text-[13px] text-[#475569] dark:text-[#9aa5b5]">Uptime Monitored</span>
+                  <span className="mt-0.5 block font-sans text-[13px] text-[#475569] dark:text-[#9aa5b5]">
+                    {lang === "fr" ? "Suivi de disponibilité" : "Uptime monitored"}
+                  </span>
                 </div>
                 <div className="rounded-lg border border-[#dfe4ea] bg-[#f8fafc] p-3 dark:border-[#3b494b]/20 dark:bg-[#181b22]">
-                  <span className="block font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">Déploiements</span>
+                  <span className="block font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">
+                    {lang === "fr" ? "Déploiements" : "Deployments"}
+                  </span>
                   <span className="font-mono text-[24px] font-bold text-[#2563eb] dark:text-[#93b4ff]">&lt; 3 min</span>
-                  <span className="mt-0.5 block font-sans text-[13px] text-[#475569] dark:text-[#9aa5b5]">Automated Git Push</span>
+                  <span className="mt-0.5 block font-sans text-[13px] text-[#475569] dark:text-[#9aa5b5]">
+                    {lang === "fr" ? "Push Git automatisé" : "Automated Git push"}
+                  </span>
                 </div>
               </div>
             </div>

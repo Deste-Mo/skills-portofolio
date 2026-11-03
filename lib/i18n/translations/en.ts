@@ -97,7 +97,12 @@ const en: Translations = {
     },
   },
   footer: {
+    navigation: "Navigation",
+    networkAndContact: "Networks & Contact",
+    availableFor: "Available for freelance & full-time",
+    downloadCv: "Download CV (PDF)",
     rights: "All rights reserved.",
+    designed: "Crafted with rigor • Dark Precision UI",
   },
 }
 

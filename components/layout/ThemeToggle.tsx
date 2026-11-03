@@ -12,18 +12,19 @@ interface ThemeToggleProps {
 export function ThemeToggle({ variant = "dropdown" }: ThemeToggleProps) {
   const [mounted, setMounted] = useState(false)
   const { theme, resolvedTheme, setTheme } = useTheme()
-  const { t } = useTranslation()
+  const { t, lang } = useTranslation()
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
   if (!mounted) {
-    return <div className="h-9 w-[110px] rounded-lg border border-[#dfe4ea] bg-white" />
+    return <div className="h-9 w-27.5 rounded-lg border border-[#dfe4ea] bg-white" />
   }
 
   const currentValue = theme ?? "system"
   const iconColor = "#475569"
+  const themeLabel = lang === "fr" ? "Choisir le thème" : "Choose theme"
 
   if (variant === "switch") {
     const isDark = resolvedTheme === "dark"
@@ -32,7 +33,7 @@ export function ThemeToggle({ variant = "dropdown" }: ThemeToggleProps) {
         type="button"
         onClick={() => setTheme(isDark ? "light" : "dark")}
         className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#dfe4ea] bg-white text-[#0f172a] transition-colors hover:border-[#059669] hover:text-[#059669] dark:border-[#3b494b]/30 dark:bg-[#1f2430] dark:text-[#e1e2ec] dark:hover:text-[#00e5a3]"
-        aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+        aria-label={isDark ? (lang === "fr" ? "Passer en mode clair" : "Switch to light mode") : (lang === "fr" ? "Passer en mode sombre" : "Switch to dark mode")}
       >
         {isDark ? <Sun size={18} color={iconColor} /> : <Moon size={18} color={iconColor} />}
       </button>
@@ -45,7 +46,7 @@ export function ThemeToggle({ variant = "dropdown" }: ThemeToggleProps) {
         {resolvedTheme === "dark" ? <Moon size={14} /> : <Sun size={14} />}
       </span>
       <select
-        aria-label="Choisir le thème"
+        aria-label={themeLabel}
         value={currentValue}
         onChange={(event) => setTheme(event.target.value)}
         className="cursor-pointer appearance-none rounded-lg border border-[#dfe4ea] bg-white py-1.5 pl-8 pr-6 font-mono text-[11px] font-semibold uppercase tracking-wide text-[#0f172a] transition-all focus:border-[#059669] focus:outline-none dark:border-[#3b494b]/30 dark:bg-[#1f2430] dark:text-[#e1e2ec]"

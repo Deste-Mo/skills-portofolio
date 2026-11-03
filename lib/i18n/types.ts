@@ -92,6 +92,11 @@ export interface Translations {
     }
   }
   footer: {
+    navigation: string
+    networkAndContact: string
+    availableFor: string
+    downloadCv: string
     rights: string
+    designed: string
   }
 }

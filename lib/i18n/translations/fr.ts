@@ -99,7 +99,12 @@ const fr: Translations = {
     },
   },
   footer: {
+    navigation: "Navigation",
+    networkAndContact: "Réseaux & Contact",
+    availableFor: "Disponible pour missions & CDI",
+    downloadCv: "Télécharger CV (PDF)",
     rights: "Tous droits réservés.",
+    designed: "Conçu avec rigueur • Dark Precision UI",
   },
 }
 

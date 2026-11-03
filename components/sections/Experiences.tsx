@@ -4,65 +4,120 @@ import { ArrowRight, GraduationCap, MapPin } from "lucide-react"
 import { useTranslation } from "@/lib/i18n/context"
 
 export function ExperiencesSection() {
-  const { t } = useTranslation()
+  const { t, lang } = useTranslation()
 
-  const experiences = [
-    {
-      role: "Développeur Full stack & DevOps",
-      company: "@ Mobile Sys",
-      period: "Janvier 2026 - Présent",
-      details: [
-        "Développement full stack, conteneurisation et déploiement sur VPS d’une plateforme de services d’assistance pour personnes âgées, en situation de handicap ou isolées.",
-        "Développement frontend d’une application de réservation de voyages intégrant transports et hébergements.",
-      ],
-      tags: ["Flutter", "Next.js", "GraphQL", "Django", "Docker", "VPS"],
-    },
-    {
-      role: "Développeur Frontend & DevOps",
-      company: "@ François Digital",
-      period: "Juin 2025 - Mars 2026",
-      details: [
-        "Développement et déploiement d’une application de prise de rendez-vous hospitaliers et de gestion des consultations.",
-        "Développement et mise en production d’une plateforme de réservation de voyages avec paiement en ligne.",
-        "Développement et déploiement d’une application de réservation multi-services (train, bus et hôtel).",
-        "Conception et déploiement d’une plateforme dédiée aux formations, concours et parcours professionnels.",
-      ],
-      tags: ["Next.js", "Flutter", "API REST", "VPS"],
-    },
-    {
-      role: "Stagiaire puis Développeur Full stack & DevOps",
-      company: "@ NJCam Sys",
-      period: "2023 - 2025",
-      details: [
-        "Développement full stack et déploiement d’une application web et mobile de gestion hôtelière et de restauration.",
-        "Développement full stack et mise en production d’une application web et mobile de type réseau social dédiée à la collaboration autour des marchandises.",
-        "Participation technique en tant qu’assistant lead dev (appui à la coordination technique, aux choix de développement et de déploiement).",
-      ],
-      tags: ["Flutter", "React Native", "Node.js", "Express", "API REST", "VPS"],
-    },
-    {
-      role: "Stagiaire (Développeur Full stack)",
-      company: "@ IMIARY",
-      period: "Mars - Juin 2022",
-      details: [
-        "Développement d’une plateforme de location, vente et réservation de bateaux avec paiement en ligne.",
-      ],
-      tags: ["PHP", "Laravel", "React Native", "Node.js", "API REST", "PostgreSQL"],
-    },
-  ]
+  const experiences =
+    lang === "fr"
+      ? [
+          {
+            role: "Développeur Full stack & DevOps",
+            company: "@ Mobile Sys",
+            period: "Janvier 2026 - Présent",
+            details: [
+              "Développement full stack, conteneurisation et déploiement sur VPS d’une plateforme de services d’assistance pour personnes âgées, en situation de handicap ou isolées.",
+              "Développement frontend d’une application de réservation de voyages intégrant transports et hébergements.",
+            ],
+            tags: ["Flutter", "Next.js", "GraphQL", "Django", "Docker", "VPS"],
+          },
+          {
+            role: "Développeur Frontend & DevOps",
+            company: "@ François Digital",
+            period: "Juin 2025 - Mars 2026",
+            details: [
+              "Développement et déploiement d’une application de prise de rendez-vous hospitaliers et de gestion des consultations.",
+              "Développement et mise en production d’une plateforme de réservation de voyages avec paiement en ligne.",
+              "Développement et déploiement d’une application de réservation multi-services (train, bus et hôtel).",
+              "Conception et déploiement d’une plateforme dédiée aux formations, concours et parcours professionnels.",
+            ],
+            tags: ["Next.js", "Flutter", "API REST", "VPS"],
+          },
+          {
+            role: "Stagiaire puis Développeur Full stack & DevOps",
+            company: "@ NJCam Sys",
+            period: "2023 - 2025",
+            details: [
+              "Développement full stack et déploiement d’une application web et mobile de gestion hôtelière et de restauration.",
+              "Développement full stack et mise en production d’une application web et mobile de type réseau social dédiée à la collaboration autour des marchandises.",
+              "Participation technique en tant qu’assistant lead dev (appui à la coordination technique, aux choix de développement et de déploiement).",
+            ],
+            tags: ["Flutter", "React Native", "Node.js", "Express", "API REST", "VPS"],
+          },
+          {
+            role: "Stagiaire (Développeur Full stack)",
+            company: "@ IMIARY",
+            period: "Mars - Juin 2022",
+            details: [
+              "Développement d’une plateforme de location, vente et réservation de bateaux avec paiement en ligne.",
+            ],
+            tags: ["PHP", "Laravel", "React Native", "Node.js", "API REST", "PostgreSQL"],
+          },
+        ]
+      : [
+          {
+            role: "Full stack & DevOps Developer",
+            company: "@ Mobile Sys",
+            period: "January 2026 - Present",
+            details: [
+              "Full-stack development, containerization, and VPS deployment for a support platform for elderly, disabled, or isolated people.",
+              "Frontend development for a travel booking app integrating transport and accommodation services.",
+            ],
+            tags: ["Flutter", "Next.js", "GraphQL", "Django", "Docker", "VPS"],
+          },
+          {
+            role: "Frontend & DevOps Developer",
+            company: "@ François Digital",
+            period: "June 2025 - March 2026",
+            details: [
+              "Development and deployment of a hospital appointment and consultation management application.",
+              "Development and production launch of a travel booking platform with online payments.",
+              "Development and deployment of a multi-service booking app (train, bus, and hotel).",
+              "Design and deployment of a platform dedicated to training, exams, and professional pathways.",
+            ],
+            tags: ["Next.js", "Flutter", "REST API", "VPS"],
+          },
+          {
+            role: "Intern then Full stack & DevOps Developer",
+            company: "@ NJCam Sys",
+            period: "2023 - 2025",
+            details: [
+              "Full-stack development and deployment of a web and mobile hotel and restaurant management application.",
+              "Full-stack development and production launch of a social-platform-style web and mobile app for collaboration around goods and trade.",
+              "Technical participation as assistant lead developer, supporting technical coordination and delivery decisions.",
+            ],
+            tags: ["Flutter", "React Native", "Node.js", "Express", "REST API", "VPS"],
+          },
+          {
+            role: "Intern (Full stack Developer)",
+            company: "@ IMIARY",
+            period: "March - June 2022",
+            details: [
+              "Development of a boat rental, sales, and reservation platform with online payment.",
+            ],
+            tags: ["PHP", "Laravel", "React Native", "Node.js", "REST API", "PostgreSQL"],
+          },
+        ]
 
-  const formations = [
-    { period: "2022 - En cours", degree: "Master & Licence en Développement informatique", school: "EMIT Fianarantsoa (Madagascar)" },
-    { period: "2020 - 2023", degree: "Licence en Développement informatique", school: "EMEDIA Antananarivo (Madagascar)" },
-    { period: "2020", degree: "Année préparatoire", school: "SESAME Antananarivo (Madagascar)" },
-  ]
+  const formations =
+    lang === "fr"
+      ? [
+          { period: "2022 - En cours", degree: "Master & Licence en Développement informatique", school: "EMIT Fianarantsoa (Madagascar)" },
+          { period: "2020 - 2023", degree: "Licence en Développement informatique", school: "EMEDIA Antananarivo (Madagascar)" },
+          { period: "2020", degree: "Année préparatoire", school: "SESAME Antananarivo (Madagascar)" },
+        ]
+      : [
+          { period: "2022 - Ongoing", degree: "Master's and Bachelor's in Computer Development", school: "EMIT Fianarantsoa (Madagascar)" },
+          { period: "2020 - 2023", degree: "Bachelor in Computer Development", school: "EMEDIA Antananarivo (Madagascar)" },
+          { period: "2020", degree: "Foundation year", school: "SESAME Antananarivo (Madagascar)" },
+        ]
 
   return (
     <section id="experiences" className="w-full bg-[#f5f7f9] py-20 text-[#0f172a] transition-colors duration-300 dark:bg-[#0d0f14] dark:text-[#e1e2ec]">
       <div className="mb-12">
         <div className="mb-2 flex items-center gap-3">
           <span className="inline-block h-0.5 w-8 bg-[#059669] dark:bg-[#00e5a3]"></span>
-          <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">Parcours &amp; Évolution</span>
+          <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">
+            {lang === "fr" ? "Parcours & Évolution" : "Journey & Growth"}
+          </span>
         </div>
         <h2 className="font-sans text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">{t.experiences.title}</h2>
         <p className="mt-2 max-w-3xl font-sans text-[15px] leading-relaxed text-[#475569] md:text-[18px] dark:text-[#9aa5b5]">

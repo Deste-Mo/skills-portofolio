@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { ArrowUpRight, ExternalLink, Filter } from "lucide-react"
+import { ArrowUpRight, ExternalLink } from "lucide-react"
+import { useTranslation } from "@/lib/i18n/context"
 
 const projectsData = [
   {
@@ -50,6 +51,7 @@ const projectsData = [
 ]
 
 export function ProjectsSection() {
+  const { lang, t } = useTranslation()
   const [activeFilter, setActiveFilter] = useState("all")
 
   const filteredProjects =
@@ -57,42 +59,46 @@ export function ProjectsSection() {
       ? projectsData
       : projectsData.filter((project) => project.category.split(" ").includes(activeFilter))
 
+  const filters = [
+    { label: lang === "fr" ? "Tous" : "All", value: "all" },
+    { label: "Web", value: "web" },
+    { label: lang === "fr" ? "Mobile" : "Mobile", value: "mobile" },
+    { label: "IA", value: "ia" },
+  ]
+
   return (
     <section id="projets" className="py-20 text-[#0f172a] transition-colors duration-300 dark:text-[#e1e2ec]">
-        <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div>
-            <div className="mb-2 flex items-center gap-3">
-              <span className="inline-block h-0.5 w-8 bg-[#059669] dark:bg-[#00e5a3]"></span>
-              <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">Portfolio Réalisations</span>
-            </div>
-            <h2 className="font-sans text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">Projets</h2>
-            <p className="mt-2 max-w-3xl font-sans text-[15px] leading-relaxed text-[#475569] md:text-[18px] dark:text-[#9aa5b5]">
-              Une sélection de mes réalisations récentes
-            </p>
+      <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div>
+          <div className="mb-2 flex items-center gap-3">
+            <span className="inline-block h-0.5 w-8 bg-[#059669] dark:bg-[#00e5a3]"></span>
+            <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">
+              {lang === "fr" ? "Portfolio Réalisations" : "Portfolio Showcase"}
+            </span>
           </div>
-
-          <div className="flex shrink-0 flex-wrap items-center gap-2 rounded-lg border border-[#dfe4ea] bg-white p-1.5 shadow-sm dark:border-[#3b494b]/20 dark:bg-[#181b22]" id="project-filters">
-            {[
-              { label: "Tous", value: "all" },
-              { label: "Web", value: "web" },
-              { label: "Mobile", value: "mobile" },
-              { label: "IA", value: "ia" },
-            ].map((filter) => (
-              <button
-                key={filter.value}
-                type="button"
-                onClick={() => setActiveFilter(filter.value)}
-                className={`rounded-md px-4 py-1.5 font-mono text-[12px] uppercase transition-colors ${
-                  activeFilter === filter.value
-                    ? "bg-[#059669] text-white dark:bg-[#00e5a3] dark:text-[#0d0f14]"
-                    : "text-[#475569] hover:text-[#0f172a] dark:text-[#9aa5b5] dark:hover:text-[#e1e2ec]"
-                }`}
-              >
-                {filter.label}
-              </button>
-            ))}
-          </div>
+          <h2 className="font-sans text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">{t.projects.title}</h2>
+          <p className="mt-2 max-w-3xl font-sans text-[15px] leading-relaxed text-[#475569] md:text-[18px] dark:text-[#9aa5b5]">
+            {t.projects.description}
+          </p>
         </div>
+
+        <div className="flex shrink-0 flex-wrap items-center gap-2 rounded-lg border border-[#dfe4ea] bg-white p-1.5 shadow-sm dark:border-[#3b494b]/20 dark:bg-[#181b22]" id="project-filters">
+          {filters.map((filter) => (
+            <button
+              key={filter.value}
+              type="button"
+              onClick={() => setActiveFilter(filter.value)}
+              className={`rounded-md px-4 py-1.5 font-mono text-[12px] uppercase transition-colors ${
+                activeFilter === filter.value
+                  ? "bg-[#059669] text-white dark:bg-[#00e5a3] dark:text-[#0d0f14]"
+                  : "text-[#475569] hover:text-[#0f172a] dark:text-[#9aa5b5] dark:hover:text-[#e1e2ec]"
+              }`}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+      </div>
 
         <div className="space-y-8" id="projects-grid">
           {filteredProjects.map((project, index) => (
