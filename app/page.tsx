@@ -11,7 +11,7 @@ export default function Home() {
     <main className="mx-auto w-full">
       <Hero />
       <div className="relative z-10">
-        <div className="w-full max-w-7xl mx-auto lg:px-12">
+        <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <AboutSection />
           <SkillsSection />
           <ExperiencesSection />

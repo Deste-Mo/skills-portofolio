@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import { ArrowUpRight, ExternalLink, Filter } from "lucide-react"
 
 const projectsData = [
   {
@@ -57,110 +58,110 @@ export function ProjectsSection() {
       : projectsData.filter((project) => project.category.split(" ").includes(activeFilter))
 
   return (
-    <section id="projets" className="py-20">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-        <div>
-          <div className="flex items-center gap-3 mb-2">
-            <span className="w-8 h-0.5 bg-[#00e5a3] inline-block"></span>
-            <span className="font-mono text-[12px] uppercase tracking-[0.25em] text-[#00e5a3] font-semibold">Portfolio Réalisations</span>
+    <section id="projets" className="py-20 text-[#0f172a] transition-colors duration-300 dark:text-[#e1e2ec]">
+        <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <div className="mb-2 flex items-center gap-3">
+              <span className="inline-block h-0.5 w-8 bg-[#059669] dark:bg-[#00e5a3]"></span>
+              <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">Portfolio Réalisations</span>
+            </div>
+            <h2 className="font-['Plus_Jakarta_Sans'] text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">Projets</h2>
+            <p className="mt-2 max-w-3xl font-inter text-[15px] leading-relaxed text-[#475569] md:text-[18px] dark:text-[#9aa5b5]">
+              Une sélection de mes réalisations récentes
+            </p>
           </div>
-          <h2 className="font-['Plus_Jakarta_Sans'] text-[36px] md:text-[46px] text-[#e1e2ec]">Projets</h2>
-          <p className="font-inter text-[15px] md:text-[18px] text-[#9aa5b5] mt-2 max-w-2xl leading-relaxed">
-            Une sélection de mes réalisations récentes
-          </p>
+
+          <div className="flex shrink-0 flex-wrap items-center gap-2 rounded-lg border border-[#dfe4ea] bg-white p-1.5 shadow-sm dark:border-[#3b494b]/20 dark:bg-[#181b22]" id="project-filters">
+            {[
+              { label: "Tous", value: "all" },
+              { label: "Web", value: "web" },
+              { label: "Mobile", value: "mobile" },
+              { label: "IA", value: "ia" },
+            ].map((filter) => (
+              <button
+                key={filter.value}
+                type="button"
+                onClick={() => setActiveFilter(filter.value)}
+                className={`rounded-md px-4 py-1.5 font-mono text-[12px] uppercase transition-colors ${
+                  activeFilter === filter.value
+                    ? "bg-[#059669] text-white dark:bg-[#00e5a3] dark:text-[#0d0f14]"
+                    : "text-[#475569] hover:text-[#0f172a] dark:text-[#9aa5b5] dark:hover:text-[#e1e2ec]"
+                }`}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-lg bg-[#181b22] border border-[#3b494b]/20 shrink-0" id="project-filters">
-          {[
-            { label: "Tous", value: "all" },
-            { label: "Web", value: "web" },
-            { label: "Mobile", value: "mobile" },
-            { label: "IA", value: "ia" },
-          ].map((filter) => (
-            <button
-              key={filter.value}
-              type="button"
-              onClick={() => setActiveFilter(filter.value)}
-              className={`px-4 py-1.5 rounded-md font-mono text-[12px] uppercase transition-colors ${
-                activeFilter === filter.value
-                  ? "bg-[#00e5a3] text-[#0d0f14] font-semibold"
-                  : "text-[#9aa5b5] hover:text-[#e1e2ec]"
-              }`}
+        <div className="space-y-8" id="projects-grid">
+          {filteredProjects.map((project, index) => (
+            <div
+              key={project.title + index}
+              className="project-item grid grid-cols-1 items-center gap-8 rounded-xl border border-[#dfe4ea] bg-white p-6 shadow-sm transition-colors hover:border-[#059669]/40 dark:border-[#525c6c]/30 dark:bg-[#141824] sm:p-8 lg:grid-cols-12"
+              data-category={project.category}
             >
-              {filter.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="space-y-8" id="projects-grid">
-        {filteredProjects.map((project, index) => (
-          <div
-            key={project.title + index}
-            className="project-item rounded-xl bg-[#141824] border border-[#525c6c]/30 p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center transition-colors hover:border-[#00e5a3]/50"
-            data-category={project.category}
-          >
-            <div className="lg:col-span-7 space-y-4">
-              <div className="flex items-center gap-3">
-                <span className={`px-3 py-1 rounded-full bg-[#181b22] border border-[#3b494b]/20 font-mono text-[12px] uppercase tracking-[0.2em] font-semibold ${project.type.includes("IA") ? "text-[#00e5a3]" : project.title === "GHR" ? "text-[#93b4ff]" : "text-[#b6efff]"}`}>
-                  {project.type}
-                </span>
-                <span className="font-mono text-[12px] text-[#525c6c]">{project.type === "Plateforme IA" ? "OpenAI / Production" : project.type === "Application" ? "Gestion Hôtelière & Restauration" : project.type === "Plateforme" ? "SIG & Topographie 3D" : "E-commerce Tourisme"}</span>
-              </div>
-              <h3 className="font-['Plus_Jakarta_Sans'] text-[28px] text-[#e1e2ec]">{project.title}</h3>
-              <p className="font-inter text-[15px] text-[#9aa5b5] leading-relaxed">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2 pt-2">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="px-2.5 py-1 rounded bg-[#181b22] border border-[#3b494b]/20 font-mono text-[12px] text-[#00e5a3]">
-                    {tag}
+              <div className="space-y-4 lg:col-span-7">
+                <div className="flex items-center gap-3">
+                  <span className={`rounded-full border border-[#dfe4ea] bg-[#f8fafc] px-3 py-1 font-mono text-[12px] uppercase tracking-[0.2em] font-semibold dark:border-[#3b494b]/20 dark:bg-[#181b22] ${project.type.includes("IA") ? "text-[#059669] dark:text-[#00e5a3]" : project.title === "GHR" ? "text-[#2563eb] dark:text-[#93b4ff]" : "text-[#0f172a] dark:text-[#e1e2ec]"}`}>
+                    {project.type}
                   </span>
-                ))}
-              </div>
-
-              {project.link ? (
-                <div className="pt-4 flex items-center gap-4">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#00e5a3] text-[#0d0f14] font-manrope text-[14px] font-bold hover:bg-white transition-colors"
-                  >
-                    <span>{project.cta}</span>
-                    <span className="material-symbols-outlined text-[18px]">open_in_new</span>
-                  </a>
+                  <span className="font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">{project.type === "Plateforme IA" ? "OpenAI / Production" : project.type === "Application" ? "Gestion Hôtelière & Restauration" : project.type === "Plateforme" ? "SIG & Topographie 3D" : "E-commerce Tourisme"}</span>
                 </div>
-              ) : (
-                <div className="pt-4 flex flex-wrap items-center gap-4">
-                  {project.links?.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#181b22] border border-[#3b494b]/20 text-[#e1e2ec] hover:text-[#00e5a3] hover:border-[#00e5a3]/40 transition-colors font-manrope text-[14px]"
-                    >
-                      <span>{link.label}</span>
-                      <span className="material-symbols-outlined text-[18px]">{link.label.includes("Administration") ? "admin_panel_settings" : "group"}</span>
-                    </a>
+
+                <h3 className="font-['Plus_Jakarta_Sans'] text-[28px] text-[#0f172a] dark:text-[#e1e2ec]">{project.title}</h3>
+                <p className="font-inter text-[15px] leading-relaxed text-[#475569] dark:text-[#9aa5b5]">{project.description}</p>
+
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="rounded border border-[#dfe4ea] bg-[#f8fafc] px-2.5 py-1 font-mono text-[12px] text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#181b22] dark:text-[#00e5a3]">
+                      {tag}
+                    </span>
                   ))}
                 </div>
-              )}
-            </div>
 
-            <div className="lg:col-span-5 overflow-hidden rounded-xl bg-[#080a0e] border border-[#3b494b]/20 group">
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={1200}
-                height={800}
-                className="w-full h-64 object-cover object-top transition-transform duration-300 group-hover:scale-105"
-              />
+                {project.link ? (
+                  <div className="flex items-center gap-4 pt-4">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-lg bg-[#059669] px-5 py-2.5 font-manrope text-[14px] font-bold text-white transition-colors hover:bg-[#047857] dark:bg-[#00e5a3] dark:text-[#0d0f14] dark:hover:bg-white"
+                    >
+                      <span>{project.cta}</span>
+                      <ArrowUpRight size={18} />
+                    </a>
+                  </div>
+                ) : (
+                  <div className="flex flex-wrap items-center gap-4 pt-4">
+                    {project.links?.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 rounded-lg border border-[#dfe4ea] bg-[#f8fafc] px-4 py-2.5 font-manrope text-[14px] text-[#0f172a] transition-colors hover:border-[#059669] hover:text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#181b22] dark:text-[#e1e2ec] dark:hover:text-[#00e5a3]"
+                      >
+                        <span>{link.label}</span>
+                        <ExternalLink size={16} />
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="overflow-hidden rounded-xl border border-[#dfe4ea] bg-[#f8fafc] group dark:border-[#3b494b]/20 dark:bg-[#080a0e] lg:col-span-5">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={1200}
+                  height={800}
+                  className="h-64 w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
     </section>
   )
 }

@@ -9,7 +9,7 @@ export function Hero() {
   const { t } = useTranslation()
 
   return (
-    <section id="accueil" className="relative min-h-screen w-full bg-[#f5f7f9] pt-28 text-[#0f172a] transition-colors duration-300 dark:bg-[#0d0f14] dark:text-[#e1e2ec] lg:pt-32">
+    <section id="accueil" className="relative min-h-screen pt-28 text-[#0f172a] transition-colors duration-300 dark:text-[#e1e2ec] lg:pt-32">
       <div className="mx-auto w-full max-w-[1280px] px-4 pb-20 sm:px-6 lg:px-8 lg:pb-24">
         <motion.div
           className="grid min-h-[calc(100vh-5rem)] grid-cols-1 items-center gap-12 lg:grid-cols-12"

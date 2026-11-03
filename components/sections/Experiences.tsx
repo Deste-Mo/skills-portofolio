@@ -1,6 +1,11 @@
 "use client"
 
+import { ArrowRight, GraduationCap, MapPin } from "lucide-react"
+import { useTranslation } from "@/lib/i18n/context"
+
 export function ExperiencesSection() {
+  const { t } = useTranslation()
+
   const experiences = [
     {
       role: "Développeur Full stack & DevOps",
@@ -53,41 +58,42 @@ export function ExperiencesSection() {
   ]
 
   return (
-    <section id="experiences" className="py-20">
+    <section id="experiences" className="w-full bg-[#f5f7f9] py-20 text-[#0f172a] transition-colors duration-300 dark:bg-[#0d0f14] dark:text-[#e1e2ec]">
       <div className="mb-12">
-        <div className="flex items-center gap-3 mb-2">
-          <span className="w-8 h-0.5 bg-[#00e5a3] inline-block"></span>
-          <span className="font-mono text-[12px] uppercase tracking-[0.25em] text-[#00e5a3] font-semibold">Parcours &amp; Évolution</span>
+        <div className="mb-2 flex items-center gap-3">
+          <span className="inline-block h-0.5 w-8 bg-[#059669] dark:bg-[#00e5a3]"></span>
+          <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">Parcours &amp; Évolution</span>
         </div>
-        <h2 className="font-['Plus_Jakarta_Sans'] text-[36px] md:text-[46px] text-[#e1e2ec]">Expériences</h2>
-        <p className="font-inter text-[15px] md:text-[18px] text-[#9aa5b5] mt-2 max-w-2xl leading-relaxed">
-          Mon parcours professionnel et mes formations
+        <h2 className="font-['Plus_Jakarta_Sans'] text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">{t.experiences.title}</h2>
+        <p className="mt-2 max-w-3xl font-inter text-[15px] leading-relaxed text-[#475569] md:text-[18px] dark:text-[#9aa5b5]">
+          {t.experiences.description}
         </p>
       </div>
 
-      <div className="relative space-y-8 pl-6 sm:pl-10 before:content-[''] before:absolute before:left-2.5 sm:before:left-4 before:top-3 before:bottom-3 before:w-0.5 before:bg-[#242936]">
-        {experiences.map((exp, index) => (
-          <div key={exp.company} className="relative group">
-            <div className="absolute -left-6 sm:-left-10 top-1.5 w-5 h-5 rounded-full bg-[#181b22] flex items-center justify-center ring-4 ring-[#0d0f14] group-hover:bg-[#00e5a3] transition-colors">
-              <div className="w-2 h-2 rounded-full bg-[#00e5a3]"></div>
+      <div className="relative space-y-8 pl-6 sm:pl-10 before:absolute before:left-2.5 before:top-3 before:bottom-3 before:w-0.5 before:bg-[#dfe4ea] before:content-[''] sm:before:left-4 dark:before:bg-[#3b494b]/40">
+        {experiences.map((exp) => (
+          <div key={exp.company} className="group relative">
+            <div className="absolute -left-6 top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-white ring-4 ring-[#f5f7f9] transition-colors group-hover:bg-[#059669] sm:-left-10 dark:bg-[#141824] dark:ring-[#0d0f14] dark:group-hover:bg-[#00e5a3]">
+              <div className="h-2 w-2 rounded-full bg-[#059669] dark:bg-[#00e5a3]"></div>
             </div>
-            <div className="p-6 sm:p-8 rounded-xl bg-[#141824] border border-[#525c6c]/30 transition-colors hover:bg-[#1b1f29]">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+
+            <div className="rounded-xl border border-[#dfe4ea] bg-white p-6 shadow-sm transition-colors hover:border-[#059669]/40 dark:border-[#525c6c]/30 dark:bg-[#141824] sm:p-8">
+              <div className="mb-3 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
                 <div>
-                  <h3 className="font-['Plus_Jakarta_Sans'] text-[20px] text-[#e1e2ec] flex items-center gap-2 flex-wrap">
+                  <h3 className="flex flex-wrap items-center gap-2 font-['Plus_Jakarta_Sans'] text-[20px] text-[#0f172a] dark:text-[#e1e2ec]">
                     <span>{exp.role}</span>
-                    <span className="text-[#00e5a3] font-mono text-[12px] font-normal">{exp.company}</span>
+                    <span className="font-mono text-[12px] font-normal text-[#059669] dark:text-[#00e5a3]">{exp.company}</span>
                   </h3>
                 </div>
-                <span className="font-mono text-[12px] px-3 py-1 rounded bg-[#181b22] border border-[#3b494b]/30 text-[#00e5a3] shrink-0 self-start sm:self-auto font-semibold">
+                <span className="shrink-0 self-start rounded border border-[#dfe4ea] bg-[#f8fafc] px-3 py-1 font-mono text-[12px] font-semibold text-[#059669] dark:border-[#3b494b]/30 dark:bg-[#181b22] dark:text-[#00e5a3] sm:self-auto">
                   {exp.period}
                 </span>
               </div>
 
-              <ul className="space-y-2.5 font-inter text-[15px] text-[#9aa5b5] mb-5">
+              <ul className="mb-5 space-y-2.5 font-inter text-[15px] text-[#475569] dark:text-[#9aa5b5]">
                 {exp.details.map((detail) => (
                   <li key={detail} className="flex items-start gap-3">
-                    <span className="text-[#00e5a3] mt-1 material-symbols-outlined text-[16px]">arrow_right_alt</span>
+                    <ArrowRight size={16} className="mt-1 shrink-0 text-[#059669] dark:text-[#00e5a3]" />
                     <span>{detail}</span>
                   </li>
                 ))}
@@ -95,7 +101,7 @@ export function ExperiencesSection() {
 
               <div className="flex flex-wrap gap-2 pt-2">
                 {exp.tags.map((tag) => (
-                  <span key={tag} className="px-2.5 py-1 rounded bg-[#181b22] border border-[#3b494b]/20 font-mono text-[12px] text-[#00e5a3]">
+                  <span key={tag} className="rounded border border-[#dfe4ea] bg-[#f8fafc] px-2.5 py-1 font-mono text-[12px] text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#181b22] dark:text-[#00e5a3]">
                     {tag}
                   </span>
                 ))}
@@ -105,27 +111,27 @@ export function ExperiencesSection() {
         ))}
       </div>
 
-      <div className="mt-16 pt-12 border-t border-[#3b494b]/20">
+      <div className="mt-16 border-t border-[#dfe4ea] pt-12 dark:border-[#3b494b]/20">
         <div className="mb-8">
-          <div className="flex items-center gap-3 mb-2">
-            <span className="material-symbols-outlined text-[#00e5a3] text-[20px]">school</span>
-            <span className="font-mono text-[12px] uppercase tracking-[0.25em] text-[#00e5a3] font-semibold">Diplômes &amp; Cursus</span>
+          <div className="mb-2 flex items-center gap-3">
+            <GraduationCap size={18} className="text-[#059669] dark:text-[#00e5a3]" />
+            <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">{t.experiences.formations}</span>
           </div>
-          <h3 className="font-['Plus_Jakarta_Sans'] text-[28px] text-[#e1e2ec]">Formations</h3>
-          <p className="font-inter text-[13px] text-[#9aa5b5] mt-1">Mon parcours académique et mes diplômes</p>
+          <h3 className="font-['Plus_Jakarta_Sans'] text-[28px] text-[#0f172a] dark:text-[#e1e2ec]">{t.experiences.formations}</h3>
+          <p className="mt-1 font-inter text-[13px] text-[#475569] dark:text-[#9aa5b5]">{t.experiences.formationsDesc}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {formations.map((formation) => (
-            <div key={formation.degree} className="p-6 rounded-xl bg-[#141824] border border-[#525c6c]/30 flex flex-col justify-between h-full">
+            <div key={formation.degree} className="flex h-full flex-col justify-between rounded-xl border border-[#dfe4ea] bg-white p-6 shadow-sm dark:border-[#525c6c]/30 dark:bg-[#141824]">
               <div className="space-y-3">
-                <span className="font-mono text-[12px] px-2.5 py-1 rounded bg-[#181b22] text-[#00e5a3] border border-[#3b494b]/20 inline-block font-semibold">
+                <span className="inline-block rounded border border-[#dfe4ea] bg-[#f8fafc] px-2.5 py-1 font-mono text-[12px] font-semibold text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#181b22] dark:text-[#00e5a3]">
                   {formation.period}
                 </span>
-                <h4 className="font-['Plus_Jakarta_Sans'] text-[20px] text-[#e1e2ec] leading-snug">{formation.degree}</h4>
+                <h4 className="font-['Plus_Jakarta_Sans'] text-[20px] leading-snug text-[#0f172a] dark:text-[#e1e2ec]">{formation.degree}</h4>
               </div>
-              <p className="font-inter text-[13px] text-[#9aa5b5] mt-4 pt-4 border-t border-[#3b494b]/20 flex items-center gap-2">
-                <span className="material-symbols-outlined text-[#525c6c] text-[18px]">location_on</span>
+              <p className="mt-4 flex items-center gap-2 border-t border-[#dfe4ea] pt-4 font-inter text-[13px] text-[#475569] dark:border-[#3b494b]/20 dark:text-[#9aa5b5]">
+                <MapPin size={16} className="text-[#64748b] dark:text-[#525c6c]" />
                 {formation.school}
               </p>
             </div>
