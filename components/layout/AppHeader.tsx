@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Menu, X } from "lucide-react"
 import { useState } from "react"
 import { HeaderLogo } from "@/components/layout/HeaderLogo"
 import { ThemeToggle } from "@/components/layout/ThemeToggle"
@@ -22,7 +22,7 @@ export function AppHeader() {
 
   return (
     <>
-      <header className="fixed left-0 top-0 z-50 w-full border-b border-[#e2e8f0] bg-white/95 shadow-sm backdrop-blur-md dark:border-[#2a2e39]/80 dark:bg-[#111319]/95 dark:shadow-none">
+      <header className="fixed left-0 top-0 z-50 w-full bg-white/95 shadow-sm backdrop-blur-md dark:bg-[#111319]/95 dark:shadow-none">
         <div className="mx-auto flex h-20 w-full max-w-[1280px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
           <div className="flex shrink-0 items-center justify-start">
             <HeaderLogo />
@@ -61,8 +61,8 @@ export function AppHeader() {
           <div className="w-full max-w-sm bg-white h-full border-r border-[#e2e8f0] p-6 dark:bg-[#111319] dark:border-[#2a2e39]/80">
             <div className="flex items-center justify-between mb-8">
               <HeaderLogo />
-              <button onClick={() => setMobileOpen(false)} className="text-[#0f172a] p-2 dark:text-[#e1e2ec]">
-                <span className="material-symbols-outlined">close</span>
+              <button onClick={() => setMobileOpen(false)} className="p-2 text-[#0f172a] dark:text-[#e1e2ec]">
+                <X size={18} />
               </button>
             </div>
             <nav className="flex flex-col gap-4">
@@ -84,10 +84,10 @@ export function AppHeader() {
       <button
         type="button"
         onClick={() => setMobileOpen((v) => !v)}
-        className="fixed right-4 top-5 z-50 lg:hidden rounded-lg border border-[#cbd5e1] bg-white p-2 text-[#0f172a] shadow-sm dark:border-[#3b494b]/30 dark:bg-[#1d2436] dark:text-[#e1e2ec]"
+        className="fixed right-4 top-5 z-50 rounded-lg border border-[#cbd5e1] bg-white p-2 text-[#0f172a] shadow-sm lg:hidden dark:border-[#3b494b]/30 dark:bg-[#1d2436] dark:text-[#e1e2ec]"
         aria-label="Menu mobile"
       >
-        <span className="material-symbols-outlined text-[22px]">{mobileOpen ? "close" : "menu"}</span>
+        {mobileOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
     </>
   )

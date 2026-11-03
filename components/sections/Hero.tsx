@@ -1,21 +1,17 @@
 "use client"
 
-import { ArrowDown, ArrowRight, MessageCircle, FileText, Github, Linkedin } from "lucide-react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { ArrowDown, MessageCircle, FileText } from "lucide-react"
+import { motion } from "framer-motion"
+import { GithubIcon, LinkedinIcon } from "@/components/ui/icons"
 import { useTranslation } from "@/lib/i18n/context"
 
 export function Hero() {
   const { t } = useTranslation()
-  const { scrollY } = useScroll()
-  const scale = useTransform(scrollY, [0, 600], [1.04, 0.96])
-  const y = useTransform(scrollY, [0, 600], [0, -80])
-  const opacity = useTransform(scrollY, [0, 500, 600], [1, 0.85, 0.5])
 
   return (
-    <section id="accueil" className="relative min-h-screen w-full bg-[#f5f7f9] px-4 pt-28 text-[#0f172a] transition-colors duration-300 dark:bg-[#0d0f14] dark:text-[#e1e2ec] sm:px-6 lg:px-8 lg:pt-32">
-      <div className="mx-auto w-full max-w-[1280px] pb-20 lg:pb-24">
+    <section id="accueil" className="relative min-h-screen w-full bg-[#f5f7f9] pt-28 text-[#0f172a] transition-colors duration-300 dark:bg-[#0d0f14] dark:text-[#e1e2ec] lg:pt-32">
+      <div className="mx-auto w-full max-w-[1280px] px-4 pb-20 sm:px-6 lg:px-8 lg:pb-24">
         <motion.div
-          style={{ scale, y, opacity }}
           className="grid min-h-[calc(100vh-5rem)] grid-cols-1 items-center gap-12 lg:grid-cols-12"
         >
           <div className="flex flex-col items-start gap-6 lg:col-span-7">
@@ -65,11 +61,11 @@ export function Hero() {
             <div className="flex flex-wrap items-center gap-4 pt-4 text-[#475569] dark:text-[#9aa5b5]">
               <span className="font-mono text-[12px] uppercase text-[#64748b] dark:text-[#525c6c]">Réseaux :</span>
               <a href="https://github.com/Deste-Mo" target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-lg border border-[#dfe4ea] bg-white px-3 py-1.5 transition-colors hover:text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#14171f] dark:hover:text-[#00e5a3]">
-                <Github size={16} />
+                <GithubIcon size={16} className="text-current" />
                 <span className="font-mono text-[13px] font-medium">GitHub / Deste-Mo</span>
               </a>
               <a href="https://www.linkedin.com/in/modeste-nirina-tolojanahary-b844b61b7" target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-lg border border-[#dfe4ea] bg-white px-3 py-1.5 transition-colors hover:text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#14171f] dark:hover:text-[#00e5a3]">
-                <Linkedin size={16} />
+                <LinkedinIcon size={16} className="text-current" />
                 <span className="font-mono text-[13px] font-medium">LinkedIn</span>
               </a>
             </div>
