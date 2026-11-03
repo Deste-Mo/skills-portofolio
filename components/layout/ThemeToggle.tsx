@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { MonitorCog, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
+import { useTranslation } from "@/lib/i18n/context"
 
 interface ThemeToggleProps {
   variant?: "dropdown" | "switch"
@@ -11,6 +12,7 @@ interface ThemeToggleProps {
 export function ThemeToggle({ variant = "dropdown" }: ThemeToggleProps) {
   const [mounted, setMounted] = useState(false)
   const { theme, resolvedTheme, setTheme } = useTheme()
+  const { t } = useTranslation()
 
   useEffect(() => {
     setMounted(true)
@@ -48,9 +50,9 @@ export function ThemeToggle({ variant = "dropdown" }: ThemeToggleProps) {
         onChange={(event) => setTheme(event.target.value)}
         className="cursor-pointer appearance-none rounded-lg border border-[#dfe4ea] bg-white py-1.5 pl-8 pr-6 font-mono text-[11px] font-semibold uppercase tracking-wide text-[#0f172a] transition-all focus:border-[#059669] focus:outline-none dark:border-[#3b494b]/30 dark:bg-[#1f2430] dark:text-[#e1e2ec]"
       >
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
-        <option value="system">System</option>
+        <option value="light">{t.theme.light}</option>
+        <option value="dark">{t.theme.dark}</option>
+        <option value="system">{t.theme.system}</option>
       </select>
       <span className="pointer-events-none absolute right-1.5 text-[#64748b]">
         <MonitorCog size={12} />

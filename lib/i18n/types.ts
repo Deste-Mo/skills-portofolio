@@ -13,6 +13,7 @@ export interface Translations {
   theme: {
     light: string
     dark: string
+    system: string
   }
   hero: {
     badge: string
