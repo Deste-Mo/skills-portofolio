@@ -63,7 +63,7 @@ export function ContactSection() {
         </div>
 
         <div className="lg:col-span-7 p-8 rounded-xl bg-[#141824] border border-[#525c6c]/30">
-          <form className="space-y-6" id="contact-form" onSubmit={(e) => { e.preventDefault(); const feedback = document.getElementById('form-feedback'); if (feedback) feedback.classList.remove('hidden'); }}>
+          <form className="space-y-6" id="contact-form" onSubmit={(e) => { e.preventDefault(); const feedback = document.getElementById('form-feedback'); if (feedback) { feedback.classList.remove('hidden'); feedback.style.display = 'flex'; } }}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="font-mono text-[12px] text-[#e1e2ec] block uppercase tracking-[0.2em]" htmlFor="name">
@@ -91,7 +91,7 @@ export function ContactSection() {
               <span>Envoyer le message</span>
             </button>
 
-            <div className="hidden p-4 rounded-lg bg-[#181b22] border border-[#00e5a3]/40 text-[#00e5a3] font-mono text-[12px] flex items-center gap-3" id="form-feedback">
+            <div className="hidden p-4 rounded-lg bg-[#181b22] border border-[#00e5a3]/40 text-[#00e5a3] font-mono text-[12px] items-center gap-3" id="form-feedback" style={{ display: 'none' }}>
               <span className="material-symbols-outlined text-[#00e5a3]">check_circle</span>
               <span>Merci ! Votre message a été pris en compte. Je vous répondrai dans les plus brefs délais.</span>
             </div>

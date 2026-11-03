@@ -1,125 +1,128 @@
 "use client"
 
+import { ArrowDown, ArrowRight, MessageCircle, FileText, Github, Linkedin } from "lucide-react"
 import { motion, useScroll, useTransform } from "framer-motion"
+import { useTranslation } from "@/lib/i18n/context"
 
 export function Hero() {
+  const { t } = useTranslation()
   const { scrollY } = useScroll()
   const scale = useTransform(scrollY, [0, 600], [1.04, 0.96])
   const y = useTransform(scrollY, [0, 600], [0, -80])
   const opacity = useTransform(scrollY, [0, 500, 600], [1, 0.85, 0.5])
 
   return (
-    <section id="accueil" className="relative w-full min-h-screen bg-[#0d0f14] px-6 pt-20 lg:px-12">
-      <div className="max-w-7xl mx-auto pt-8 pb-20 lg:pt-12 lg:pb-24">
+    <section id="accueil" className="relative min-h-screen w-full bg-[#f5f7f9] px-4 pt-28 text-[#0f172a] transition-colors duration-300 dark:bg-[#0d0f14] dark:text-[#e1e2ec] sm:px-6 lg:px-8 lg:pt-32">
+      <div className="mx-auto w-full max-w-[1280px] pb-20 lg:pb-24">
         <motion.div
           style={{ scale, y, opacity }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[calc(100vh-7rem)]"
+          className="grid min-h-[calc(100vh-5rem)] grid-cols-1 items-center gap-12 lg:grid-cols-12"
         >
-          <div className="lg:col-span-7 flex flex-col items-start gap-6">
+          <div className="flex flex-col items-start gap-6 lg:col-span-7">
             <div className="space-y-3">
-              <span className="font-mono text-[12px] uppercase tracking-[0.25em] text-[#00e5a3] block font-semibold">
-                Portfolio Ingénieur
+              <span className="block font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">
+                {t.hero.badge}
               </span>
-              <h1 className="font-['Plus_Jakarta_Sans'] text-[40px] sm:text-[52px] md:text-[60px] lg:text-[72px] leading-[0.92] tracking-[-0.06em] text-[#e1e2ec]">
+              <h1 className="font-['Plus_Jakarta_Sans'] text-[40px] leading-[0.92] tracking-[-0.06em] text-[#0f172a] sm:text-[52px] md:text-[60px] lg:text-[72px] dark:text-[#e1e2ec]">
                 MODESTE <br />
-                <span className="text-[#00e5a3] font-extrabold">TOLOJANAHARY</span>
+                <span className="font-extrabold text-[#059669] dark:text-[#00e5a3]">TOLOJANAHARY</span>
               </h1>
-              <p className="font-['Plus_Jakarta_Sans'] text-[22px] md:text-[28px] text-[#93b4ff] font-medium tracking-tight">
-                Développeur Full stack &amp; DevOps
+              <p className="font-['Plus_Jakarta_Sans'] text-[22px] font-medium tracking-tight text-[#2563eb] dark:text-[#93b4ff] md:text-[28px]">
+                {t.hero.role}
               </p>
             </div>
 
-            <p className="font-inter text-[18px] text-[#9aa5b5] max-w-2xl leading-relaxed">
-              Développeur full stack &amp; DevOps (JavaScript, Python, PHP) : je conçois, développe et déploie des applications web et mobiles de bout en bout, du code jusqu’à la mise en production sur VPS.
+            <p className="max-w-2xl font-inter text-[18px] leading-relaxed text-[#475569] dark:text-[#9aa5b5]">
+              {t.hero.description}
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <a
                 href="#projets"
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-[#00e5a3] text-[#0d0f14] font-manrope text-[15px] font-bold hover:bg-white transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#059669] px-6 py-3.5 font-manrope text-[15px] font-bold text-white transition-colors hover:bg-[#047857] dark:bg-[#00e5a3] dark:text-[#0d0f14] dark:hover:bg-white"
               >
-                <span>Voir mon travail</span>
-                <span className="material-symbols-outlined ml-2 text-[20px]">arrow_downward</span>
+                <span>{t.hero.viewWork}</span>
+                <ArrowDown size={18} />
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-[#181b22] border border-[#525c6c]/30 text-[#e1e2ec] font-manrope text-[15px] font-semibold hover:bg-[#242936] hover:text-[#00e5a3] transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#dfe4ea] bg-white px-6 py-3.5 font-manrope text-[15px] font-semibold text-[#0f172a] transition-colors hover:border-[#059669] hover:text-[#059669] dark:border-[#525c6c]/30 dark:bg-[#181b22] dark:text-[#e1e2ec] dark:hover:text-[#00e5a3]"
               >
-                <span>Discutons</span>
-                <span className="material-symbols-outlined ml-2 text-[18px]">chat</span>
+                <span>{t.hero.letsTalk}</span>
+                <MessageCircle size={18} />
               </a>
               <a
                 href="/doc/CV_Modeste_TOLOJANAHARY.pdf"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center px-5 py-3.5 rounded-lg bg-[#14171f] border border-[#3b494b]/20 text-[#9aa5b5] hover:text-[#00e5a3] hover:bg-[#181b22] transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#dfe4ea] bg-white px-5 py-3.5 text-[#475569] transition-colors hover:text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#14171f] dark:text-[#9aa5b5] dark:hover:text-[#00e5a3]"
               >
-                <span className="material-symbols-outlined mr-2 text-[20px]">description</span>
-                <span className="font-mono text-[12px] uppercase tracking-[0.2em]">Mon CV (PDF)</span>
+                <FileText size={18} />
+                <span className="font-mono text-[12px] uppercase tracking-[0.2em]">{t.hero.cv}</span>
               </a>
             </div>
 
-            <div className="flex items-center gap-4 pt-4 text-[#9aa5b5] flex-wrap">
-              <span className="font-mono text-[12px] uppercase text-[#525c6c]">Réseaux :</span>
-              <a href="https://github.com/Deste-Mo" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#14171f] border border-[#3b494b]/20 hover:bg-[#181b22] hover:text-[#00e5a3] transition-colors">
-                <span className="material-symbols-outlined text-[18px]">terminal</span>
+            <div className="flex flex-wrap items-center gap-4 pt-4 text-[#475569] dark:text-[#9aa5b5]">
+              <span className="font-mono text-[12px] uppercase text-[#64748b] dark:text-[#525c6c]">Réseaux :</span>
+              <a href="https://github.com/Deste-Mo" target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-lg border border-[#dfe4ea] bg-white px-3 py-1.5 transition-colors hover:text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#14171f] dark:hover:text-[#00e5a3]">
+                <Github size={16} />
                 <span className="font-mono text-[13px] font-medium">GitHub / Deste-Mo</span>
               </a>
-              <a href="https://www.linkedin.com/in/modeste-nirina-tolojanahary-b844b61b7" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#14171f] border border-[#3b494b]/20 hover:bg-[#181b22] hover:text-[#00e5a3] transition-colors">
-                <span className="material-symbols-outlined text-[18px]">share</span>
+              <a href="https://www.linkedin.com/in/modeste-nirina-tolojanahary-b844b61b7" target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-lg border border-[#dfe4ea] bg-white px-3 py-1.5 transition-colors hover:text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#14171f] dark:hover:text-[#00e5a3]">
+                <Linkedin size={16} />
                 <span className="font-mono text-[13px] font-medium">LinkedIn</span>
               </a>
             </div>
           </div>
 
-          <div className="lg:col-span-5 relative">
-            <div className="relative rounded-xl bg-[#141824] border border-[#525c6c]/30 p-6 overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
-              <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#525c6c]/20">
+          <div className="relative lg:col-span-5">
+            <div className="relative overflow-hidden rounded-xl border border-[#dfe4ea] bg-white p-6 shadow-[0_0_0_1px_rgba(15,23,42,0.02)] dark:border-[#525c6c]/30 dark:bg-[#141824]">
+              <div className="mb-4 flex items-center justify-between border-b border-[#dfe4ea] pb-4 dark:border-[#525c6c]/20">
                 <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-[#ffb4ab] inline-block"></span>
-                  <span className="w-3 h-3 rounded-full bg-[#fbbf24] inline-block"></span>
-                  <span className="w-3 h-3 rounded-full bg-[#22c55e] inline-block"></span>
-                  <span className="font-mono text-[12px] text-[#9aa5b5] ml-2">runtime@vps-tolojanahary:~#</span>
+                  <span className="inline-block h-3 w-3 rounded-full bg-[#ffb4ab]"></span>
+                  <span className="inline-block h-3 w-3 rounded-full bg-[#fbbf24]"></span>
+                  <span className="inline-block h-3 w-3 rounded-full bg-[#22c55e]"></span>
+                  <span className="ml-2 font-mono text-[12px] text-[#64748b] dark:text-[#9aa5b5]">runtime@vps-tolojanahary:~#</span>
                 </div>
-                <span className="font-mono text-[12px] text-[#00e5a3] bg-[#181b22] px-2 py-0.5 rounded border border-[#3b494b]/30 font-semibold">
+                <span className="rounded border border-[#dfe4ea] bg-white px-2 py-0.5 font-mono text-[12px] font-semibold text-[#059669] dark:border-[#3b494b]/30 dark:bg-[#181b22] dark:text-[#00e5a3]">
                   CI/CD ACTIVE
                 </span>
               </div>
 
-              <div className="space-y-3 font-mono text-[13px] text-[#e1e2ec]">
-                <div className="flex items-center gap-2 text-[#9aa5b5]">
-                  <span className="text-[#00e5a3] font-bold">❯</span>
+              <div className="space-y-3 font-mono text-[13px] text-[#0f172a] dark:text-[#e1e2ec]">
+                <div className="flex items-center gap-2 text-[#475569] dark:text-[#9aa5b5]">
+                  <span className="font-bold text-[#059669] dark:text-[#00e5a3]">❯</span>
                   <span>docker compose -f prod.yml up -d --build</span>
                 </div>
-                <div className="p-3 rounded-lg bg-[#080a0e] border border-[#3b494b]/20 text-[13px] font-mono space-y-1.5 text-[#9aa5b5]">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[#00e5a3]">[+] service: fastapi_core</span>
-                    <span className="text-[#b6efff] font-bold">HEALTHY :8000</span>
+                <div className="space-y-1.5 rounded-lg border border-[#dfe4ea] bg-[#f8fafc] p-3 font-mono text-[13px] text-[#475569] dark:border-[#3b494b]/20 dark:bg-[#080a0e] dark:text-[#9aa5b5]">
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-[#059669] dark:text-[#00e5a3]">[+] service: fastapi_core</span>
+                    <span className="font-bold text-[#0ea5e9]">HEALTHY :8000</span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[#00e5a3]">[+] service: nextjs_frontend</span>
-                    <span className="text-[#b6efff] font-bold">READY :3000</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-[#059669] dark:text-[#00e5a3]">[+] service: nextjs_frontend</span>
+                    <span className="font-bold text-[#0ea5e9]">READY :3000</span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[#00e5a3]">[+] service: laravel_api</span>
-                    <span className="text-[#b6efff] font-bold">OK :8080</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-[#059669] dark:text-[#00e5a3]">[+] service: laravel_api</span>
+                    <span className="font-bold text-[#0ea5e9]">OK :8080</span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[#00e5a3]">[+] service: postgres_primary</span>
-                    <span className="text-[#b6efff] font-bold">SYNCED :5432</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-[#059669] dark:text-[#00e5a3]">[+] service: postgres_primary</span>
+                    <span className="font-bold text-[#0ea5e9]">SYNCED :5432</span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[#00e5a3]">[+] nginx reverse_proxy</span>
-                    <span className="text-[#b6efff] font-bold">SSL 200 OK</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-[#059669] dark:text-[#00e5a3]">[+] nginx reverse_proxy</span>
+                    <span className="font-bold text-[#0ea5e9]">SSL 200 OK</span>
                   </div>
                 </div>
               </div>
 
               <div className="pt-3">
-                <span className="font-mono text-[12px] text-[#525c6c] uppercase block mb-2">Stack de prédilection :</span>
+                <span className="mb-2 block font-mono text-[12px] uppercase text-[#64748b] dark:text-[#525c6c]">Stack de prédilection :</span>
                 <div className="flex flex-wrap gap-2">
                   {['FastAPI', 'Laravel', 'Next.js', 'Docker & Compose', 'PostgreSQL', 'Debian VPS'].map((item) => (
-                    <span key={item} className="px-2.5 py-1 rounded bg-[#181b22] border border-[#3b494b]/20 text-[#00e5a3] font-mono text-[12px]">
+                    <span key={item} className="rounded border border-[#dfe4ea] bg-[#f8fafc] px-2.5 py-1 font-mono text-[12px] text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#181b22] dark:text-[#00e5a3]">
                       {item}
                     </span>
                   ))}
@@ -127,15 +130,15 @@ export function Hero() {
               </div>
 
               <div className="grid grid-cols-2 gap-3 pt-3">
-                <div className="p-3 rounded-lg bg-[#181b22] border border-[#3b494b]/20">
-                  <span className="font-mono text-[12px] text-[#525c6c] block">Disponibilité</span>
-                  <span className="font-['JetBrains_Mono'] text-[24px] text-[#00e5a3] font-bold">99.98%</span>
-                  <span className="font-inter text-[13px] text-[#9aa5b5] block mt-0.5">Uptime Monitored</span>
+                <div className="rounded-lg border border-[#dfe4ea] bg-[#f8fafc] p-3 dark:border-[#3b494b]/20 dark:bg-[#181b22]">
+                  <span className="block font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">Disponibilité</span>
+                  <span className="font-['JetBrains_Mono'] text-[24px] font-bold text-[#059669] dark:text-[#00e5a3]">99.98%</span>
+                  <span className="mt-0.5 block font-inter text-[13px] text-[#475569] dark:text-[#9aa5b5]">Uptime Monitored</span>
                 </div>
-                <div className="p-3 rounded-lg bg-[#181b22] border border-[#3b494b]/20">
-                  <span className="font-mono text-[12px] text-[#525c6c] block">Déploiements</span>
-                  <span className="font-['JetBrains_Mono'] text-[24px] text-[#93b4ff] font-bold">&lt; 3 min</span>
-                  <span className="font-inter text-[13px] text-[#9aa5b5] block mt-0.5">Automated Git Push</span>
+                <div className="rounded-lg border border-[#dfe4ea] bg-[#f8fafc] p-3 dark:border-[#3b494b]/20 dark:bg-[#181b22]">
+                  <span className="block font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">Déploiements</span>
+                  <span className="font-['JetBrains_Mono'] text-[24px] font-bold text-[#2563eb] dark:text-[#93b4ff]">&lt; 3 min</span>
+                  <span className="mt-0.5 block font-inter text-[13px] text-[#475569] dark:text-[#9aa5b5]">Automated Git Push</span>
                 </div>
               </div>
             </div>

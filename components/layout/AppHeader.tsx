@@ -1,71 +1,56 @@
 "use client"
 
+import { ArrowRight } from "lucide-react"
 import { useState } from "react"
-import Image from "next/image"
-
-const navItems = [
-  { label: "Accueil", href: "#accueil" },
-  { label: "À propos", href: "#a-propos" },
-  { label: "Compétences", href: "#competences" },
-  { label: "Expériences", href: "#experiences" },
-  { label: "Services", href: "#services" },
-  { label: "Projets", href: "#projets" },
-  { label: "Contact", href: "#contact" },
-]
+import { HeaderLogo } from "@/components/layout/HeaderLogo"
+import { ThemeToggle } from "@/components/layout/ThemeToggle"
+import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher"
+import { useTranslation } from "@/lib/i18n/context"
 
 export function AppHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { t } = useTranslation()
+
+  const navItems = [
+    { label: t.nav.home, href: "#accueil" },
+    { label: t.nav.about, href: "#a-propos" },
+    { label: t.nav.skills, href: "#competences" },
+    { label: t.nav.experiences, href: "#experiences" },
+    { label: t.nav.services, href: "#services" },
+    { label: t.nav.projects, href: "#projets" },
+  ]
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-50 border-b border-[#2a2e39]/80 bg-[#111319]/95 backdrop-blur-sm">
-        <div className="h-20 max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-12 items-center">
-          <div className="col-span-3 flex items-center justify-start">
-            <a href="#accueil" className="flex flex-col items-center justify-center group gap-1 py-1">
-              <Image
-                src="/images/logo/logo-white.png"
-                alt="Logo Modeste"
-                width={120}
-                height={42}
-                className="h-7 w-auto object-contain transition-transform group-hover:scale-105"
-              />
-              <span className="font-manrope text-[13px] tracking-[0.2em] uppercase text-[#e1e2ec] group-hover:text-[#00e5a3] transition-colors font-bold leading-none">
-                Modeste
-              </span>
-            </a>
+      <header className="fixed left-0 top-0 z-50 w-full border-b border-[#e2e8f0] bg-white/95 shadow-sm backdrop-blur-md dark:border-[#2a2e39]/80 dark:bg-[#111319]/95 dark:shadow-none">
+        <div className="mx-auto flex h-20 w-full max-w-[1280px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+          <div className="flex shrink-0 items-center justify-start">
+            <HeaderLogo />
           </div>
 
-          <nav className="col-span-6 hidden lg:flex items-center justify-center gap-6 xl:gap-8">
+          <nav className="hidden items-center justify-center gap-6 xl:gap-8 lg:flex">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="font-inter text-[14px] text-[#9aa5b5] hover:text-[#e1e2ec] transition-colors"
+                className="font-inter text-[14px] font-medium text-[#475569] transition-colors hover:text-[#0f172a] dark:text-[#9aa5b5] dark:hover:text-[#e1e2ec]"
               >
                 {item.label}
               </a>
             ))}
           </nav>
 
-          <div className="col-span-9 lg:col-span-3 flex items-center justify-end gap-3.5">
-            <div className="relative inline-flex items-center">
-              <span className="material-symbols-outlined absolute left-2.5 text-[16px] text-[#525c6c] pointer-events-none">language</span>
-              <select
-                aria-label="Choisir la langue"
-                className="pl-8 pr-7 py-1.5 rounded-lg bg-[#1f2430] border border-[#3b494b]/30 text-[#e1e2ec] font-mono text-[12px] uppercase tracking-wider focus:outline-none focus:border-[#00e5a3] cursor-pointer hover:bg-[#242936] appearance-none"
-                defaultValue="fr"
-              >
-                <option value="fr">FR</option>
-                <option value="en">EN</option>
-              </select>
-              <span className="material-symbols-outlined absolute right-2 text-[14px] text-[#525c6c] pointer-events-none">expand_more</span>
-            </div>
+          <div className="flex shrink-0 items-center justify-end gap-3.5">
+            <LanguageSwitcher variant="dropdown" />
+
+            <ThemeToggle />
+
             <a
               href="#contact"
-              className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-[#00e5a3] font-manrope text-[13px] font-bold text-[#0d0f14] hover:bg-white transition-colors"
+              className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#059669] px-4 py-2 text-[13px] font-semibold text-white shadow-sm transition-all hover:bg-[#047857] dark:bg-[#00e5a3] dark:text-[#0d0f14] dark:hover:bg-white"
             >
-              <span>Discutons</span>
-              <span className="material-symbols-outlined text-[18px] ml-1.5">arrow_forward</span>
+              <span>{t.hero.letsTalk}</span>
+              <ArrowRight size={16} />
             </a>
           </div>
         </div>
@@ -73,10 +58,10 @@ export function AppHeader() {
 
       {mobileOpen && (
         <div className="fixed inset-0 z-40 bg-[#0d0f14]/80 lg:hidden">
-          <div className="w-full max-w-sm bg-[#111319] h-full border-r border-[#2a2e39] p-6">
+          <div className="w-full max-w-sm bg-white h-full border-r border-[#e2e8f0] p-6 dark:bg-[#111319] dark:border-[#2a2e39]/80">
             <div className="flex items-center justify-between mb-8">
-              <Image src="/images/logo/logo-white.png" alt="Logo" width={120} height={36} className="h-8 w-auto" />
-              <button onClick={() => setMobileOpen(false)} className="text-[#e1e2ec] p-2">
+              <HeaderLogo />
+              <button onClick={() => setMobileOpen(false)} className="text-[#0f172a] p-2 dark:text-[#e1e2ec]">
                 <span className="material-symbols-outlined">close</span>
               </button>
             </div>
@@ -86,7 +71,7 @@ export function AppHeader() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-[#9aa5b5] hover:text-[#00e5a3] transition-colors text-sm"
+                  className="text-[#475569] hover:text-[#059669] transition-colors text-sm dark:text-[#9aa5b5] dark:hover:text-[#00e5a3]"
                 >
                   {item.label}
                 </a>
@@ -99,7 +84,7 @@ export function AppHeader() {
       <button
         type="button"
         onClick={() => setMobileOpen((v) => !v)}
-        className="fixed right-4 top-5 z-50 lg:hidden rounded-lg border border-[#3b494b]/30 bg-[#1d2436] p-2 text-[#e1e2ec]"
+        className="fixed right-4 top-5 z-50 lg:hidden rounded-lg border border-[#cbd5e1] bg-white p-2 text-[#0f172a] shadow-sm dark:border-[#3b494b]/30 dark:bg-[#1d2436] dark:text-[#e1e2ec]"
         aria-label="Menu mobile"
       >
         <span className="material-symbols-outlined text-[22px]">{mobileOpen ? "close" : "menu"}</span>

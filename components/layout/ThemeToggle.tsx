@@ -1,90 +1,60 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useEffect, useState } from "react"
+import { MonitorCog, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
-import { SunIcon, MoonIcon, MonitorIcon } from "@/components/ui/icons"
-import { useClickOutside } from "@/hooks/useClickOutside"
-import { useTranslation } from "@/lib/i18n/context"
 
 interface ThemeToggleProps {
-  variant?: "dropdown" | "inline"
+  variant?: "dropdown" | "switch"
 }
-
-const themes = [
-  { key: "light", label: "Clair", labelEn: "Light", icon: SunIcon },
-  { key: "dark", label: "Sombre", labelEn: "Dark", icon: MoonIcon },
-  { key: "system", label: "Système", labelEn: "System", icon: MonitorIcon },
-] as const
 
 export function ThemeToggle({ variant = "dropdown" }: ThemeToggleProps) {
   const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
-  const { lang } = useTranslation()
-  const [open, setOpen] = useState(false)
+  const { theme, resolvedTheme, setTheme } = useTheme()
 
-  useEffect(() => { setMounted(true) }, [])
-
-  const close = useCallback(() => setOpen(false), [])
-  useClickOutside(open, close)
-
-  const current = themes.find((t) => t.key === theme) || themes[2]
-  const label = (t: typeof themes[number]) => lang === "en" ? t.labelEn : t.label
-
-  if (variant === "inline") {
-    return (
-      <div className="flex items-center gap-2">
-        {themes.map((t) => {
-          const Icon = t.icon
-          return (
-            <button
-              key={t.key}
-              onClick={() => setTheme(t.key)}
-              className={`p-1.5 rounded-[0.125rem] transition-all ${theme === t.key ? "ring-1 ring-primary bg-muted/50" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"}`}
-              aria-label={label(t)}
-            >
-              <Icon size={18} />
-            </button>
-          )
-        })}
-      </div>
-    )
-  }
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   if (!mounted) {
+    return <div className="h-9 w-[110px] rounded-lg border border-[#dfe4ea] bg-white" />
+  }
+
+  const currentValue = theme ?? "system"
+  const iconColor = "#475569"
+
+  if (variant === "switch") {
+    const isDark = resolvedTheme === "dark"
     return (
-      <div className="md:w-10 md:h-10 flex items-center justify-center p-2">
-        <div className="w-[18px] h-[18px]" />
-      </div>
+      <button
+        type="button"
+        onClick={() => setTheme(isDark ? "light" : "dark")}
+        className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#dfe4ea] bg-white text-[#0f172a] transition-colors hover:border-[#059669] hover:text-[#059669] dark:border-[#3b494b]/30 dark:bg-[#1f2430] dark:text-[#e1e2ec] dark:hover:text-[#00e5a3]"
+        aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      >
+        {isDark ? <Sun size={18} color={iconColor} /> : <Moon size={18} color={iconColor} />}
+      </button>
     )
   }
 
   return (
-    <div className="relative">
-      <button
-        onClick={(e) => { e.stopPropagation(); setOpen(!open) }}
-        className="md:w-10 md:h-10 flex items-center justify-center p-2 rounded-[0.125rem] text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200 active:scale-[0.98]"
-        aria-label="Select theme"
+    <div className="relative inline-flex items-center">
+      <span className="pointer-events-none absolute left-2.5 text-[#64748b]">
+        {resolvedTheme === "dark" ? <Moon size={14} /> : <Sun size={14} />}
+      </span>
+      <select
+        aria-label="Choisir le thème"
+        value={currentValue}
+        onChange={(event) => setTheme(event.target.value)}
+        className="cursor-pointer appearance-none rounded-lg border border-[#dfe4ea] bg-white py-1.5 pl-8 pr-6 font-mono text-[11px] font-semibold uppercase tracking-wide text-[#0f172a] transition-all focus:border-[#059669] focus:outline-none dark:border-[#3b494b]/30 dark:bg-[#1f2430] dark:text-[#e1e2ec]"
       >
-        <current.icon size={20} />
-      </button>
-      {open && (
-        <div className="absolute right-0 top-full mt-1 w-40 bg-background border border-border rounded-lg shadow-lg overflow-hidden z-50">
-          {themes.map((t) => {
-            const Icon = t.icon
-            return (
-              <button
-                key={t.key}
-                onClick={() => { setTheme(t.key); setOpen(false) }}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm transition-colors hover:bg-muted/50 ${theme === t.key ? "text-foreground font-semibold" : "text-muted-foreground"}`}
-              >
-                <Icon size={18} />
-                {label(t)}
-                {theme === t.key && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-primary" />}
-              </button>
-            )
-          })}
-        </div>
-      )}
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="system">System</option>
+      </select>
+      <span className="pointer-events-none absolute right-1.5 text-[#64748b]">
+        <MonitorCog size={12} />
+      </span>
     </div>
   )
 }
