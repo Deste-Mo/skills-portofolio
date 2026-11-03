@@ -3,7 +3,6 @@ import { Geist, Geist_Mono, Manrope, Inter, Just_Me_Again_Down_Here } from "next
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { AppHeader } from "@/components/layout/AppHeader";
 import { AppFooter } from "@/components/layout/AppFooter";
 import { LanguageProvider } from "@/lib/i18n/context";
@@ -27,7 +26,7 @@ const manrope = Manrope({
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const justMeAgainDownHere = Just_Me_Again_Down_Here({
@@ -49,18 +48,15 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${inter.variable} ${justMeAgainDownHere.variable} h-full antialiased scroll-smooth`}
+      className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${inter.variable} ${justMeAgainDownHere.variable} dark h-full antialiased scroll-smooth`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300">
-        <ThemeProvider attribute="class" defaultTheme="light">
+      <body className="min-h-full flex flex-col bg-[#0d0f14] text-[#e1e2ec] transition-colors duration-300">
+        <ThemeProvider attribute="class" defaultTheme="dark">
           <LanguageProvider>
             <AppHeader />
-            <div className="pt-14 md:pt-16 flex-1">
-              {children}
-            </div>
+            <div className="pt-20 flex-1">{children}</div>
             <AppFooter />
-            <ThemeToggle />
           </LanguageProvider>
         </ThemeProvider>
       </body>

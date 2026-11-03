@@ -3,65 +3,48 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: hsl(0 0% 100%);
-  --foreground: hsl(224 71.4% 4.1%);
-
-  --card: hsl(0 0% 100%);
-  --card-foreground: hsl(224 71.4% 4.1%);
-
-  --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(224 71.4% 4.1%);
-
-  --primary: hsl(220.9 39.3% 11%);
-  --primary-foreground: hsl(210 20% 98%);
-
-  --secondary: hsl(220 14.3% 95.9%);
-  --secondary-foreground: hsl(220.9 39.3% 11%);
-
-  --muted: hsl(220 14.3% 95.9%);
-  --muted-foreground: hsl(220 8.9% 46.1%);
-
-  --accent: hsl(220 14.3% 95.9%);
-  --accent-foreground: hsl(220.9 39.3% 11%);
-
-  --destructive: hsl(0 84.2% 60.2%);
-  --destructive-foreground: hsl(210 20% 98%);
-
-  --border: hsl(220 13% 91%);
-  --input: hsl(220 13% 91%);
-  --ring: hsl(224 71.4% 4.1%);
-
-  --radius: 0.625rem;
+  --background: #0d0f14;
+  --foreground: #e1e2ec;
+  --card: #111319;
+  --card-foreground: #e1e2ec;
+  --popover: #111319;
+  --popover-foreground: #e1e2ec;
+  --primary: #00e5a3;
+  --primary-foreground: #00363a;
+  --secondary: #93b4ff;
+  --secondary-foreground: #002a78;
+  --muted: #1b1f29;
+  --muted-foreground: #9aa5b5;
+  --accent: #1d2436;
+  --accent-foreground: #e1e2ec;
+  --destructive: #ffb4ab;
+  --destructive-foreground: #690005;
+  --border: rgba(82, 92, 108, 0.8);
+  --input: rgba(82, 92, 108, 0.8);
+  --ring: #00e5a3;
+  --radius: 0.75rem;
 }
 
 .dark {
-  --background: hsl(224 71.4% 4.1%);
-  --foreground: hsl(210 20% 98%);
-
-  --card: hsl(224 71.4% 4.1%);
-  --card-foreground: hsl(210 20% 98%);
-
-  --popover: hsl(224 71.4% 4.1%);
-  --popover-foreground: hsl(210 20% 98%);
-
-  --primary: hsl(210 20% 98%);
-  --primary-foreground: hsl(220.9 39.3% 11%);
-
-  --secondary: hsl(215 27.9% 16.9%);
-  --secondary-foreground: hsl(210 20% 98%);
-
-  --muted: hsl(215 27.9% 16.9%);
-  --muted-foreground: hsl(217.9 10.6% 64.9%);
-
-  --accent: hsl(215 27.9% 16.9%);
-  --accent-foreground: hsl(210 20% 98%);
-
-  --destructive: hsl(0 62.8% 30.6%);
-  --destructive-foreground: hsl(210 20% 98%);
-
-  --border: hsl(215 27.9% 16.9%);
-  --input: hsl(215 27.9% 16.9%);
-  --ring: hsl(216 12.2% 83.9%);
+  --background: #0d0f14;
+  --foreground: #e1e2ec;
+  --card: #111319;
+  --card-foreground: #e1e2ec;
+  --popover: #111319;
+  --popover-foreground: #e1e2ec;
+  --primary: #00e5a3;
+  --primary-foreground: #00363a;
+  --secondary: #93b4ff;
+  --secondary-foreground: #002a78;
+  --muted: #1b1f29;
+  --muted-foreground: #9aa5b5;
+  --accent: #1d2436;
+  --accent-foreground: #e1e2ec;
+  --destructive: #ffb4ab;
+  --destructive-foreground: #690005;
+  --border: rgba(82, 92, 108, 0.8);
+  --input: rgba(82, 92, 108, 0.8);
+  --ring: #00e5a3;
 }
 
 @theme inline {
@@ -89,96 +72,25 @@
   --font-manrope: var(--font-manrope);
   --font-inter: var(--font-inter);
   --font-handwriting: var(--font-handwriting);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --animate-fade-in-up: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-fade-in-down: fade-in-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-fade-in: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-scale-in: scale-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes fade-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-in-down {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes scale-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@utility animation-delay-100 {
-  animation-delay: 100ms;
-}
-@utility animation-delay-200 {
-  animation-delay: 200ms;
-}
-@utility animation-delay-300 {
-  animation-delay: 300ms;
-}
-@utility animation-delay-400 {
-  animation-delay: 400ms;
-}
-@utility animation-delay-500 {
-  animation-delay: 500ms;
-}
-@utility animation-delay-600 {
-  animation-delay: 600ms;
-}
-@utility animation-delay-700 {
-  animation-delay: 700ms;
-}
-@utility animation-delay-800 {
-  animation-delay: 800ms;
-}
-@utility animation-delay-900 {
-  animation-delay: 900ms;
-}
-@utility animation-delay-1000 {
-  animation-delay: 1000ms;
+html {
+  scroll-behavior: smooth;
+  background: #0d0f14;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
 }
 
 * {
   border-color: var(--border);
+}
+
+::selection {
+  background: #00e5a3;
+  color: #0d0f14;
 }
 
