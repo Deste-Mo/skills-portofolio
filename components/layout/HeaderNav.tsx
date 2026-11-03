@@ -52,7 +52,7 @@ export function HeaderNav({ className = "", linkClassName, activeSection, setAct
   }, [router, onNavClick])
 
   const defaultClass = (isActive: boolean) =>
-    `font-manrope text-sm font-medium tracking-tight whitespace-nowrap px-3 py-1.5 rounded-[0.125rem] active:scale-[0.98] transition-all duration-200 relative ${
+    `font-sans text-sm font-medium tracking-tight whitespace-nowrap px-3 py-1.5 rounded-[0.125rem] active:scale-[0.98] transition-all duration-200 relative ${
       isActive
         ? "text-foreground"
         : "text-muted-foreground hover:text-foreground hover:bg-muted/50"

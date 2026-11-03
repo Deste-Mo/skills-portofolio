@@ -13,6 +13,7 @@ const en: Translations = {
   theme: {
     light: "Light mode",
     dark: "Dark mode",
+    system: "System",
   },
   hero: {
     badge: "Open to opportunities",

@@ -1,115 +1,97 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { AnimatePresence, motion } from "framer-motion"
-import { MenuIcon, XIcon } from "@/components/ui/icons"
-import { HeaderLogo } from "./HeaderLogo"
-import { HeaderNav } from "./HeaderNav"
-import { ThemeToggle } from "./ThemeToggle"
-import { LanguageSwitcher } from "./LanguageSwitcher"
-import { useScrollSpy } from "@/hooks/useScrollSpy"
+import { ArrowRight, Menu, X } from "lucide-react"
+import { useState } from "react"
+import { HeaderLogo } from "@/components/layout/HeaderLogo"
+import { ThemeToggle } from "@/components/layout/ThemeToggle"
+import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher"
+import { useTranslation } from "@/lib/i18n/context"
 
 export function AppHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const { isScrolled, activeSection, setActiveSection } = useScrollSpy()
+  const { t } = useTranslation()
 
-  useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
-    return () => { document.body.style.overflow = "" }
-  }, [mobileOpen])
-
-  const closeMobile = () => setMobileOpen(false)
+  const navItems = [
+    { label: t.nav.home, href: "#accueil" },
+    { label: t.nav.about, href: "#a-propos" },
+    { label: t.nav.skills, href: "#competences" },
+    { label: t.nav.experiences, href: "#experiences" },
+    { label: t.nav.services, href: "#services" },
+    { label: t.nav.projects, href: "#projets" },
+  ]
 
   return (
     <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`bg-background/80 backdrop-blur-xl top-0 fixed z-50 transition-all duration-300 w-full ${
-          isScrolled ? "border-b border-border shadow-sm" : ""
-        }`}
+      <header
+        className="fixed left-0 top-0 z-50 w-full shadow-sm backdrop-blur-md dark:shadow-none"
+        style={{ backgroundColor: "var(--card)" }}
       >
-        <div className="max-w-[1200px] mx-auto flex items-center justify-between gap-2 px-4 sm:px-6 lg:px-8 h-16">
-          <HeaderLogo />
-
-          <nav className="hidden md:flex items-center justify-center flex-1 gap-1">
-            <HeaderNav
-              activeSection={activeSection}
-              setActiveSection={setActiveSection}
-              onNavClick={closeMobile}
-            />
-          </nav>
-
-          <div className="hidden md:flex items-center gap-2">
-            <ThemeToggle />
-            <LanguageSwitcher />
+        <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+          <div className="flex shrink-0 items-center justify-start">
+            <HeaderLogo />
           </div>
 
-          <button
-            className="md:hidden p-2 text-muted-foreground hover:text-foreground rounded-[0.125rem] transition-colors cursor-pointer"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Menu"
-          >
-            <MenuIcon size={22} />
-          </button>
-        </div>
-      </motion.header>
+          <nav className="hidden items-center justify-center gap-6 xl:gap-8 lg:flex">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="font-sans text-[14px] font-medium text-[#475569] transition-colors hover:text-[#0f172a] dark:text-[#9aa5b5] dark:hover:text-[#e1e2ec]"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
 
-      <AnimatePresence>
-        {mobileOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="fixed inset-0 bg-black/40 z-40 md:hidden"
-              onClick={closeMobile}
-            />
-            <motion.div
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] z-50 md:hidden bg-background border-r border-border flex flex-col"
+          <div className="flex shrink-0 items-center justify-end gap-3.5">
+            <LanguageSwitcher variant="dropdown" />
+
+            <ThemeToggle />
+
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#059669] px-4 py-2 text-[13px] font-semibold text-white shadow-sm transition-all hover:bg-[#047857] dark:bg-[#00e5a3] dark:text-[#0d0f14] dark:hover:bg-white"
             >
-              <div className="flex items-center justify-between px-6 h-16 border-b border-border shrink-0">
-                <HeaderLogo />
-                <button
-                  onClick={closeMobile}
-                  className="p-2 text-muted-foreground hover:text-foreground rounded-[0.125rem] transition-colors cursor-pointer"
-                  aria-label="Close menu"
+              <span>{t.hero.letsTalk}</span>
+              <ArrowRight size={16} />
+            </a>
+          </div>
+        </div>
+      </header>
+
+      {mobileOpen && (
+        <div className="fixed inset-0 z-40 bg-[#0d0f14]/80 lg:hidden">
+          <div className="w-full max-w-sm bg-white h-full border-r border-[#e2e8f0] p-6 dark:bg-[#111319] dark:border-[#2a2e39]/80">
+            <div className="flex items-center justify-between mb-8">
+              <HeaderLogo />
+              <button onClick={() => setMobileOpen(false)} className="p-2 text-[#0f172a] dark:text-[#e1e2ec]">
+                <X size={18} />
+              </button>
+            </div>
+            <nav className="flex flex-col gap-4">
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-[#475569] hover:text-[#059669] transition-colors text-sm dark:text-[#9aa5b5] dark:hover:text-[#00e5a3]"
                 >
-                  <XIcon size={22} />
-                </button>
-              </div>
-              <nav className="flex-1 flex flex-col gap-1 px-4 py-6 overflow-y-auto">
-                <HeaderNav
-                  activeSection={activeSection}
-                  setActiveSection={setActiveSection}
-                  onNavClick={closeMobile}
-                  linkClassName={(isActive) =>
-                    `font-manrope text-base font-medium tracking-tight px-4 py-3.5 rounded-lg transition-all duration-200 ${
-                      isActive
-                        ? "text-foreground bg-primary/10"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                    }`
-                  }
-                />
-              </nav>
-              <div className="flex items-center justify-center gap-3 px-6 py-5 border-t border-border shrink-0">
-                <ThemeToggle variant="inline" />
-                <LanguageSwitcher variant="inline" />
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+        </div>
+      )}
+
+      <button
+        type="button"
+        onClick={() => setMobileOpen((v) => !v)}
+        className="fixed right-4 top-5 z-50 rounded-lg border border-[#cbd5e1] bg-white p-2 text-[#0f172a] shadow-sm lg:hidden dark:border-[#3b494b]/30 dark:bg-[#1d2436] dark:text-[#e1e2ec]"
+        aria-label="Menu mobile"
+      >
+        {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+      </button>
     </>
   )
 }

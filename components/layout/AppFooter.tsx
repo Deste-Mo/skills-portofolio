@@ -1,94 +1,63 @@
 "use client";
 
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { siteConfig } from "@/config/site";
-import { MailIcon, GithubIcon, LinkedinIcon } from "@/components/ui/icons";
-import { useTranslation } from "@/lib/i18n/context";
+import Image from "next/image";
 
 export function AppFooter() {
-  const currentYear = new Date().getFullYear();
-  const { t } = useTranslation();
-
-  const navLabelMap: Record<string, keyof typeof t.nav> = {
-    "/": "home",
-    "#about": "about",
-    "#skills": "skills",
-    "#experiences": "experiences",
-    "#services": "services",
-    "#projects": "projects",
-    "#contact": "contact",
-  };
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith("#")) {
-      e.preventDefault();
-      const id = href.slice(1);
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
-
   return (
-    <motion.footer
-      initial={{ y: 100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="bg-background/80 backdrop-blur-md border-t border-border/50 mt-8"
-    >
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Copyright */}
-          <p className="text-sm text-muted-foreground text-center md:text-left order-2 md:order-1">
-            © {currentYear} {siteConfig.name}. {t.footer.rights}
-          </p>
+    <footer className="w-full bg-[#0b0d12] border-t border-[#2a2e39]/40 mt-20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+          <div className="md:col-span-2 space-y-4">
+            <a href="#accueil" className="inline-flex flex-col items-start group gap-1 py-1">
+              <Image
+                src="/images/logo/logo-white.png"
+                alt="Logo Modeste TOLOJANAHARY"
+                width={150}
+                height={48}
+                className="h-8 w-auto object-contain transition-transform group-hover:scale-105"
+              />
+              <span className="font-sans text-[14px] tracking-[0.2em] uppercase text-[#e1e2ec] font-bold group-hover:text-[#00e5a3] transition-colors">
+                Modeste TOLOJANAHARY
+              </span>
+            </a>
+            <p className="font-sans text-[15px] text-[#9aa5b5] max-w-md">
+              Ingénieur Full stack &amp; DevOps spécialisé dans l'architecture distribuée, les conteneurs et les interfaces réactives haute performance.
+            </p>
+            <div className="flex items-center gap-3 pt-2">
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#1d2436] border border-[#3b494b]/20">
+                <span className="w-2 h-2 rounded-full bg-[#22c55e]"></span>
+                <span className="font-mono text-[12px] text-[#b6efff]">Disponible pour missions &amp; CDI</span>
+              </div>
+            </div>
+          </div>
 
-          {/* Navigation links */}
-          <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 order-3 md:order-2">
-            {siteConfig.mainNav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
-              >
-                {t.nav[navLabelMap[item.href]]}
-              </Link>
-            ))}
-          </nav>
+          <div className="space-y-3">
+            <span className="font-mono text-[12px] text-[#00e5a3] uppercase tracking-[0.2em] block font-semibold">Navigation</span>
+            <ul className="space-y-2 font-sans text-[13px]">
+              <li><a className="text-[#9aa5b5] hover:text-[#e1e2ec] transition-colors block" href="#accueil">Accueil</a></li>
+              <li><a className="text-[#9aa5b5] hover:text-[#e1e2ec] transition-colors block" href="#a-propos">À propos</a></li>
+              <li><a className="text-[#9aa5b5] hover:text-[#e1e2ec] transition-colors block" href="#competences">Compétences</a></li>
+              <li><a className="text-[#9aa5b5] hover:text-[#e1e2ec] transition-colors block" href="#experiences">Expériences</a></li>
+              <li><a className="text-[#9aa5b5] hover:text-[#e1e2ec] transition-colors block" href="#projets">Projets &amp; Réalisations</a></li>
+            </ul>
+          </div>
 
-          {/* Social links */}
-          <div className="flex items-center gap-3 order-1 md:order-3">
-            <a
-              href="mailto:tolojanaharyjeanmodeste@gmail.com"
-              className="flex h-8 w-8 items-center justify-center rounded-[0.125rem] border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
-              aria-label="Email"
-            >
-              <MailIcon size={16} />
-            </a>
-            <a
-              href="https://github.com/Deste-Mo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-8 w-8 items-center justify-center rounded-[0.125rem] border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
-              aria-label="GitHub"
-            >
-              <GithubIcon size={16} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/modeste-nirina-tolojanahary-b844b61b7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-8 w-8 items-center justify-center rounded-[0.125rem] border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
-              aria-label="LinkedIn"
-            >
-              <LinkedinIcon size={16} />
-            </a>
+          <div className="space-y-3">
+            <span className="font-mono text-[12px] text-[#00e5a3] uppercase tracking-[0.2em] block font-semibold">Réseaux &amp; Contact</span>
+            <ul className="space-y-2 font-sans text-[13px]">
+              <li><a className="text-[#9aa5b5] hover:text-[#e1e2ec] transition-colors block" href="#contact">tolojanaharyjeanmodeste@gmail.com</a></li>
+              <li><a className="text-[#9aa5b5] hover:text-[#e1e2ec] transition-colors block" href="https://github.com/Deste-Mo" rel="noreferrer" target="_blank">GitHub Profile</a></li>
+              <li><a className="text-[#9aa5b5] hover:text-[#e1e2ec] transition-colors block" href="https://www.linkedin.com/in/modeste-nirina-tolojanahary-b844b61b7" rel="noreferrer" target="_blank">LinkedIn Network</a></li>
+              <li><a className="text-[#9aa5b5] hover:text-[#e1e2ec] transition-colors block" href="/doc/CV_Modeste_TOLOJANAHARY.pdf" rel="noreferrer" target="_blank">Télécharger CV (PDF)</a></li>
+            </ul>
           </div>
         </div>
+
+        <div className="pt-8 border-t border-[#2a2e39]/40 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[12px] text-[#9aa5b5]">
+          <p>© 2025 Modeste TOLOJANAHARY. Tous droits réservés.</p>
+          <p className="text-[#525c6c]">Conçu avec rigueur • Dark Precision UI</p>
+        </div>
       </div>
-    </motion.footer>
+    </footer>
   );
 }

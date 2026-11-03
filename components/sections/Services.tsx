@@ -1,67 +1,100 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import { ScrollReveal } from "@/components/ui/ScrollReveal"
-import { getLocalizedServices } from "@/config/services"
+import {
+  ArrowRight,
+  CloudCog,
+  Code2,
+  Globe,
+  Palette,
+  Smartphone,
+} from "lucide-react"
 import { useTranslation } from "@/lib/i18n/context"
 
-export function ServicesSection() {
-  const { t, lang } = useTranslation()
-  const services = getLocalizedServices(lang)
-  return (
-    <section id="services" className="max-w-[1200px] mx-auto px-8 py-24 md:py-32">
-      <ScrollReveal animation="slide-up">
-        <div className="mb-12 md:mb-16">
-          <h2
-            className="font-manrope text-4xl md:text-[48px] font-semibold text-foreground mb-4"
-            style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
-          >
-            {t.services.title}
-          </h2>
-          <p
-            className="font-inter text-base md:text-lg text-muted-foreground max-w-2xl"
-            style={{ lineHeight: "1.75" }}
-          >
-            {t.services.description}
-          </p>
-        </div>
-      </ScrollReveal>
+const services = [
+  {
+    title: "Développement Frontend",
+    description: "Interfaces web modernes, responsives et centrées sur l'expérience utilisateur.",
+    icon: Globe,
+    href: "/services/developpement-frontend",
+    color: "text-[#059669] dark:text-[#00e5a3]",
+  },
+  {
+    title: "Développement Mobile",
+    description: "Applications mobiles Android et iOS, fluides, intuitives et prêtes pour les stores.",
+    icon: Smartphone,
+    href: "/services/developpement-mobile",
+    color: "text-[#2563eb] dark:text-[#93b4ff]",
+  },
+  {
+    title: "UI/UX & Design",
+    description: "Conception d'expériences numériques, maquettes, user flows et design systems.",
+    icon: Palette,
+    href: "/services/design-ui-ux",
+    color: "text-[#059669] dark:text-[#00e5a3]",
+  },
+  {
+    title: "Développement Backend",
+    description: "API, logique métier et bases de données pour des services fiables et évolutifs.",
+    icon: Code2,
+    href: "/services/developpement-backend",
+    color: "text-[#0f172a] dark:text-[#e1e2ec]",
+  },
+  {
+    title: "DevOps & Hébergement",
+    description: "Déploiement, infrastructure, fiabilité et maintenance des applications en production sur des serveurs VPS haute performance.",
+    icon: CloudCog,
+    href: "/services/devops-hebergement",
+    color: "text-[#059669] dark:text-[#00e5a3]",
+  },
+]
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-        {services.map((service, index) => (
-          <ScrollReveal key={service.title} animation="slide-up" delay={index * 100}>
+export function ServicesSection() {
+  const { t } = useTranslation()
+
+  return (
+    <section id="services" className="w-full bg-[#f5f7f9] py-20 text-[#0f172a] transition-colors duration-300 dark:bg-[#0d0f14] dark:text-[#e1e2ec]">
+      <div className="mb-12">
+        <div className="mb-2 flex items-center gap-3">
+          <span className="inline-block h-0.5 w-8 bg-[#059669] dark:bg-[#00e5a3]"></span>
+          <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">Offre de valeur</span>
+        </div>
+        <h2 className="font-sans text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">{t.services.title}</h2>
+        <p className="mt-2 max-w-3xl font-sans text-[15px] leading-relaxed text-[#475569] md:text-[18px] dark:text-[#9aa5b5]">
+          {t.services.description}
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12">
+        {services.map((service, index) => {
+          const Icon = service.icon
+          const isLastTwo = index >= services.length - 2
+          const widthClass = isLastTwo ? "lg:col-span-6" : "lg:col-span-4"
+
+          return (
             <Link
-              href={`/services/${service.slug}`}
-              className="group relative overflow-hidden bg-background border border-border/60 shadow-sm rounded-xl p-6 md:p-8 hover:shadow-md hover:scale-[1.03] active:scale-[0.98] dark:bg-muted/20 dark:border-border/50 dark:shadow-none dark:hover:bg-muted/30 transition-all duration-300 block h-full"
+              key={service.title}
+              href={service.href}
+              className={`${widthClass} group flex h-full flex-col justify-between rounded-xl border border-[#dfe4ea] bg-white p-8 transition-colors hover:border-[#059669]/40 dark:border-[#525c6c]/30 dark:bg-[#141824]`}
             >
-              <div className="relative z-10 flex flex-col h-full">
-                <h3 className="font-manrope text-lg font-semibold text-foreground mb-3">
+              <div className="space-y-4">
+                <div className={`flex h-12 w-12 items-center justify-center rounded-lg border border-[#dfe4ea] bg-[#f8fafc] ${service.color} transition-colors group-hover:bg-[#059669] group-hover:text-white dark:border-[#3b494b]/20 dark:bg-[#181b22] dark:group-hover:bg-[#00e5a3] dark:group-hover:text-[#0d0f14]`}>
+                  <Icon size={26} />
+                </div>
+                <h3 className="font-sans text-[20px] text-[#0f172a] transition-colors group-hover:text-[#059669] dark:text-[#e1e2ec] dark:group-hover:text-[#00e5a3]">
                   {service.title}
                 </h3>
-
-                <p
-                  className="font-inter text-sm text-muted-foreground leading-relaxed flex-1 mb-4"
-                >
+                <p className="font-sans text-[15px] text-[#475569] dark:text-[#9aa5b5]">
                   {service.description}
                 </p>
-
-                <div className="flex items-center gap-1.5 text-sm font-medium text-primary group-hover:gap-2.5 transition-all">
-                  {t.services.learnMore}
-                  <ArrowRight className="h-4 w-4" />
-                </div>
               </div>
-
-              <div className="absolute bottom-0 right-0 z-0 pointer-events-none overflow-hidden w-16 h-16 mb-6 mr-6 group-hover:mb-0 group-hover:mr-0 group-hover:w-[45%] group-hover:h-full transition-all duration-500 ease-out">
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="inline-flex items-center justify-center rounded-full text-primary/20 group-hover:text-primary/40 h-16 w-16 rotate-0 group-hover:rotate-[25deg] scale-100 group-hover:scale-[3] transition-all duration-500 ease-out">
-                    <service.icon className="h-7 w-7" />
-                  </span>
-                </div>
+              <div className="flex items-center gap-2 pt-6 font-mono text-[12px] font-semibold text-[#059669] dark:text-[#00e5a3]">
+                <span>{t.services.learnMore}</span>
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
               </div>
             </Link>
-          </ScrollReveal>
-        ))}
+          )
+        })}
       </div>
     </section>
   )

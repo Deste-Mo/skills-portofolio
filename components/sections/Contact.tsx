@@ -1,166 +1,111 @@
 "use client"
 
-import { ScrollReveal } from "@/components/ui/ScrollReveal"
-import { Button } from "@/components/ui/Button"
-import { Mail, Phone, MapPin, Send, CheckCircle, Loader2, AlertCircle } from "lucide-react"
-import { useTranslation } from "@/lib/i18n/context"
-import { useContactForm } from "@/hooks/useContactForm"
+import { ArrowRight, CheckCircle2, Mail, MapPin, MessageSquareText, Phone } from "lucide-react"
 
 export function ContactSection() {
-  const { t, lang } = useTranslation()
-  const { formData, status, errorMessage, handleChange, handleSubmit, resetForm } = useContactForm()
-
   return (
-    <section id="contact" className="max-w-[1200px] mx-auto px-8 py-24 md:py-32">
-      <ScrollReveal animation="slide-up">
-        <div className="mb-12 md:mb-16">
-          <h2
-            className="font-manrope text-4xl md:text-[48px] font-semibold text-foreground mb-4"
-            style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
-          >
-            {t.contact.title}
-          </h2>
-          <p
-            className="font-inter text-base md:text-lg text-muted-foreground max-w-2xl"
-            style={{ lineHeight: "1.75" }}
-          >
-            {t.contact.description}
+    <section id="contact" className="mb-8 py-20 text-[#0f172a] transition-colors duration-300 dark:text-[#e1e2ec]">
+        <div className="mb-12">
+          <div className="mb-2 flex items-center gap-3">
+            <span className="inline-block h-0.5 w-8 bg-[#059669] dark:bg-[#00e5a3]"></span>
+            <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">Prendre Contact</span>
+          </div>
+          <h2 className="font-sans text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">Contact</h2>
+          <p className="mt-2 max-w-3xl font-sans text-[15px] leading-relaxed text-[#475569] md:text-[18px] dark:text-[#9aa5b5]">
+            Discutons de votre prochain projet ensemble
           </p>
         </div>
-      </ScrollReveal>
 
-      <div className="grid gap-8 lg:grid-cols-2">
-        <ScrollReveal animation="slide-up" delay={200} className="h-full">
-          <div className="bg-background border border-border/60 shadow-sm rounded-xl p-6 md:p-8 h-full flex flex-col dark:bg-muted/20 dark:border-border/50 dark:shadow-none">
-            <h3 className="font-manrope text-xl md:text-2xl font-semibold text-foreground mb-3">{t.contact.cta}</h3>
-            <p className="font-inter text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
-              {t.contact.ctaDesc}
-            </p>
+        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
+          <div className="space-y-8 rounded-xl border border-[#dfe4ea] bg-white p-8 shadow-sm dark:border-[#525c6c]/30 dark:bg-[#141824] lg:col-span-5">
+            <div>
+              <h3 className="mb-3 font-sans text-[28px] text-[#0f172a] dark:text-[#e1e2ec]">Parlons de votre projet</h3>
+              <p className="font-sans text-[15px] leading-relaxed text-[#475569] dark:text-[#9aa5b5]">
+                Je suis toujours ouvert aux nouvelles opportunités et collaborations. N'hésitez pas à me contacter pour discuter de votre projet ou simplement dire bonjour.
+              </p>
+            </div>
 
-            <div className="space-y-5">
-              <div className="flex items-center gap-4">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
-                  <Mail className="h-5 w-5" />
-                </div>
-                <div className="min-w-0">
-                  <p className="font-inter text-sm font-semibold text-foreground">{t.contact.email}</p>
-                  <a href="mailto:tolojanaharyjeanmodeste@gmail.com" className="font-inter text-sm text-muted-foreground hover:text-primary transition-colors break-all">
+            <div className="space-y-4">
+              <div className="flex items-start gap-4 rounded-lg border border-[#dfe4ea] bg-[#f8fafc] p-4 dark:border-[#3b494b]/20 dark:bg-[#0d0f14]">
+                <span className="inline-flex rounded bg-[#ecfdf5] p-2.5 text-[#059669] dark:bg-[#181b22] dark:text-[#00e5a3]">
+                  <Mail size={22} />
+                </span>
+                <div className="space-y-0.5">
+                  <span className="block font-mono text-[12px] uppercase tracking-[0.2em] text-[#64748b] dark:text-[#525c6c]">Email direct</span>
+                  <a className="break-all font-sans text-[15px] font-medium text-[#0f172a] transition-colors hover:text-[#059669] dark:text-[#e1e2ec] dark:hover:text-[#00e5a3]" href="mailto:tolojanaharyjeanmodeste@gmail.com">
                     tolojanaharyjeanmodeste@gmail.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
-                  <Phone className="h-5 w-5" />
-                </div>
-                <div className="min-w-0">
-                  <p className="font-inter text-sm font-semibold text-foreground">{t.contact.phone}</p>
-                  <a href="tel:+261347491885" className="font-inter text-sm text-muted-foreground hover:text-primary transition-colors">
+              <div className="flex items-start gap-4 rounded-lg border border-[#dfe4ea] bg-[#f8fafc] p-4 dark:border-[#3b494b]/20 dark:bg-[#0d0f14]">
+                <span className="inline-flex rounded bg-[#ecfdf5] p-2.5 text-[#059669] dark:bg-[#181b22] dark:text-[#00e5a3]">
+                  <Phone size={22} />
+                </span>
+                <div className="space-y-0.5">
+                  <span className="block font-mono text-[12px] uppercase tracking-[0.2em] text-[#64748b] dark:text-[#525c6c]">Téléphone</span>
+                  <a className="font-sans text-[15px] font-medium text-[#0f172a] transition-colors hover:text-[#059669] dark:text-[#e1e2ec] dark:hover:text-[#00e5a3]" href="tel:+261347491885">
                     +261 34 74 918 85 / +261 38 36 842 11
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
-                  <MapPin className="h-5 w-5" />
-                </div>
-                <div className="min-w-0">
-                  <p className="font-inter text-sm font-semibold text-foreground">{t.contact.location}</p>
-                  <p className="font-inter text-sm text-muted-foreground">{t.contact.locationValue}</p>
+              <div className="flex items-start gap-4 rounded-lg border border-[#dfe4ea] bg-[#f8fafc] p-4 dark:border-[#3b494b]/20 dark:bg-[#0d0f14]">
+                <span className="inline-flex rounded bg-[#ecfdf5] p-2.5 text-[#059669] dark:bg-[#181b22] dark:text-[#00e5a3]">
+                  <MapPin size={22} />
+                </span>
+                <div className="space-y-0.5">
+                  <span className="block font-mono text-[12px] uppercase tracking-[0.2em] text-[#64748b] dark:text-[#525c6c]">Localisation</span>
+                  <p className="font-sans text-[15px] font-medium text-[#0f172a] dark:text-[#e1e2ec]">Fianarantsoa, Madagascar</p>
                 </div>
               </div>
             </div>
-          </div>
-        </ScrollReveal>
 
-        <ScrollReveal animation="slide-up" delay={300} className="h-full">
-          <div className="bg-background border border-border/60 shadow-sm rounded-xl p-6 md:p-8 h-full flex flex-col dark:bg-muted/20 dark:border-border/50 dark:shadow-none">
-            {status === "success" ? (
-              <div className="flex flex-col items-center justify-center flex-1 text-center">
-                <CheckCircle className="h-16 w-16 text-primary mb-4" />
-                <h3 className="font-manrope text-xl md:text-2xl font-semibold text-foreground mb-2">{t.contact.success.title}</h3>
-                <p className="font-inter text-sm md:text-base text-muted-foreground mb-2">{t.contact.success.description}</p>
-                <p className="font-inter text-xs text-muted-foreground/70 mb-6">{lang === "en" ? "If you don't see my reply, please check your spam folder." : "Si vous ne voyez pas ma réponse, pensez à vérifier vos spams."}</p>
-                <Button variant="outline" size="sm" onClick={resetForm}>
-                  {t.contact.form.submit}
-                </Button>
+            <div className="flex items-center justify-between rounded-lg border border-[#dfe4ea] bg-[#f8fafc] p-4 dark:border-[#3b494b]/20 dark:bg-[#0d0f14]">
+              <div className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#22c55e]"></span>
+                <span className="font-mono text-[12px] text-[#059669] dark:text-[#b6efff]">Prêt pour onboarding rapide</span>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col flex-1 gap-5">
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <div>
-                    <label htmlFor="name" className="font-inter text-sm font-medium text-foreground mb-1.5 block">
-                      {t.contact.form.name}
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      disabled={status === "sending"}
-                      className="w-full rounded-xl border border-border/50 bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all disabled:opacity-50"
-                      placeholder={t.contact.form.placeholderName}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="font-inter text-sm font-medium text-foreground mb-1.5 block">
-                      {t.contact.form.email}
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      disabled={status === "sending"}
-                      className="w-full rounded-xl border border-border/50 bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all disabled:opacity-50"
-                      placeholder={t.contact.form.placeholderEmail}
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-col flex-1">
-                  <label htmlFor="message" className="font-inter text-sm font-medium text-foreground mb-1.5 block">
-                    {t.contact.form.message}
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    disabled={status === "sending"}
-                    rows={5}
-                    className="w-full flex-1 rounded-xl border border-border/50 bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all resize-none disabled:opacity-50"
-                    placeholder={t.contact.form.placeholderMessage}
-                  />
-                </div>
-
-                {status === "error" && (
-                  <div className="flex items-center gap-2 text-sm text-destructive bg-destructive/10 px-4 py-3 rounded-xl">
-                    <AlertCircle className="h-4 w-4 shrink-0" />
-                    <span>{errorMessage}</span>
-                  </div>
-                )}
-
-                <Button type="submit" size="lg" className="w-full gap-2 rounded-full" disabled={status === "sending"}>
-                  {status === "sending" ? (
-                    <Loader2 className="h-5 w-5 animate-spin" />
-                  ) : (
-                    <Send className="h-5 w-5" />
-                  )}
-                  {t.contact.form.submit}
-                </Button>
-              </form>
-            )}
+              <span className="font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">Remote &amp; CDI</span>
+            </div>
           </div>
-        </ScrollReveal>
-      </div>
+
+          <div className="rounded-xl border border-[#dfe4ea] bg-white p-8 shadow-sm dark:border-[#525c6c]/30 dark:bg-[#141824] lg:col-span-7">
+            <form className="space-y-6" id="contact-form" onSubmit={(e) => { e.preventDefault(); const feedback = document.getElementById('form-feedback'); if (feedback) { feedback.classList.remove('hidden'); feedback.style.display = 'flex'; } }}>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <label className="block font-mono text-[12px] uppercase tracking-[0.2em] text-[#0f172a] dark:text-[#e1e2ec]" htmlFor="name">
+                    Nom complet <span className="text-[#059669] dark:text-[#00e5a3]">*</span>
+                  </label>
+                  <input className="w-full rounded-lg border border-[#dfe4ea] bg-[#f8fafc] px-4 py-3.5 font-sans text-[15px] text-[#0f172a] placeholder:text-[#64748b] focus:border-[#059669] focus:outline-none dark:border-[#3b494b]/30 dark:bg-[#0d0f14] dark:text-[#e1e2ec] dark:placeholder:text-[#525c6c]" id="name" placeholder="Votre nom" required type="text" />
+                </div>
+                <div className="space-y-2">
+                  <label className="block font-mono text-[12px] uppercase tracking-[0.2em] text-[#0f172a] dark:text-[#e1e2ec]" htmlFor="email">
+                    Email <span className="text-[#059669] dark:text-[#00e5a3]">*</span>
+                  </label>
+                  <input className="w-full rounded-lg border border-[#dfe4ea] bg-[#f8fafc] px-4 py-3.5 font-sans text-[15px] text-[#0f172a] placeholder:text-[#64748b] focus:border-[#059669] focus:outline-none dark:border-[#3b494b]/30 dark:bg-[#0d0f14] dark:text-[#e1e2ec] dark:placeholder:text-[#525c6c]" id="email" placeholder="votre@email.com" required type="email" />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="block font-mono text-[12px] uppercase tracking-[0.2em] text-[#0f172a] dark:text-[#e1e2ec]" htmlFor="message">
+                  Message <span className="text-[#059669] dark:text-[#00e5a3]">*</span>
+                </label>
+                <textarea className="w-full resize-y rounded-lg border border-[#dfe4ea] bg-[#f8fafc] px-4 py-3.5 font-sans text-[15px] text-[#0f172a] placeholder:text-[#64748b] focus:border-[#059669] focus:outline-none dark:border-[#3b494b]/30 dark:bg-[#0d0f14] dark:text-[#e1e2ec] dark:placeholder:text-[#525c6c]" id="message" placeholder="Décrivez votre besoin ou votre projet..." required rows={5}></textarea>
+              </div>
+
+              <button className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#059669] px-6 py-4 font-sans text-[15px] font-bold text-white transition-colors hover:bg-[#047857] dark:bg-[#00e5a3] dark:text-[#0d0f14] dark:hover:bg-white" type="submit">
+                <span>Envoyer le message</span>
+                <ArrowRight size={18} />
+              </button>
+
+              <div className="hidden items-center gap-3 rounded-lg border border-[#a7f3d0] bg-[#ecfdf5] p-4 font-mono text-[12px] text-[#059669] dark:border-[#00e5a3]/40 dark:bg-[#181b22] dark:text-[#00e5a3]" id="form-feedback" style={{ display: 'none' }}>
+                <CheckCircle2 size={16} />
+                <span>Merci ! Votre message a été pris en compte. Je vous répondrai dans les plus brefs délais.</span>
+              </div>
+            </form>
+          </div>
+        </div>
     </section>
   )
 }

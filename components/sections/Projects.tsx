@@ -2,206 +2,166 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import Link from "next/link"
-import { ExternalLink, Code, ArrowUpRight } from "lucide-react"
-import { ScrollReveal } from "@/components/ui/ScrollReveal"
-import { useTranslation } from "@/lib/i18n/context"
+import { ArrowUpRight, ExternalLink, Filter } from "lucide-react"
 
-type Category = "all" | "web" | "mobile" | "ai"
-
-interface ProjectLink {
-  label: string
-  labelEn: string
-  url: string
-}
-
-interface ProjectData {
-  title: string
-  titleEn: string
-  description: string
-  descriptionEn: string
-  type: string
-  typeEn: string
-  image: string
-  tags: string[]
-  categories: Category[]
-  links: ProjectLink[]
-  githubUrl?: string
-}
-
-const projectsData: ProjectData[] = [
+const projectsData = [
   {
-    title: "Qui fait quoi",
-    titleEn: "Qui fait quoi",
-    description: "Plateforme IA pour diagnostiquer les problèmes de logement locatif avec assistance en temps réel via GPT / OpenAI.",
-    descriptionEn: "AI platform for diagnosing rental housing issues with real-time assistance through GPT / OpenAI.",
     type: "Plateforme IA",
-    typeEn: "AI Platform",
+    title: "Qui fait quoi",
+    description: "Plateforme IA pour diagnostiquer les problèmes de logement locatif avec assistance en temps réel via GPT / OpenAI. Analyse rapide des baux, détection des responsabilités locataire/bailleur et conseils automatisés.",
     image: "/images/projects/qui-fait-qoui.png",
     tags: ["Next.js", "OpenAI API", "GPT", "Docker", "PostgreSQL", "Git"],
-    categories: ["web", "ai"],
-    links: [{ label: "Site", labelEn: "Website", url: "https://qui-fait-qoui-test.vercel.app/" }],
+    category: "ia web",
+    link: "https://qui-fait-qoui-test.vercel.app/",
+    cta: "Voir le site",
   },
   {
-    title: "GHR",
-    titleEn: "GHR",
-    description: "Plateforme web/mobile de gestion hôtelière et restauration : comptes du personnel, planning, suivi des activités et administration des établissements.",
-    descriptionEn: "Web/mobile platform for hotel and restaurant management: staff accounts, planning, activity tracking, and establishment administration.",
     type: "Application",
-    typeEn: "Application",
+    title: "GHR",
+    description: "Plateforme web/mobile de gestion hôtelière et restauration : comptes du personnel, planning, suivi des activités et administration des établissements. Déploiement multi-tenant sécurisé.",
     image: "/images/projects/ghr.png",
     tags: ["Next.js", "FastAPI", "Flutter", "API REST", "PostgreSQL", "Git"],
-    categories: ["web", "mobile"],
+    category: "web mobile",
     links: [
-      { label: "Personnel", labelEn: "Staff", url: "https://ghr-personnel.itdcmada.com/" },
-      { label: "Administration", labelEn: "Admin", url: "https://admin-etablissement.itdcmada.com" },
+      { label: "Portail Personnel", href: "https://ghr-personnel.itdcmada.com/" },
+      { label: "Portail Administration", href: "https://admin-etablissement.itdcmada.com" },
     ],
   },
   {
-    title: "Altigéo",
-    titleEn: "Altigéo",
-    description: "Plateforme de traitement et d’analyse de données géographiques : maquettes 3D, plans topographiques et SIG.",
-    descriptionEn: "Geographic data processing and analysis platform: 3D models, topographic plans, and GIS.",
     type: "Plateforme",
-    typeEn: "Platform",
+    title: "Altigéo",
+    description: "Plateforme de traitement et d’analyse de données géographiques : maquettes 3D, plans topographiques et SIG. Manipulation fluide de jeux de données massifs avec interface réactive.",
     image: "/images/projects/altigeo.png",
     tags: ["Next.js", "API REST", "PostgreSQL", "Git"],
-    categories: ["web"],
-    links: [{ label: "Plateforme", labelEn: "Platform", url: "https://altigeo.mg/" }],
+    category: "web",
+    link: "https://altigeo.mg/",
+    cta: "Accéder à Altigéo",
   },
   {
-    title: "El Madagascar Tours",
-    titleEn: "El Madagascar Tours",
-    description: "Site de voyage proposant des circuits 4x4 à Madagascar, itinéraires sur mesure et réservation en ligne.",
-    descriptionEn: "Travel website offering 4x4 tours in Madagascar, personalized itineraries, and online booking.",
     type: "Site web",
-    typeEn: "Website",
+    title: "El Madagascar Tours",
+    description: "Site de voyage proposant des circuits 4x4 à Madagascar, itinéraires sur mesure et réservation en ligne. Optimisation SEO, performances de rendu instantanées et expérience immersive.",
     image: "/images/projects/elmadagascar-tour.png",
     tags: ["Next.js", "API REST", "PostgreSQL", "Git"],
-    categories: ["web"],
-    links: [{ label: "Site", labelEn: "Website", url: "https://elmadagascar-tours.com/" }],
+    category: "web",
+    link: "https://elmadagascar-tours.com/",
+    cta: "Découvrir le site",
   },
-]
-
-const filterOptions: { key: Category; labelFr: string; labelEn: string }[] = [
-  { key: "all", labelFr: "Tous", labelEn: "All" },
-  { key: "web", labelFr: "Web", labelEn: "Web" },
-  { key: "mobile", labelFr: "Mobile", labelEn: "Mobile" },
-  { key: "ai", labelFr: "IA", labelEn: "AI" },
 ]
 
 export function ProjectsSection() {
-  const { t, lang } = useTranslation()
-  const [activeFilter, setActiveFilter] = useState<Category>("all")
+  const [activeFilter, setActiveFilter] = useState("all")
 
-  const filtered = activeFilter === "all"
-    ? projectsData
-    : projectsData.filter((p) => p.categories.includes(activeFilter))
-
-  const projects = filtered.map((p) => ({
-    ...p,
-    title: lang === "en" ? p.titleEn : p.title,
-    description: lang === "en" ? p.descriptionEn : p.description,
-    type: lang === "en" ? p.typeEn : p.type,
-    links: p.links.map((l) => ({
-      ...l,
-      label: lang === "en" ? l.labelEn : l.label,
-    })),
-  }))
-
-  const filterLabels = filterOptions.map((f) => ({
-    key: f.key,
-    label: lang === "en" ? f.labelEn : f.labelFr,
-  }))
+  const filteredProjects =
+    activeFilter === "all"
+      ? projectsData
+      : projectsData.filter((project) => project.category.split(" ").includes(activeFilter))
 
   return (
-    <section id="projects" className="max-w-[1200px] mx-auto px-8 py-24 md:py-32">
-      <ScrollReveal animation="slide-up">
-        <div className="mb-12 md:mb-16">
-          <h2
-            className="font-manrope text-4xl md:text-[48px] font-semibold text-foreground mb-4"
-            style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
-          >
-            {t.projects.title}
-          </h2>
-          <p
-            className="font-inter text-base md:text-lg text-muted-foreground max-w-2xl"
-            style={{ lineHeight: "1.75" }}
-          >
-            {t.projects.description}
-          </p>
-        </div>
-      </ScrollReveal>
+    <section id="projets" className="py-20 text-[#0f172a] transition-colors duration-300 dark:text-[#e1e2ec]">
+        <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <div className="mb-2 flex items-center gap-3">
+              <span className="inline-block h-0.5 w-8 bg-[#059669] dark:bg-[#00e5a3]"></span>
+              <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.25em] text-[#059669] dark:text-[#00e5a3]">Portfolio Réalisations</span>
+            </div>
+            <h2 className="font-sans text-[36px] text-[#0f172a] md:text-[46px] dark:text-[#e1e2ec]">Projets</h2>
+            <p className="mt-2 max-w-3xl font-sans text-[15px] leading-relaxed text-[#475569] md:text-[18px] dark:text-[#9aa5b5]">
+              Une sélection de mes réalisations récentes
+            </p>
+          </div>
 
-      <ScrollReveal animation="slide-up" delay={100}>
-        <div className="flex flex-wrap gap-3 mb-12">
-          {filterLabels.map((f) => (
-            <button
-              key={f.key}
-              onClick={() => setActiveFilter(f.key)}
-              className={`font-inter text-sm px-5 py-2 rounded-full transition-all duration-200 active:scale-[0.96] ${
-                activeFilter === f.key
-                  ? "bg-primary text-primary-foreground font-semibold shadow-sm"
-                  : "bg-muted/20 text-muted-foreground hover:text-foreground hover:bg-muted/40 border border-border/50"
-              }`}
+          <div className="flex shrink-0 flex-wrap items-center gap-2 rounded-lg border border-[#dfe4ea] bg-white p-1.5 shadow-sm dark:border-[#3b494b]/20 dark:bg-[#181b22]" id="project-filters">
+            {[
+              { label: "Tous", value: "all" },
+              { label: "Web", value: "web" },
+              { label: "Mobile", value: "mobile" },
+              { label: "IA", value: "ia" },
+            ].map((filter) => (
+              <button
+                key={filter.value}
+                type="button"
+                onClick={() => setActiveFilter(filter.value)}
+                className={`rounded-md px-4 py-1.5 font-mono text-[12px] uppercase transition-colors ${
+                  activeFilter === filter.value
+                    ? "bg-[#059669] text-white dark:bg-[#00e5a3] dark:text-[#0d0f14]"
+                    : "text-[#475569] hover:text-[#0f172a] dark:text-[#9aa5b5] dark:hover:text-[#e1e2ec]"
+                }`}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="space-y-8" id="projects-grid">
+          {filteredProjects.map((project, index) => (
+            <div
+              key={project.title + index}
+              className="project-item grid grid-cols-1 items-center gap-8 rounded-xl border border-[#dfe4ea] bg-white p-6 shadow-sm transition-colors hover:border-[#059669]/40 dark:border-[#525c6c]/30 dark:bg-[#141824] sm:p-8 lg:grid-cols-12"
+              data-category={project.category}
             >
-              {f.label}
-            </button>
-          ))}
-        </div>
-      </ScrollReveal>
+              <div className="space-y-4 lg:col-span-7">
+                <div className="flex items-center gap-3">
+                  <span className={`rounded-full border border-[#dfe4ea] bg-[#f8fafc] px-3 py-1 font-mono text-[12px] uppercase tracking-[0.2em] font-semibold dark:border-[#3b494b]/20 dark:bg-[#181b22] ${project.type.includes("IA") ? "text-[#059669] dark:text-[#00e5a3]" : project.title === "GHR" ? "text-[#2563eb] dark:text-[#93b4ff]" : "text-[#0f172a] dark:text-[#e1e2ec]"}`}>
+                    {project.type}
+                  </span>
+                  <span className="font-mono text-[12px] text-[#64748b] dark:text-[#525c6c]">{project.type === "Plateforme IA" ? "OpenAI / Production" : project.type === "Application" ? "Gestion Hôtelière & Restauration" : project.type === "Plateforme" ? "SIG & Topographie 3D" : "E-commerce Tourisme"}</span>
+                </div>
 
-      <div className="space-y-8 md:space-y-12">
-        {projects.map((project, index) => (
-          <ScrollReveal key={index} animation="slide-up" delay={index * 80}>
-            <div className="group md:flex md:flex-row-reverse md:items-stretch bg-background border border-border/60 shadow-sm rounded-2xl overflow-hidden hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5 dark:bg-muted/20 dark:border-border/50 dark:shadow-none dark:hover:bg-muted/30 transition-all duration-300">
-              <div className="relative w-full md:w-[45%] lg:w-[40%] aspect-[16/10] md:aspect-auto md:min-h-[280px] bg-gradient-to-br from-primary/[0.04] to-muted/30 overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 45vw"
-                  className="object-contain p-4 md:p-6 group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-l from-background/20 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" />
-                {project.githubUrl && project.githubUrl !== "#" && (
-                  <div className="absolute top-3 right-3">
-                    <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-background/80 backdrop-blur-sm text-foreground hover:bg-background transition-colors shadow-lg" aria-label="GitHub">
-                      <Code className="h-3.5 w-3.5" />
-                    </Link>
-                  </div>
-                )}
-              </div>
-              <div className="flex-1 p-5 md:p-7 lg:p-8 flex flex-col justify-center">
-                <span className="font-inter text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full w-fit mb-3">
-                  {project.type}
-                </span>
-                <h3 className="font-manrope text-xl md:text-2xl font-bold text-foreground mb-3">
-                  {project.title}
-                </h3>
-                <p className="font-inter text-sm md:text-base text-muted-foreground leading-relaxed mb-5">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
+                <h3 className="font-sans text-[28px] text-[#0f172a] dark:text-[#e1e2ec]">{project.title}</h3>
+                <p className="font-sans text-[15px] leading-relaxed text-[#475569] dark:text-[#9aa5b5]">{project.description}</p>
+
+                <div className="flex flex-wrap gap-2 pt-2">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="font-inter text-[11px] font-medium text-muted-foreground bg-muted/30 border border-border/50 px-2.5 py-1 rounded-md">
+                    <span key={tag} className="rounded border border-[#dfe4ea] bg-[#f8fafc] px-2.5 py-1 font-mono text-[12px] text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#181b22] dark:text-[#00e5a3]">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <div className="mt-4 pt-4 border-t border-border/30 flex flex-wrap gap-3">
-                  {project.links.map((link, i) => (
-                    <Link key={i} href={link.url} target="_blank" rel="noopener noreferrer" className="font-inter text-sm font-medium text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-1.5">
-                      {link.label}
-                      <ArrowUpRight className="h-3.5 w-3.5" />
-                    </Link>
-                  ))}
-                </div>
+
+                {project.link ? (
+                  <div className="flex items-center gap-4 pt-4">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-lg bg-[#059669] px-5 py-2.5 font-sans text-[14px] font-bold text-white transition-colors hover:bg-[#047857] dark:bg-[#00e5a3] dark:text-[#0d0f14] dark:hover:bg-white"
+                    >
+                      <span>{project.cta}</span>
+                      <ArrowUpRight size={18} />
+                    </a>
+                  </div>
+                ) : (
+                  <div className="flex flex-wrap items-center gap-4 pt-4">
+                    {project.links?.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 rounded-lg border border-[#dfe4ea] bg-[#f8fafc] px-4 py-2.5 font-sans text-[14px] text-[#0f172a] transition-colors hover:border-[#059669] hover:text-[#059669] dark:border-[#3b494b]/20 dark:bg-[#181b22] dark:text-[#e1e2ec] dark:hover:text-[#00e5a3]"
+                      >
+                        <span>{link.label}</span>
+                        <ExternalLink size={16} />
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="overflow-hidden rounded-xl border border-[#dfe4ea] bg-[#f8fafc] group dark:border-[#3b494b]/20 dark:bg-[#080a0e] lg:col-span-5">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={1200}
+                  height={800}
+                  className="h-64 w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
             </div>
-          </ScrollReveal>
-        ))}
-      </div>
+          ))}
+        </div>
     </section>
   )
 }

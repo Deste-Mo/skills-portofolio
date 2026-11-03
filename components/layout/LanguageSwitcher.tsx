@@ -1,9 +1,8 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { ChevronDown, Globe } from "lucide-react"
 import { FlagFr, FlagGb } from "@/components/ui/icons"
 import { useTranslation } from "@/lib/i18n/context"
-import { useClickOutside } from "@/hooks/useClickOutside"
 
 interface LanguageSwitcherProps {
   variant?: "dropdown" | "inline"
@@ -11,61 +10,39 @@ interface LanguageSwitcherProps {
 
 export function LanguageSwitcher({ variant = "dropdown" }: LanguageSwitcherProps) {
   const { lang, setLang } = useTranslation()
-  const [open, setOpen] = useState(false)
-
-  const close = useCallback(() => setOpen(false), [])
-  useClickOutside(open, close)
+  const selectedFlag = lang === "fr" ? <FlagFr size={16} className="rounded-sm" /> : <FlagGb size={16} className="rounded-sm" />
 
   if (variant === "inline") {
     return (
       <div className="flex items-center gap-2">
-        <button
-          onClick={() => setLang("fr")}
-          className={`p-1.5 rounded-[0.125rem] transition-all ${lang === "fr" ? "ring-1 ring-primary bg-muted/50" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"}`}
-          aria-label="Français"
-        >
-          <FlagFr size={18} />
+        <button onClick={() => setLang("fr")} aria-label="Français" className={`rounded-md p-1.5 transition-all ${lang === "fr" ? "bg-[#e6f7f1] text-[#059669]" : "text-[#475569] hover:bg-slate-100"}`}>
+          <span className="text-[11px] font-bold">FR</span>
         </button>
-        <button
-          onClick={() => setLang("en")}
-          className={`p-1.5 rounded-[0.125rem] transition-all ${lang === "en" ? "ring-1 ring-primary bg-muted/50" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"}`}
-          aria-label="English"
-        >
-          <FlagGb size={18} />
+        <button onClick={() => setLang("en")} aria-label="English" className={`rounded-md p-1.5 transition-all ${lang === "en" ? "bg-[#e6f7f1] text-[#059669]" : "text-[#475569] hover:bg-slate-100"}`}>
+          <span className="text-[11px] font-bold">EN</span>
         </button>
       </div>
     )
   }
 
   return (
-    <div className="relative">
-      <button
-        onClick={(e) => { e.stopPropagation(); setOpen(!open) }}
-        className="md:w-10 md:h-10 flex items-center justify-center p-2 rounded-[0.125rem] text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200 active:scale-[0.98]"
-        aria-label="Select language"
+    <div className="relative inline-flex items-center">
+      <span className="pointer-events-none absolute left-2.5 z-10 flex items-center justify-center text-[#64748b]">
+        {selectedFlag}
+      </span>
+      <Globe size={14} className="pointer-events-none absolute left-2.5 opacity-0" />
+      <select
+        aria-label="Choisir la langue"
+        value={lang}
+        onChange={(event) => setLang(event.target.value as "fr" | "en")}
+        className="cursor-pointer appearance-none rounded-lg border border-[#dfe4ea] bg-white py-1.5 pl-9 pr-7 font-mono text-[11px] font-semibold uppercase tracking-wide text-[#0f172a] transition-all focus:border-[#059669] focus:outline-none dark:border-[#3b494b]/30 dark:bg-[#1f2430] dark:text-[#e1e2ec]"
       >
-        {lang === "fr" ? <FlagFr size={20} /> : <FlagGb size={20} />}
-      </button>
-      {open && (
-        <div className="absolute right-0 top-full mt-1 w-40 bg-background border border-border rounded-lg shadow-lg overflow-hidden z-50">
-          <button
-            onClick={() => { setLang("fr"); setOpen(false) }}
-            className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm transition-colors hover:bg-muted/50 ${lang === "fr" ? "text-foreground font-semibold" : "text-muted-foreground"}`}
-          >
-            <FlagFr size={18} />
-            Français
-            {lang === "fr" && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-primary" />}
-          </button>
-          <button
-            onClick={() => { setLang("en"); setOpen(false) }}
-            className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm transition-colors hover:bg-muted/50 ${lang === "en" ? "text-foreground font-semibold" : "text-muted-foreground"}`}
-          >
-            <FlagGb size={18} />
-            English
-            {lang === "en" && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-primary" />}
-          </button>
-        </div>
-      )}
+        <option value="fr">FR</option>
+        <option value="en">EN</option>
+      </select>
+      <span className="pointer-events-none absolute right-1.5 text-[#64748b]">
+        <ChevronDown size={12} />
+      </span>
     </div>
   )
 }

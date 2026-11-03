@@ -28,7 +28,7 @@ export function HeaderLogo() {
           priority
         />
       </div>
-      <span className="text-[10px] md:text-xs font-semibold text-foreground tracking-tight leading-tight">
+      <span className="text-[10px] md:text-xs font-semibold tracking-tight leading-tight text-[#0f172a] dark:text-[#e1e2ec]">
         {siteConfig.name}
       </span>
     </Link>
