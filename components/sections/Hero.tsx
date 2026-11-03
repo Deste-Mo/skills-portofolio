@@ -10,12 +10,13 @@ import { useTranslation } from "@/lib/i18n/context"
 export function Hero() {
   const { t } = useTranslation()
   const { scrollY } = useScroll()
-  const scale = useTransform(scrollY, [0, 600], [1, 0.85])
-  const opacity = useTransform(scrollY, [0, 600], [1, 0])
+  const scale = useTransform(scrollY, [0, 600], [1.04, 0.96])
+  const y = useTransform(scrollY, [0, 600], [0, -80])
+  const opacity = useTransform(scrollY, [0, 500, 600], [1, 0.85, 0.5])
 
   return (
     <section id="hero" className="fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center text-center px-4 sm:px-8 overflow-hidden bg-background z-0 pt-12 md:pt-16 lg:pt-20">
-      <motion.div style={{ scale, opacity }} className="w-full max-w-[1200px] mx-auto flex flex-col items-center">
+      <motion.div style={{ scale, y, opacity }} className="w-full max-w-[1200px] mx-auto flex flex-col items-center">
         <ScrollReveal animation="slide-up" delay={100}>
           <span className="border border-border text-muted-foreground text-[11px] sm:text-sm font-inter px-2.5 sm:px-3 py-1 rounded-full mb-6 sm:mb-8 tracking-[0.05em] uppercase flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary shrink-0 animate-pulse"></span>
